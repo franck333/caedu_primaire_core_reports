@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_certificat_scolarite_content">
+							
+				<div>
+				
+					<!-- tableau entete ministere et etablissement -->
+					<!-- <table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+						  <tr>
+						    <td width="380" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;">
+						    	<p class="MsoHeader" align="center" style="text-align:center;">
+						    	<span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">REPUBLIQUE    DU CAMEROUN</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Paix    – Travail – Patrie</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">MINISTERE    DES ENSEIGNEMENTS DE BASE<br/> </span>
+						      <span style="font-weight: bold;font-size:13.0pt; ">THE VISION INTERNATIONAL SCHOOL</span>
+						      <span> <br/><br/>BP: 8928 Douala </span><br />
+						     <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Tel (237) 699 57 27 58 / 671 45 88 42</span></p></td>
+						    <td width="150" valign="bottom" style="padding:0cm 5.4pt 0cm 5.4pt;">
+						    	
+						    	<br/>
+						    	<center >
+						    		<img src="/caedu_primaire_core_reports/static/images/logoPhenix4.png" width="200px" style="position:relative; top:-15px;" />
+						    	</center>
+						    	
+						    </td>
+						    <td width="380" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;">
+						    	<p class="MsoHeader" align="center" style="text-align:center;">
+						    	<span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">REPUBLIC OF CAMEROON</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Peace – Work – Fatherland</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">MINISTRY OF BASIC EDUCATION<br/> </span>
+						      <span style="font-weight: bold;font-size:13.0pt; ">THE VISION INTERNATIONAL SCHOOL</span>
+						      <span> <br/><br/>P.O. Box: 8928 Douala </span><br />
+						     <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Tel (237) 699 57 27 58 / 671 45 88 42</span></p>
+						     </td>
+						  </tr>
+						</table> -->
+						
+						<t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/>
+						
+					
+					<!-- tableau libelle bulletin -->
+					<center>
+					<table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;margin-top: 30px; margin-bottom:25px">
+					  <tr>
+					    <td width="225" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p></td>
+					    <td width="330" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoHeader" align="center" style="text-align:center;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:19.0pt; ">Certificat de scolarité</span></strong></p>
+					      </td>
+					    <td width="225" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p></td>
+					  </tr>
+					</table>
+					</center>
+					
+					<!-- contenu principal -->
+					<div style="margin: 10px auto; padding: 25px 35px; font-size:14pt;">
+						<p class="MsoNormal" style="margin: 20px 0px;"><strong>Le proviseur du collège Le Phénix M</strong>
+							<span style="border-bottom: 2px dotted; padding: 2px; display: inline-block; width: 300px"> <span style="font-size:15pt; ">&#032;&#032;&#032;&#032;&#032; </span> </span>
+						</p>
+						<p class="MsoNormal" style="margin: 20px 0px;">Certifie que l'élève
+							<span style="border-bottom: 2px dotted; padding: 2px; display: inline-block; width: 660px"> <span style="font-size:15pt; ">&#032;&#032;&#032;&#032;&#032; <span t-field="o.eleve_id.name"/> </span> </span>
+						</p>
+						<p class="MsoNormal" style="margin: 20px 0px;"><strong>Né le</strong> 
+							<span style="border-bottom: 2px dotted; padding: 2px; display: inline-block; width: 250px"> <span style="font-size:15pt; ">&#032;&#032;&#032;&#032;&#032; <span t-field="o.eleve_id.dob" t-field-options="{&quot;format&quot;:&quot;d MMMM y&quot;}"/> </span> </span>
+						à 
+							<span style="border-bottom: 2px dotted; padding: 2px; display: inline-block; width: 180px"> <span style="font-size:15pt; ">&#032;&#032;&#032;&#032;&#032; <span t-field="o.eleve_id.lieu_naissance"/> </span> </span>
+						</p>
+						<p class="MsoNormal" style="margin: 20px 0px;"><strong>Matricule 
+							<span style="border-bottom: 2px dotted; padding: 2px; display: inline-block; width: 180px"> <span style="font-size:15pt; ">&#032;&#032;&#032;&#032;&#032; <span t-field="o.eleve_id.matricule"/> </span> </span>
+						</strong></p>
+						<p class="MsoNormal" style="margin: 20px 0px;">Est inscrit pour l'année scolaire  
+							<span style="border-bottom: 2px dotted; padding: 2px; display: inline-block; width: 100px; text-align: center"> <span style="font-size:15pt; ">&#032;&#032;&#032;&#032;&#032; <span t-field="o.annee_academique_id.name"/>  </span> </span>
+						dans notre établissement scolaire</p>
+						<p class="MsoNormal" style="margin: 20px 0px;"><strong>Classe</strong> 
+							<span style="border-bottom: 2px dotted; padding: 2px; display: inline-block; width: 100px; text-align: center"> <span style="font-size:15pt; ">&#032;&#032;&#032;&#032;&#032; <span t-field="o.classe_id.name"/>  </span> </span>
+						</p>
+						<p class="MsoNormal" style="margin: 20px 0px;"><br/></p>
+						
+						<p class="MsoNormal" style="margin: 20px 0px;">En foi de quoi, le présent  certificat lui est délivré pour servir et valoir ce que de droit</p>
+						<p class="MsoNormal" style="margin: 20px 0px;"><br/></p>
+						<p class="MsoNormal" style="margin: 20px 0px;"><br/></p>
+						<p class="MsoNormal" style="margin: 20px 0px;"><br/></p>
+						<p class="MsoNormal" style="margin: 20px 0px;">                                                                                                              Douala  le 
+							<span style="border-bottom: 2px dotted; padding: 2px; display: inline-block; width: 180px; text-align: center"> <span style="font-size:15pt; ">&#032;&#032;&#032;&#032;&#032; <span t-field="o.date_aujourdhui" t-field-options="{&quot;format&quot;:&quot;d MMMM y&quot;}"/> </span> </span>
+						</p>
+					</div>
+					
+					
+				</div>
+			
+		</template>
+		
+		
+		<template id="report_caedu_certificat_scolarite_doc">
+<!-- 			<t t-call="report.external_layout"> -->
+				<div class="page" style="font-size: 16px;">
+<!-- 					<t t-foreach="docs" t-as="o"> -->
+						<t t-call="caedu_primaire_core_reports.report_caedu_certificat_scolarite_content" />
+<!-- 					</t> -->
+				</div>
+<!-- 			</t> -->
+		</template>
+		
+		<template id="report_caedu_certificat_scolarite_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_certificat_scolarite_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_certificat_scolarite_action"
+			string="Certificat de scolarité"
+			model="caedu.pension.inscription"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_certificat_scolarite_template"
+		/>
+    	
+        
+    </data>
+</openerp>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_classe_liste_eleves_inscrits_par_classe_content">
+			
+			<center>
+				
+				<div style="margin-top:20px;">
+				
+					
+					<!-- tableau libelle bulletin -->
+					<table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+					  <tr>
+					    <td width="225" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p></td>
+					    <td width="430" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoHeader" align="center" style="text-align:center;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:16.0pt; ">SUIVI DES PENSIONS</span></strong></p>
+					      <br />
+					      </td>
+					    <td width="225" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p></td>
+					  </tr>
+					</table>
+					
+					<!-- tableau information fiche de note ... -->
+					<table width="900" border="0" cellspacing="0" cellpadding="0">
+					  <tbody>
+					    <tr>
+					      <td style="width: 49%"> 
+					      <table width="94%" border="0" cellspacing="0" cellpadding="3">
+								  <tbody>
+									<tr>
+									  <td style="width: 130px; vertical-align: bottom; line-height: 24px">Année scolaire</td>
+									  <td style="border-bottom: 1px solid; width: 300px; line-height: 24px"> <strong>  <span t-field="o.annee_academique_courante.name"/> </strong>  </td>
+									</tr>
+								  </tbody>
+								</table>
+					 	  </td>
+					      <td style="width: 49%">
+					      	<table width="94%" border="0" cellspacing="0" cellpadding="3">
+								  <tbody>
+									<tr>
+									  <td style="width: 130px; vertical-align: bottom; line-height: 24px"> classe </td>
+									  <td style="width: 130px; vertical-align: bottom; line-height: 24px; font-size:14pt;"> <strong><span t-field="o.name"/></strong>   </td>
+									</tr>
+								  </tbody>
+								</table>
+					      </td>
+					    </tr>
+					  </tbody>
+					</table>
+					
+					<!-- tableau des eleves et espaces notes ... -->
+					<table width="98%" border="0" cellspacing="5" cellpadding="3" style="margin-top: 20px; margin-right: 10px; margin-left: 10px;">
+					  <tbody>
+					  
+					    <tr>
+					      <th scope="col" style="width: 4%;  border: 1px solid; padding : 2px 5px;">N°</th>
+					      <th scope="col" style="width: 9%;  border: 1px solid; border-left: none; padding : 2px 5px;">MATRICULE</th>
+					      <th scope="col" style="width: 30%;  border: 1px solid; border-left: none; padding : 2px 5px;">NOMS ET PRENOMS</th>
+					      <th scope="col" style="width: 13%;  border: 1px solid; border-left: none; padding : 2px 5px;">Attendu</th>
+					      <th scope="col" style="width: 13%;  border: 1px solid; border-left: none; padding : 2px 5px;">Perçu</th>
+					      <th scope="col" style="width: 13%;  border: 1px solid; border-left: none; padding : 2px 5px;">Reste </th>
+					      <th scope="col" style="width: 13%;  border: 1px solid; border-left: none; padding : 2px 5px;">Date Lim</th>
+					    </tr>
+					    
+					    <t t-set="numero_ligne" t-value="1"/>
+					    
+					    <t t-foreach="o.liste_inscription_ids" t-as="inscription"> 
+						    <t t-if="inscription.annee_academique_id == o.annee_academique_courante">
+						    	<tr>
+							      <td style="border: 1px solid; border-top: none; padding : 2px 5px; text-align:right"> <t t-raw="numero_ligne" /> </td>
+							      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;"> <span t-field="inscription.eleve_id.matricule"/>  </td>
+							      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;"> <span t-field="inscription.eleve_id.name"/>  </td>
+							      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;"> <span t-field="inscription.total_a_verser"/></td>
+							      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;"> <span t-field="inscription.total_versements"/></td>
+							      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;"> <span t-field="inscription.reste_a_verser"/></td>
+							      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;"> <span t-field="inscription.date_limite_actuelle" t-field-options='{"format":"dd/MM/yyyy"}'/></td>
+							    </tr>
+							    <t t-set="numero_ligne" t-value="numero_ligne + 1"/>
+								    
+							  </t>
+					   </t>
+					    
+					  </tbody>
+					</table>
+					<t t-set="numero_ligne" t-value="numero_ligne - 1"/>
+					<di style="padding-top:50px; float:left;">
+						<p>
+							<strong> Effectif: <t t-raw="numero_ligne"/> étudiants incrits</strong>
+						</p>
+					</di>
+										
+				</div>
+			</center>
+			
+		</template>
+		
+		
+		<template id="report_caedu_classe_liste_eleves_inscrits_par_classe_doc">
+			<t t-call="report.external_layout">
+				<div class="page" style="font-size: 16px;">
+					<!-- <t t-foreach="docs" t-as="o"> -->
+						<t t-call="caedu_primaire_core_reports.report_caedu_classe_liste_eleves_inscrits_par_classe_content"/>
+					<!-- 	</t> -->
+				</div>
+			</t>
+		</template>
+		
+		<template id="report_caedu_classe_liste_eleves_inscrits_par_classe_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_classe_liste_eleves_inscrits_par_classe_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	<report id="report_caedu_classe_liste_eleves_inscrits_par_classe_action"
+			string="Liste des élèves insolvables"
+			model="caedu.etude.classe"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_classe_liste_eleves_inscrits_par_classe_template"
+		/>
+    	
+        
+    </data>
+</openerp>

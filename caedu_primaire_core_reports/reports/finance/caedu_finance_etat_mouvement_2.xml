@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_finance_etat_mouvement_2_content">
+			
+			<center>
+				
+				<!-- tableau entete ministere et etablissement -->
+					
+					<t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/> 
+			
+					
+			<t t-set="len_groupe" t-value="len(o.groupe_sous_categorie_ids)"/>
+			<t t-set="somme_totale" t-value="0"/>
+			
+			<t t-if="o.type_finance == 'recette'" >
+				<h3 style="padding-top:15px;"> Liste des recettes </h3>
+				<p style="text-align:center;"><span style="font-size: 12px;">Du <span t-field="o.date_debut_mouvement" t-field-options="{&quot;format&quot;:&quot;d MMMM y&quot;}"/> au <span t-field="o.date_fin_mouvement" t-field-options="{&quot;format&quot;:&quot;d MMMM y&quot;}"/></span> <span style="font-size: 15px;padding-left: 30px;"></span></p>
+				
+				<t t-foreach="o.groupe_mode_paiement_ids" t-as="groupe_mode_paiement">
+					<div style="height: 30px;font-size: 18px;">
+						<p>
+							<span><strong><span t-field="groupe_mode_paiement.name"/> : </strong></span> <span><strong><span t-field="groupe_mode_paiement.libelle"/> </strong></span>
+						</p>
+						<!-- <hr style="border-style: solid; border-color: black;font-weight: bold;font-size: 30px;" /> -->
+					</div>
+					<t t-foreach="groupe_mode_paiement.groupe_sous_categorie_ids" t-as="groupe">
+						<t t-set="somme" t-value="0"/>
+						<t t-set="nbr_ligne" t-value="1"/>
+							
+						
+							<!-- <span t-field="o.type_finance"/> -->
+								
+								
+							<table width="98%" border="1px" cellspacing="5" cellpadding="3" style="margin-top: 20px; margin-right: 10px; margin-left: 10px;">
+								
+								<caption> <strong><h4><span t-field="groupe.name"/> </h4></strong> <br/> <br/></caption>
+								  <tr style="background-color: #DADADA;">
+								     <th scope="col" style="width: 5%;  border: 1px solid; padding : 2px 5px;">N°</th>
+								     <th scope="col" style="width: 10%;  border: 1px solid;  padding : 2px 5px;">Date</th>
+								     <th scope="col" style="width: 10%;  border: 1px solid;  padding : 2px 5px;">Ref recu</th>
+								     <th scope="col" style="width: 10%;  border: 1px solid;  padding : 2px 5px;">Matricule</th>
+								     <th scope="col" style="width: 30%;  border: 1px solid;  padding : 2px 5px;">Noms et Prénoms</th>
+								     <th scope="col" style="width: 7%;  border: 1px solid;  padding : 2px 5px;">Classe</th>
+								     <th scope="col" style="width: 12%;  border: 1px solid;  padding : 2px 5px;">Montant</th>
+								     
+								     <!-- <th scope="col" style="width: 15%;  border: 1px solid;  padding : 2px 5px;">Sous-catégorie</th> -->
+								  </tr>
+								  
+								<t t-foreach="groupe.ligne_etat_mouvement_ids" t-as="ligne_etat_mouvement">
+										
+									<tr>
+									    <td style="border-bottom: 1px solid; border-right: 1px solid; border-left: 1px solid; padding : 2px 5px;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "> <t t-esc="nbr_ligne"/>  </span></td>
+									    <td style="border-bottom: 1px solid; border-right: 1px solid; border-left: 1px solid; padding : 2px 5px;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "> <span t-field="ligne_etat_mouvement.date_mouvement"/> </span></td>
+									    <td style="border-bottom: 1px solid; border-right: 1px solid; border-left: 1px solid; padding : 2px 5px;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "> <span t-field="ligne_etat_mouvement.numero_recu"/> </span></td>
+									    <td style="border-bottom: 1px solid; border-right: 1px solid; border-left: 1px solid;  padding : 2px 5px;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "> <span t-field="ligne_etat_mouvement.matricule"/> </span></td>
+									    <td style="border-bottom: 1px solid; border-right: 1px solid; border-left: 1px solid; padding : 2px 5px;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><span t-field="ligne_etat_mouvement.nom_et_prenom"/> </span></td>
+									    <td style="border-bottom: 1px solid; border-right: 1px solid; border-left: 1px solid; padding : 2px 5px;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><span t-field="ligne_etat_mouvement.classe"/></span></td>
+									    <td style="border-bottom: 1px solid; border-right: 1px solid; border-left: 1px solid; padding : 2px 5px;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "> <span t-field="ligne_etat_mouvement.montant_recette"/> </span></td>
+									    
+								  	</tr>
+									 
+									 <t t-set="nbr_ligne" t-value="nbr_ligne + 1"/>
+									 <t t-set="somme" t-value="somme + ligne_etat_mouvement.montant_recette"/>
+									 
+								 </t>
+								 
+								 <t t-set="somme_totale" t-value="somme_totale + somme"/>
+								 
+								 <t t-if="len_groupe != 1">
+									<tr style="background-color: #DADADA;">
+									 	<td t-att-colspan="4" style="border-bottom: 1px solid;  border-left: 1px solid; padding : 2px 5px; text-align: right;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt;"> Sous total :</span></strong></td>
+									 	<td t-att-colspan="3" style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;text-align: center;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><t t-esc="somme"/> </span></strong></td>
+									 	
+									 </tr>
+								</t>
+										 
+								<t t-if="len_groupe == 1">
+										 	
+								 	<tr style="background-color: #DADADA;">
+									 	<td t-att-colspan="4" style="border-bottom: 1px solid;  border-left: 1px solid; padding : 2px 5px; text-align: right;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt;"> Sous total :</span></strong></td>
+									 	<td t-att-colspan="3" style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;text-align: center;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><t t-esc="somme"/> </span></strong></td>
+									 	
+									</tr>
+												 <!-- #525252 -->
+									 <tr style="background-color: #666666;">
+									 	<td t-att-colspan="4" style="border-bottom: 1px solid; border-left: 1px solid; padding : 2px 5px; text-align: right;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt;"> Total global :</span></strong></td>
+									 	<td t-att-colspan="3" style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;text-align: center;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><t t-esc="somme_totale"/> </span></strong></td>
+									 	
+									 </tr>
+								</t>
+										 
+								<t t-set="len_groupe" t-value="len_groupe - 1"/>
+								
+							</table>
+					</t>
+				</t>
+					
+			</t>
+			
+			<t t-if="o.type_finance == 'depense'">
+					
+				<h3 style="padding-top:15px;"> Liste des dépenses </h3>
+				<p style="text-align:center;"><span style="font-size: 12px;">Du <span t-field="o.date_debut_mouvement" t-field-options="{&quot;format&quot;:&quot;d MMMM y&quot;}"/> au <span t-field="o.date_fin_mouvement" t-field-options="{&quot;format&quot;:&quot;d MMMM y&quot;}"/></span> <span style="font-size: 15px;padding-left: 30px;"><span style="font-weight: bold;">Classe :  </span><span t-field="o.classe_id.name"/> </span></p>
+						
+					<t t-foreach="o.groupe_sous_categorie_ids" t-as="groupe">
+						<t t-set="somme" t-value="0"/>
+						<t t-set="nbr_ligne" t-value="1"/>
+						
+						<table width="98%" border="1px" cellspacing="5" cellpadding="3" style="margin-top: 20px; margin-right: 10px; margin-left: 10px;">
+							<caption> <strong><span t-field="groupe.name"/> </strong> <br/> <br/></caption>
+							
+							  <tr>
+							     <th scope="col" style="width: 10%;  border: 1px solid; padding : 2px 5px;">N°</th>
+							     <th scope="col" style="width: 30%;  border: 1px solid;  padding : 2px 5px;">Libelle</th>
+							     <th scope="col" style="width: 15%;  border: 1px solid;  padding : 2px 5px;">Montant</th>
+							     <th scope="col" style="width: 20%;  border: 1px solid;  padding : 2px 5px;">Date</th>
+							  </tr>
+							  
+						
+							<t t-foreach="groupe.ligne_etat_mouvement_ids" t-as="ligne_etat_mouvement">
+									
+								<tr>
+								    <td style="border-bottom: 1px solid; border-right: 1px solid; border-left: 1px solid; padding : 2px 5px;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "> <t t-esc="nbr_ligne"/> </span></td>
+								    <td style="border-bottom: 1px solid; border-right: 1px solid; border-left: 1px solid;  padding : 2px 5px;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "> <span t-field="ligne_etat_mouvement.name"/> </span></td>
+								    <td style="border-bottom: 1px solid; border-right: 1px solid; border-left: 1px solid; padding : 2px 5px;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "> <span t-field="ligne_etat_mouvement.montant_depense"/> </span></td>
+								    <td style="border-bottom: 1px solid; border-right: 1px solid; border-left: 1px solid; padding : 2px 5px;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "> <span t-field="ligne_etat_mouvement.date_mouvement"/> </span></td>
+								 </tr>
+								 
+								 <t t-set="nbr_ligne" t-value="nbr_ligne + 1"/>
+								 <t t-set="somme" t-value="somme + ligne_etat_mouvement.montant_depense"/>
+								 
+							 </t>
+							 
+							 <t t-set="somme_totale" t-value="somme_totale + somme"/>
+							 
+							 <t t-if="len_groupe != 1">
+								<tr style="background-color: #DADADA;">
+								 	<td t-att-colspan="3" style="border-bottom: 1px solid;  border-left: 1px solid; padding : 2px 5px; text-align: right;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt;"> Sous total :</span></strong></td>
+								 	<td t-att-colspan="1" style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;text-align: center;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><t t-esc="somme"/> </span></strong></td>
+								 	
+								 </tr>
+							</t>
+									 
+							<t t-if="len_groupe == 1">
+									 	
+							 	<tr style="background-color: #DADADA;">
+								 	<td t-att-colspan="3" style="border-bottom: 1px solid;  border-left: 1px solid; padding : 2px 5px; text-align: right;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt;"> Sous total :</span></strong></td>
+								 	<td t-att-colspan="1" style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;text-align: center;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><t t-esc="somme"/> </span></strong></td>
+								 	
+								</tr>
+											 <!-- #525252 -->
+								 <tr style="background-color: #666666;">
+								 	<td t-att-colspan="3" style="border-bottom: 1px solid; border-left: 1px solid; padding : 2px 5px; text-align: right;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt;"> Total global :</span></strong></td>
+								 	<td t-att-colspan="1" style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;text-align: center;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><t t-esc="somme_totale"/> </span></strong></td>
+								 	
+								 </tr>
+						 </t>
+									 
+							<t t-set="len_groupe" t-value="len_groupe - 1"/>
+							 
+						</table>
+					
+					</t>
+			</t>
+			
+			<div style="margin-top:20px; float:left;font-size: 16px;">
+					<p> Somme enregistrée au total : <strong><span t-field="o.montant_total"/>  Fcfa</strong> <!-- <br/>  Nombre d'inscrits pour la periode : <strong><t t-esc="nbr_ligne"/>  Etudiants</strong> --></p>
+			</div>
+			
+			<div style="margin-top:50px; text-align:center;font-size: 16px;" align="left">
+				<t t-set="dict_groupe_sous" t-value="o.montant_par_groupe()"/>
+				<table width="50%" border="0px" cellspacing="5" cellpadding="3">
+					<t t-foreach="dict_groupe_sous" t-as="groupe_id">
+						
+						<tr>
+							<td style="border:none;">
+								<p><span style="padding-left:200px; font-weight: bold;" > <t  t-esc = "dict_groupe_sous[groupe_id]['#libelle']"/>  : </span></p>
+							</td>
+							<td style="border:none;">
+								<p><span style="padding-left:20px;" align="left"> <t  t-esc = "dict_groupe_sous[groupe_id]['#montant']"/> </span></p>
+							</td>
+						</tr>
+					</t>
+				
+					
+				
+				</table>
+			</div>
+			
+			</center>
+			
+		</template>
+		
+		<template id="report_caedu_finance_etat_mouvement_2_doc">
+			<!-- <t t-call="report.external_layout"> -->
+				<div class="page" style="font-size: 13px;">
+					<!-- <t t-foreach="docs" t-as="o"> -->
+						<t t-call="caedu_primaire_core_reports.report_caedu_finance_etat_mouvement_2_content" />
+					<!-- </t> -->
+				</div>
+			<!-- </t> -->
+		</template>
+		
+		<template id="report_caedu_finance_etat_mouvement_2_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_finance_etat_mouvement_2_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_finance_etat_mouvement_2_action"
+			string="Liste des opérations effectué deux"
+			model="caedu.finance.etat.mouvement"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_finance_etat_mouvement_2_template"
+		/>
+    	
+        
+    </data>
+</openerp>

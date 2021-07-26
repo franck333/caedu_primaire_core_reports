@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_pension_encaissement_page_principale_content">
+		
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			  <tbody>
+				<tr>
+				 	 <td> 
+				  		<t t-call="caedu_primaire_core_reports.report_caedu_mini_entete_recu_2021"/>
+		    		</td>
+				</tr>
+				<tr>
+				  <td style="text-align: center; padding: 10px 3px 17px 3px;"><span style="font-family: arial black; font-size: 16pt"><strong>RECU FRAIS DE SCOLARITE</strong></span> 
+			      </td>
+				</tr>
+				<tr>
+				  <td style="font-family: Arial Unicode MS; font-size: 15pt;">
+				  	<div style="float: left; width: 68%;  line-height: 20pt; padding-left: 15px; padding-top:15px">
+				  		Matricule : <span style="font-weight: bold; font-family: Arial;font-size: 14pt;"> <span t-field="o.eleve_id.matricule"/> </span> <br/>
+				  		Elève : <span style="font-weight: bold; font-family: Arial;"> <span t-field="o.eleve_id.name"/> </span> <br/>
+				  		Classe : <span style="font-weight: normal; font-weight: bold; font-family: Arial;"> <span t-field="o.inscription_id.classe_id.name"/> </span> <br/>
+				  		<!-- Inscription : <span style="font-family: Arial; width: 130px; display: inline-block; border-bottom: 0px solid; font-size: 12pt"> 32 000 Fcfa </span> --> 
+				  		 
+				  		
+				  	</div>
+				  	<div style="float: left; width: 26%; text-align: center; border:0px solid black;">
+		  		    	<div valign="top" style="width:150pt; border:solid black 1.0pt;background:#D9D9D9; height:26pt;text-align:center; font-family: Bookman Old Style;" bgcolor="#D9D9D9">
+		  		    		<span style="font-weigth:bold; display:inline-block;padding: 7px 5pt 8px 5pt;">REÇU N° <span t-field="o.numero_recu"/></span><br/>
+		  		    	</div>
+		  		    </div>
+				  </td>
+				</tr>
+				<tr>
+				  <td style="font-family: Arial Unicode MS; font-size: 15pt; padding-top: 10px; padding-bottom: 8px; line-height: 17pt">
+				  	<div style="float: left; width: 48%; padding-left: 15px">
+				  		
+		  		    	<div>
+		  		    		<div style="width: 100%; padding-left: 14px; padding-bottom: 6px; margin-top: 8px"><strong>Motif du versement</strong></div>
+		  		    		<div style="width: 100%; padding-left: 14px">
+		  		    			Scolarité <br/>
+		  		    			
+		  		    			<!-- <t t-foreach="o.ligne_encaissement_ids" t-as="ligne_encaiss">
+		  		    			
+		  		    				<t t-if="ligne_encaiss.type_paiement == 'scolarite'">
+					    				<span><span t-field="ligne_encaiss.type_paiement"/>:</span><span style="padding-left:10px;"> <span t-field="ligne_encaiss.montant_recette"/>&#032;Fcfa</span>
+					    			</t>
+					    			<t t-if="ligne_encaiss.type_paiement == 'autre frais'">
+					    				<span><span t-field="ligne_encaiss.type_autres_frais_id.name"/>:</span><span style="padding-left:10px;"> <span t-field="ligne_encaiss.montant_recette"/>&#032;Fcfa</span>
+					    			</t>
+					    			<t t-if="ligne_encaiss.type_paiement == 'inscription'">
+					    				<span><span t-field="ligne_encaiss.type_paiement"/>:</span><span style="padding-left:10px;"> <span t-field="ligne_encaiss.montant_recette"/>&#032;Fcfa</span>
+					    			</t>
+		  		    			
+		  		    			</t> -->
+		  		    			 
+		  		    		</div>
+		  		    	</div>
+				  	</div>
+				  	<div style="float: left; width: 48%; text-align: left; ">
+		  		    	
+		  		    	<div style="border: 2px solid black; padding: 0px 10px 10px 10px; margin-top: 0px">
+		  		    		<div style="background-color: white; width: 160px; text-align: center; position: relative; top: -10px; font-weight: bold">
+		  		    			Reste pension
+		  		    		</div>
+		  		    		<div style="width: 100%; font-family: Arial; font-size: 14pt">
+		  		    			<t t-foreach="o.inscription_id.tranches_inscription_ids" t-as="tranche">
+		  		    				<t t-if="tranche.reste_a_payer > 0">
+		  		    					<div style="width:100%; padding-bottom:8px;"><span t-field="tranche.libelle" style="width: 160px; display: inline-block; text-align: left;"/>  <span style="width: 90px; display: inline-block; text-align: right; padding-right:10px">(<strong><span t-field="tranche.reste_a_payer"/></strong>)</span> avant le <span t-field="tranche.date_limite"/> <br/></div>
+		  		    				</t>
+		  		    			</t>
+		  		    		</div>
+		  		    		
+		  		    		<t t-if="not(o.inscription_id.reste_a_verser > 10)">
+		  		    			<div style="width: 100%; font-family: Arial; font-size: 14pt; margin-left:10px">
+		  		    				Aucun reste, <span style="font-size:18pt; font-weight:bold"> Pension soldée</span>. 
+		  		    			</div>
+		  		    		</t>
+		  		    		
+		  		    	</div>
+		  		    </div>
+				  </td>
+				</tr>
+				
+				
+				<tr>
+				  <td>
+				  <div style="width: 100%; padding-left: 14px; padding-bottom: 6px; padding-top:15px;"><strong>Informations sur le versement</strong></div>
+				  	
+				  	<div style="width: 65%; font-family: Arial; font-size: 13pt; padding-bottom: 10px; padding-left: 16px; line-height: 17pt; float: left">
+				  		<t t-if="o.compte_bancaire_id">
+				  			Banque : <span style="width: 250px; display: inline-block;"><span t-field="o.compte_bancaire_id.banque_id.name"/> </span> 
+				  			Ref vers : <span style="width: 250px; display: inline-block;"> <span t-field="o.numero_recu_banque"/> </span><br/>
+					  		N°Cpte : <span style="width: 250px; display: inline-block;"> <span t-field="o.compte_bancaire_id.numero_compte"/> </span> 
+					  		Date vers : <span style="width: 200px; display: inline-block;"> <span t-field="o.date_versement_banque" t-field-options="{&quot;format&quot;:&quot;d/MM/y&quot;}"/> </span>  
+				  		</t>
+				  		
+				  		<!-- <t t-if="not o.compte_bancaire_id and o.compte_bancaire_id and o.caisse_id"> -->
+				  		<t t-if="o.mode_paiement == 'especes'">
+				  			 <span style="font-size: 13pt; line-height: 18pt">  Versement au Comptant <br/> </span>
+				  		</t>
+				  		
+				  		<br/><br/>
+				  		Montant en chiffres : <span style="font-weight: bold; font-size: 15pt;"><span t-field="o.montant"/> Fcfa</span>  <br/>
+						Montant en lettres : <span style="font-weight: bold; font-size: 15pt; "><span t-field="o.amount_to_text"/></span>
+					</div>
+					
+					<div style="width: 30%; float: left">
+						<div style="width: 100%; font-family: Arial; font-size: 12pt; padding-top: 25pt;"> <span style="font-style: italic; display: inline-block; width: 70px"> validé par </span> <span style="font-weight: normal; font-size: 14pt;"> <span t-field="o.create_uid.partner_id.name"/> </span><br/>
+				  	  <br/>
+				  	</div>
+					</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+				  	<div style="width: 100%; font-family: Arial; font-size: 11pt; padding-left: 15px; padding-top:15px;">
+  		    			Les frais d'inscription et d'étude de dossier ne sont ni remboursables, ni substituables <br/>
+  		    			<i>Registration an studying documents fees are not refundable or tranferable</i>
+  		    		</div>
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+				  	<br/>
+				  	
+				  </td>
+				</tr>
+				<tr>
+				  <td style="border: none; vertical-align: bottom" >	 
+				  	<div name="td_bas_page" style="width: 100%;">	
+					  	<div style="width: 64%; font-family: Arial; font-size: 13pt; padding-top: 70px; text-align: center; float: left"> COSBA, BP: 8081 Douala, Tel 6 76 53 92 71, 6 77 28 28 44, 6 81 62 76 76 <br/>
+					  	  <br/>
+					  	</div>
+					  	
+					  	<div style="width: 34%; font-family: Arial; font-size: 13pt; padding-top: 70px; text-align: center; float: left"> Date de validation : <span t-field="o.date" t-field-options="{&quot;format&quot;:&quot;d MMMM y&quot;}"/> <br/>
+					  	  <br/>
+					  	</div>
+				  	</div> 
+				  </td>
+				</tr>
+			  </tbody>
+			</table>
+			
+		
+		</template>
+		
+		<template id="report_caedu_pension_encaissement_content">
+			
+			<div style="height: 745px; width: 1030px; float: left; padding-left: 0px">
+				<t t-call="caedu_primaire_core_reports.report_caedu_pension_encaissement_page_principale_content" />
+			</div>
+			
+			<div style="width:100%; clear:both; height:10px"/>
+			
+			<div style="height: 640px; width: 1030px; float: left; border-top: 1px dashed black; padding-top: 50px">
+				<t t-call="caedu_primaire_core_reports.report_caedu_pension_encaissement_page_principale_content" />
+			</div>
+			
+		</template>
+		
+		
+		<template id="report_caedu_pension_encaissement_doc">
+<!-- 			<t t-call="report.external_layout"> -->
+				<div class="page" style="font-size: 16px;">
+					<t t-foreach="docs" t-as="o">
+						<t t-call="caedu_primaire_core_reports.report_caedu_pension_encaissement_content" />
+					</t>
+				</div>
+<!-- 			</t> -->
+		</template>
+		
+		<template id="report_caedu_pension_encaissement_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_pension_encaissement_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_pension_encaissement_2021_action"
+			string="Reçu français"
+			model="caedu.pension.encaissement"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_pension_encaissement_template"
+		/>
+    	
+        
+    </data>
+</openerp>

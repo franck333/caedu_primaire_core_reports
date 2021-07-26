@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_scolarite_test_verticalite_doc">
+		</template>
+	
+		<template id="report_caedu_scolarite_test_verticalite_template">
+		
+		<t t-call="report.html_container">
+				
+				<div class="page" style="font-size: 16px;">
+					
+					<t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/>
+					
+					<t t-set="numero_ligne" t-value="1"/>
+			<div style="width: 100%;">		
+				  <h1 style="padding-top:15px; "> TEST DE LA VERTICALITE </h1>
+				  <table  style="width: 98%; height: 90pt; border-collapse:collapse;border:none; " >
+					<thead>
+					  <tr style=" font-family: verdana; height: 150px; width: 2pt; font-size: 10pt; font-family: bookman old style; padding: 2px 2px;  text-align: center;">
+						<th style="border-left: none; border-right: none; border-top: none;"></th>
+						<th style="border-left: none; border-right: none; border-top: none;"><font color="black">Type d'enseignement</font></th>
+						<th style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;" colspan="3">Communiquer en Français</th>
+						<th style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;" colspan="3">Communiquer en Anglais</th>
+						<th style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;" colspan="4">Pratiquer une langue nationale</th>
+						<th style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;" colspan="3">Utiliser les notions de base en mathématiques</th>
+						<th style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;" colspan="4">Utiliser les notions de base en Sciences et Technologies</th>
+						<th style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;" colspan="4">Pratiquer les valeurs sociales</th>
+						<th style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;" colspan="4">Pratiquer les valeurs citoyennes</th>
+						<th style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;" colspan="4">Démontrer l'autonomie, l'esprit d'initiative, de créativité et d'entrepreneuriat</th>
+						<th style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;" colspan="4">Utiliser les concepts de base et les outils des TIC</th>
+						<th style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;" colspan="4">Pratiquer les activités artistiques</th>
+						<th style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;" colspan="4">Pratiquer les activités physiques, sportives pour les apprenants aptes</th>
+						
+						</tr>
+					  </thead>	
+			
+					<tbody>
+					  <tr style="height: 70pt; line-height: 10pt; font-family: verdana; font-size:7pt; font-weight: bold; text-align: center; padding:0cm 5.4pt 0cm 5.4pt;">
+					  
+						<td style="border:solid windowtext 1.0pt;">N° </td>
+						<td style="border:solid windowtext 1.0pt;">NOMS ET PRENOMS</td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Oral (8)</span> </td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Ecrit(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Savoir_être(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -10pt; top:30pt;">Oral(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Ecrit(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Savoir_etre(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Oral(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Ecrit(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;"> Pratique(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Savoir_etre(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Oral(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Ecrit(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Savoir_etre(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Oral(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Ecrit(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;"> Pratique(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Savoir_etre(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Oral(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Ecrit(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Pratique(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Savoir_etre(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Oral(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Ecrit(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;"> Pratique(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Savoir_etre(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Oral(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Ecrit(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;"> Pratique(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Savoir_etre(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Oral(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Ecrit(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;"> Pratique(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Savoir_etre(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Oral(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Ecrit(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;"> Pratique(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Savoir_etre(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Oral(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Ecrit(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;"> Pratique(8)</span></td>
+						<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt;">Savoir_etre(8)</span></td>
+						
+						</tr>
+					  <tr style="font-family: verdana; font-size:7pt; text-align: center;">
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">01</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">ANTONIO RODRIGUES JOSE PINTO</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">5</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">7</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">8</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">9</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">10</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">11</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">12</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">13</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">14</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">15</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">16</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">13</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">14</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">18</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">22</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">19</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">20</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">21</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">22</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">23</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">24</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">25</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">26</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">27</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">28</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">29</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">30</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">31</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">32</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">33</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">34</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">35</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">36</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">37</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">38</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">39</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">40</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">41</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">42</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">43</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">44</td>
+						
+						</tr>
+					  	<tr style="font-family: verdana; font-size:7pt; text-align: center;">
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">02</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">ABOU OU KOULI FLORENCE DAVINA GABRIELLA</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">45</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">46</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">47</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">48</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">49</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">50</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">51</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">52</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">53</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">54</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">55</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">56</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">57</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">58</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">59</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">60</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">61</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">62</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">63</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">64</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">65</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">66</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">67</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">68</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">69</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">70</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">71</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">72</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">73</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">74</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">75</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">76</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">77</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">78</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">79</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">80</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">81</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">82</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">83</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">84</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">10</td>
+						
+						</tr>
+			
+					  </tbody>
+						  
+						  <t t-foreach="doc_ids" t-as="doc_id">
+						  		<t t-set="numero_ligne" t-value="numero_ligne + 1"/>
+								<t t-raw="translate_doc(doc_id, doc_model,
+									'lang',
+									'caedu_primaire_core_reports.report_caedu_scolarite_test_verticalite_doc')" />
+						  </t>
+						  
+						  
+						</table>
+					</div>
+				
+					
+				
+				
+				</div>
+			</t>	
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_scolarite_test_verticalite_action"
+			string="Test verticalite"
+			model="caedu.scolarite.enseignant"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_scolarite_test_verticalite_template"
+		/>
+    	
+        
+    </data>
+</openerp>

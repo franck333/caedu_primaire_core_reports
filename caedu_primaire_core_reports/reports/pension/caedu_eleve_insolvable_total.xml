@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_eleve_insolvable_total_content">
+		
+			<center>
+			<t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/>
+				<!-- DIV PRINCIPAL, div des notes -->				
+					
+					<div style="margin-bottom:10px;margin-top:20px;"> <h2>Liste des élèves insolvables pour <span style="font-weight: bold;"><span t-field="o.tranche_id.libelle"/></span> : <span t-field="o.classe_id.name"/></h2></div>
+					<!-- tableau des eleves et espaces notes ... -->
+					<table border="0" cellspacing="5" cellpadding="3" style="margin-top: 20px; margin-right: 10px; margin-left: 10px;">
+					  <tbody>
+					  
+					  	 <tr>
+					  	 	  <th scope="col" style="width: 4%;  border: 1px solid; padding : 2px 5px;">N°</th>
+						      <th scope="col" style="width: 9%;  border: 1px solid; border-left: none; padding : 2px 5px;">MATRICULE</th>
+						      <th scope="col" style="width: 50%;  border: 1px solid; border-left: none; padding : 2px 5px;">NOMS ET PRENOMS</th>
+						      <th scope="col" style="width: 8%;  border: 1px solid; border-left: none; padding : 2px 5px;">Attendu</th>
+						      <th scope="col" style="width: 8%;  border: 1px solid; border-left: none; padding : 2px 5px;">Perçu</th>
+						      <th scope="col" style="width: 8%;  border: 1px solid; border-left: none; padding : 2px 5px;">Reste </th>
+						      <th scope="col" style="width: 13%;  border: 1px solid; border-left: none; padding : 2px 5px;">Date Lim</th>
+					    </tr>
+					    
+					    
+					       	  <t t-set="lis_donnee" t-value="o.liste_totale_eleves_insolvables()"/>
+					       	  <t t-set="numero_ligne" t-value="1"/>
+					       	  <t t-foreach="lis_donnee" t-as="dic_eleve">
+							    <tr>  	 
+							    	
+							    	  <td style="border: 1px solid; border-top: none; padding : 2px 5px; text-align:right"> <t t-raw="numero_ligne" /> </td>
+								      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;"> <t  t-esc = "dic_eleve['#matricule']"/>  </td>
+								      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;"> <t  t-esc = "dic_eleve['#nom_prenom']"/>  </td>
+								      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;"> <t  t-esc = "dic_eleve['#attendu']"/></td>
+								      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;"> <t  t-esc = "dic_eleve['#percu']"/></td>
+								      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;"> <t  t-esc = "dic_eleve['#reste']"/></td>
+								      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;"> <t  t-esc = "dic_eleve['#date_limite']"/></td>
+								      
+						 		</tr> 
+						 		<t t-set="numero_ligne" t-value="numero_ligne + 1"/>
+							</t> 
+					    
+					    
+					  </tbody>
+					</table>
+					
+					</center>
+					
+					
+			
+		</template>
+		
+		
+		<template id="report_caedu_eleve_insolvable_total_doc">
+			<!-- <t t-call="report.external_layout">  -->
+				<div class="page" style="font-size: 13px;">
+<!-- 					<t t-foreach="docs" t-as="o"> -->
+						<t t-call="caedu_primaire_core_reports.report_caedu_eleve_insolvable_total_content"/>
+<!-- 					</t> -->
+				</div>
+		<!-- 	</t>  -->
+		</template>
+		
+		<template id="report_caedu_eleve_insolvable_total_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_eleve_insolvable_total_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_eleve_insolvable_total_action"
+			string="Imprimer"
+			model="caedu.eleve.insolvable" 
+			report_type="qweb-pdf" 
+			name="caedu_primaire_core_reports.report_caedu_eleve_insolvable_total_template"
+		/>
+    	
+        
+    </data>
+</openerp>

@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+    
+    
+    <template id="entete_compresse_releve_note_ligne_tableau_vide">
+			
+			<!-- ligne vide pour padding -->
+			<t t-if="boo_espace_entete">
+			<tr  t-att-style="'height: '+ str(fiche_report_notes_id.margin_entete) +'pt;  font-weight: bold;'">
+				<th valign=""
+					style=" border-right: none;border-top: none;border-left: none;"></th>
+				<th valign=""
+					style="border-left: none;border-top: none;"></th>
+			
+				<t t-foreach="fiche_report_notes_id.ligne_configuration_fiche_ids"
+					t-as="ligne_config">
+					<t t-set="nbre_cours" t-value="0" />
+			
+					<t t-if="not ligne_config.cours_id.boo_bloquer_oral">
+						<t t-set="nbre_cours" t-value="nbre_cours + 1" />
+					</t>
+					<t t-if="not ligne_config.cours_id.boo_bloquer_ecrite">
+						<t t-set="nbre_cours" t-value="nbre_cours + 1" />
+					</t>
+					<t t-if="not ligne_config.cours_id.boo_bloquer_pratique">
+						<t t-set="nbre_cours" t-value="nbre_cours + 1" />
+					</t>
+					<t t-if="not ligne_config.cours_id.boo_bloquer_savoir_etre">
+						<t t-set="nbre_cours" t-value="nbre_cours + 1" />
+					</t>
+			
+					<th t-att-colspan="nbre_cours"
+						style="-webkit-transform:rotate(-90deg); vertical-align: middle;">
+						<div style="width: 40pt">
+							<span style="padding: 0px; 0px; position: absolute; left: 18pt; top:30pt;">
+								
+							</span>
+						</div>
+					</th>
+			
+				</t>
+				
+			</tr>
+			</t>
+		
+			<tr style="height: 120pt;  font-weight: bold;">  <!-- height: 170px; -->  <!-- font-family: bookman old style; -->
+				<th valign=""
+					style="border:solid windowtext 1.0pt; border-right: none;border-top: none;border-left: none;"></th>
+				<th valign=""
+					style="border:solid windowtext 1.0pt;border-left: none;border-top: none;"></th>
+			
+				<t t-foreach="fiche_report_notes_id.ligne_configuration_fiche_ids"
+					t-as="ligne_config">
+					<t t-set="nbre_cours" t-value="0" />
+			
+					<t t-if="not ligne_config.cours_id.boo_bloquer_oral">
+						<t t-set="nbre_cours" t-value="nbre_cours + 1" />
+					</t>
+					<t t-if="not ligne_config.cours_id.boo_bloquer_ecrite">
+						<t t-set="nbre_cours" t-value="nbre_cours + 1" />
+					</t>
+					<t t-if="not ligne_config.cours_id.boo_bloquer_pratique">
+						<t t-set="nbre_cours" t-value="nbre_cours + 1" />
+					</t>
+					<t t-if="not ligne_config.cours_id.boo_bloquer_savoir_etre">
+						<t t-set="nbre_cours" t-value="nbre_cours + 1" />
+					</t>
+			
+					<th t-att-colspan="nbre_cours"
+						style="border:solid windowtext 1.0pt;-webkit-transform:rotate(-90deg); vertical-align: middle;border-left: 3px solid black;border-right: 3px solid black;">
+						<div style="width: 100pt">
+							<span style="padding: 0px; 0px; position: absolute; left: 18pt; top:30pt;">
+								<span
+									t-field="ligne_config.cours_id.type_enseignement_id.libelle_html_releve_note"
+									widget="html" />
+								(
+								<span t-field="ligne_config.cours_id.note_max" />
+								pts)
+							</span>
+						</div>
+					</th>
+			
+				</t>
+			
+			</tr>
+			
+			
+				<tr style="height: 80pt;"> <!-- font-family: verdana; -->
+					  
+				
+						<td style="border:solid windowtext 1.0pt;vertical-align: middle;text-align: center;">N° </td>
+						<td style="width: 300pt;border:solid windowtext 1.0pt;vertical-align: middle;text-align: center;">NOMS ET PRENOMS</td>
+						<t t-foreach="fiche_report_notes_id.ligne_configuration_fiche_ids" t-as="ligne_config1">
+						
+							<t t-set="col_num" t-value="1"/>
+							<t t-set="nb_col_cours" t-value="ligne_config1.cours_id.nb_colonne"/>
+							<t t-set="td_css_to_add_end" t-value="''"/>
+						
+							
+							<t t-if="not ligne_config1.cours_id.boo_bloquer_oral"> 
+							
+								<t t-if="col_num == 1">
+							    	<t t-set="td_css_to_add" t-value="'border-left: 3px solid black;'"/>
+							    </t>
+							    <t t-if="col_num == nb_col_cours">
+							    	<t t-set="td_css_to_add_end" t-value="'border-right: 3px solid black;'"/>
+							    </t>
+								<t t-set="col_num" t-value="col_num + 1"/>  
+								
+								 
+								<td  t-att-style="'-webkit-transform:rotate(-90deg); vertical-align: middle; text-align: center; border:solid windowtext 1.0pt;'+ td_css_to_add + td_css_to_add_end"><div style=" text-align: center;">
+								<span style="">
+								  <t t-if="fiche_report_notes_id.classe_id.langue == 'francais'"> <t t-if="ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.oral_libelle_anglais"/></t> <t t-if="not ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.oral_libelle_francais"/></t></t> 
+								  <t t-if="fiche_report_notes_id.classe_id.langue == 'anglais'"><span t-field="ligne_config1.cours_id.oral_libelle_anglais"/></t>-<span t-field="ligne_config1.cours_id.oral_note_max"/>
+								  
+								  
+								  </span></div></td> 
+								  
+								  <t t-set="td_css_to_add" t-value="''"/>
+						 		<t t-set="td_css_to_add_end" t-value="''"/>
+						 		
+							</t>
+							
+							<t t-if="not ligne_config1.cours_id.boo_bloquer_ecrite">
+							
+								<t t-if="col_num == 1">
+							    	<t t-set="td_css_to_add" t-value="'border-left: 3px solid black;'"/>
+							    </t>
+							    <t t-if="col_num == nb_col_cours">
+							    	<t t-set="td_css_to_add_end" t-value="'border-right: 3px solid black;'"/>
+							    </t>
+								<t t-set="col_num" t-value="col_num + 1"/> 
+								
+								<td  t-att-style="'-webkit-transform:rotate(-90deg); vertical-align: middle; text-align: center; border:solid windowtext 1.0pt;'+ td_css_to_add + td_css_to_add_end"><div style=" text-align: center;"><span style="">
+									
+									<t t-if="fiche_report_notes_id.classe_id.langue == 'francais'"><t t-if="ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.ecrite_libelle_anglais"/></t> <t t-if="not ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.ecrite_libelle_francais"/></t></t>
+									<t t-if="fiche_report_notes_id.classe_id.langue == 'anglais'"><span t-field="ligne_config1.cours_id.ecrite_libelle_anglais"/></t>-<span t-field="ligne_config1.cours_id.ecrite_note_max"/>
+									
+									</span></div></td>  
+									
+									<t t-set="td_css_to_add" t-value="''"/>
+						 			<t t-set="td_css_to_add_end" t-value="''"/>
+						 	
+							</t>
+							
+							<t t-if="not ligne_config1.cours_id.boo_bloquer_pratique">
+							
+								<t t-if="col_num == 1">
+							    	<t t-set="td_css_to_add" t-value="'border-left: 3px solid black;'"/>
+							    </t>
+							    <t t-if="col_num == nb_col_cours">
+							    	<t t-set="td_css_to_add_end" t-value="'border-right: 3px solid black;'"/>
+							    </t>
+								<t t-set="col_num" t-value="col_num + 1"/> 
+								
+								<td t-att-style="'-webkit-transform:rotate(-90deg); vertical-align: middle; text-align: center; border:solid windowtext 1.0pt;'+ td_css_to_add + td_css_to_add_end"><div style="text-align: center; width: 30pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt; width: 62pt">
+								
+								<t t-if="fiche_report_notes_id.classe_id.langue == 'francais'"><t t-if="ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.pratique_libelle_anglais"/></t> <t t-if="not ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.pratique_libelle_francais"/></t></t> 
+								<t t-if="fiche_report_notes_id.classe_id.langue == 'anglais'"><span t-field="ligne_config1.cours_id.pratique_libelle_anglais"/></t>-<span t-field="ligne_config1.cours_id.pratique_note_max"/>
+								
+								</span></div></td>  
+								
+								<t t-set="td_css_to_add" t-value="''"/>
+						 		<t t-set="td_css_to_add_end" t-value="''"/>
+						 	
+							</t>
+							
+							<t t-if="not ligne_config1.cours_id.boo_bloquer_savoir_etre">
+								
+								<t t-if="col_num == 1">
+							    	<t t-set="td_css_to_add" t-value="'border-left: 3px solid black;'"/>
+							    </t>
+							    <t t-if="col_num == nb_col_cours">
+							    	<t t-set="td_css_to_add_end" t-value="'border-right: 3px solid black;'"/>
+							    </t>
+								<t t-set="col_num" t-value="col_num + 1"/>
+								
+								<td t-att-style="'-webkit-transform:rotate(-90deg); vertical-align: middle; text-align: center; border:solid windowtext 1.0pt;'+ td_css_to_add + td_css_to_add_end"><div style=" text-align: center;width: 30pt;"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt; width: 66pt">
+								
+								<t t-if="fiche_report_notes_id.classe_id.langue == 'francais'"><t t-if="ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.savoir_etre_libelle_anglais"/></t> <t t-if="not ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.savoir_etre_libelle_francais"/></t></t> 
+								<t t-if="fiche_report_notes_id.classe_id.langue == 'anglais'"><span t-field="ligne_config1.cours_id.savoir_etre_libelle_anglais"/></t>-<span t-field="ligne_config1.cours_id.savoir_etre_note_max"/>
+								
+								</span></div></td> 
+								
+								<t t-set="td_css_to_add" t-value="''"/>
+						 		<t t-set="td_css_to_add_end" t-value="''"/>
+						 	
+							</t>
+							
+							
+						
+						</t>
+					</tr>
+		</template>
+		
+		
+		
+		<template id="report_caedu_fiche_report_notes_content">
+		
+				
+					<!-- <t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/> -->
+				<center>
+					<p style=""> <span style="font-size:18pt;">Fiche de report de notes : </span><span style="font-weight: bold;font-size:18pt;"><span t-field="o.classe_id.name"/></span> <span style="padding-left:200px;"><span t-field="o._compute_annee_academique().name"/></span></p>
+				<div style="width: 100%;">		
+				  
+				  <table border="1" cellspacing="0" cellpadding="0">
+				  
+				  <t t-set="fiche_report_notes_id" t-value="o" />
+				  <t t-set="boo_espace_entete" t-value="False" />
+				  <t t-call="caedu_primaire_core_reports.entete_compresse_releve_note_ligne_tableau_vide"/>
+					
+					
+					<!-- <tr style="height: 120pt;  font-weight: bold;">  height: 170px;  font-family: bookman old style;
+							<th  valign="" style="border:solid windowtext 1.0pt; border-right: none;border-top: none;border-left: none;"></th>
+	    				<th valign="" style="border:solid windowtext 1.0pt;border-left: none;border-top: none;"></th>
+	    					
+							<t t-foreach="o.ligne_configuration_fiche_ids" t-as="ligne_config">
+								<t t-set="nbre_cours" t-value="0"/>
+								
+								<t t-if="not ligne_config.cours_id.boo_bloquer_oral">  <t t-set="nbre_cours" t-value="nbre_cours + 1"/> </t>
+								<t t-if="not ligne_config.cours_id.boo_bloquer_ecrite"><t t-set="nbre_cours" t-value="nbre_cours + 1"/>  </t>
+								<t t-if="not ligne_config.cours_id.boo_bloquer_pratique"><t t-set="nbre_cours" t-value="nbre_cours + 1"/>  </t>
+								<t t-if="not ligne_config.cours_id.boo_bloquer_savoir_etre"><t t-set="nbre_cours" t-value="nbre_cours + 1"/> </t>
+								
+								<th t-att-colspan="nbre_cours" style="border:solid windowtext 1.0pt;-webkit-transform:rotate(-90deg); vertical-align: middle;"><div style="width: 100pt"><span style="padding: 0px; 0px; position: absolute; left: 18pt; top:30pt;"><span t-field="ligne_config.cours_id.type_enseignement_id.libelle_html_releve_note" widget="html"/>(<span t-field="ligne_config.cours_id.note_max"/>pts)</span></div></th>
+							
+							</t>
+							
+					</tr>
+					
+					 
+					  <tr style="height: 80pt;"> font-family: verdana;
+					  
+				
+						<td style="border:solid windowtext 1.0pt;vertical-align: middle;text-align: center;">N° </td>
+						<td style="width: 300pt;border:solid windowtext 1.0pt;vertical-align: middle;text-align: center;">NOMS ET PRENOMS</td>
+						<t t-foreach="o.ligne_configuration_fiche_ids" t-as="ligne_config1">
+							
+							<t t-if="not ligne_config1.cours_id.boo_bloquer_oral">  
+								<td style="-webkit-transform:rotate(-90deg); vertical-align: middle; text-align: center; border:solid windowtext 1.0pt"><div style=" text-align: center;">
+								<span style="">
+								  <t t-if="o.classe_id.langue == 'francais'"> <t t-if="ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.oral_libelle_anglais"/></t> <t t-if="not ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.oral_libelle_francais"/></t></t> 
+								  <t t-if="o.classe_id.langue == 'anglais'"><span t-field="ligne_config1.cours_id.oral_libelle_anglais"/></t>-<span t-field="ligne_config1.cours_id.oral_note_max"/>
+								  
+								  
+								  </span></div></td> 
+							</t>
+							
+							<t t-if="not ligne_config1.cours_id.boo_bloquer_ecrite">
+								<td style=" -webkit-transform:rotate(-90deg); vertical-align: middle; text-align: center; border:solid windowtext 1.0pt"><div style=" text-align: center;"><span style="">
+									
+									<t t-if="o.classe_id.langue == 'francais'"><t t-if="ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.ecrite_libelle_anglais"/></t> <t t-if="not ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.ecrite_libelle_francais"/></t></t>
+									<t t-if="o.classe_id.langue == 'anglais'"><span t-field="ligne_config1.cours_id.ecrite_libelle_anglais"/></t>-<span t-field="ligne_config1.cours_id.ecrite_note_max"/>
+									
+									</span></div></td>  
+							</t>
+							
+							<t t-if="not ligne_config1.cours_id.boo_bloquer_pratique">
+								<td style="-webkit-transform:rotate(-90deg); vertical-align: middle; text-align: center; border:solid windowtext 1.0pt"><div style="text-align: center; width: 30pt"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt; width: 62pt">
+								
+								<t t-if="o.classe_id.langue == 'francais'"><t t-if="ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.pratique_libelle_anglais"/></t> <t t-if="not ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.pratique_libelle_francais"/></t></t> 
+								<t t-if="o.classe_id.langue == 'anglais'"><span t-field="ligne_config1.cours_id.pratique_libelle_anglais"/></t>-<span t-field="ligne_config1.cours_id.pratique_note_max"/>
+								
+								</span></div></td>  
+							</t>
+							
+							<t t-if="not ligne_config1.cours_id.boo_bloquer_savoir_etre">
+								<td style="-webkit-transform:rotate(-90deg); vertical-align: middle; text-align: center; border:solid windowtext 1.0pt"><div style=" text-align: center;width: 30pt"><span style="padding: 0px; 0px; position: absolute; left: -15pt; top:30pt; width: 66pt">
+								
+								<t t-if="o.classe_id.langue == 'francais'"><t t-if="ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.savoir_etre_libelle_anglais"/></t> <t t-if="not ligne_config1.cours_id.boo_bulletin_separe"> <span t-field="ligne_config1.cours_id.savoir_etre_libelle_francais"/></t></t> 
+								<t t-if="o.classe_id.langue == 'anglais'"><span t-field="ligne_config1.cours_id.savoir_etre_libelle_anglais"/></t>-<span t-field="ligne_config1.cours_id.savoir_etre_note_max"/>
+								
+								</span></div></td> 
+							</t>
+							
+							
+						
+						</t>
+					</tr> -->
+					
+					
+					
+					<t t-set="numero_ligne" t-value="1"/>
+					<t t-foreach="o.classe_id.liste_inscription_ids" t-as="inscription"> 
+					    <t t-if="inscription.annee_academique_id.id == o._compute_annee_academique().id">
+					    	
+					    		<!--210327 afficher les deux lignes de titre au besoin -->
+					   			<t t-if="numero_ligne % o.reaffichage_entete == 0">
+					   				<t t-set="fiche_report_notes_id" t-value="o" />
+					   				<t t-set="boo_espace_entete" t-value="True" />
+					   				<t t-call="caedu_primaire_core_reports.entete_compresse_releve_note_ligne_tableau_vide_frat"/>
+					   			</t>
+					   			
+					   			
+						    	<tr style="font-family: verdana;">
+							      <td style="border: 1px solid; padding : 2px 2px; text-align:right"> <t t-raw="numero_ligne" /> </td>
+							      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 2px;"> <span t-field="inscription.eleve_id.name"/>  </td>
+							      
+							      <t t-foreach="o.ligne_configuration_fiche_ids" t-as="ligne_config2">
+							
+										<!-- <t t-if="not ligne_config2.cours_id.boo_bloquer_oral">  
+											<td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 2px;"></td> 
+										</t>
+										
+										<t t-if="not ligne_config2.cours_id.boo_bloquer_ecrite">
+											<td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 2px;"></td>  
+										</t>
+										<t t-if="not ligne_config2.cours_id.boo_bloquer_pratique">
+											<td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 2px;"></td>  
+										</t>
+										<t t-if="not ligne_config2.cours_id.boo_bloquer_savoir_etre">
+											<td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 2px;"></td> 
+										</t> -->
+										
+										<t t-set="col_num" t-value="1"/>
+										<t t-set="nb_col_cours" t-value="ligne_config2.cours_id.nb_colonne"/>
+										<t t-set="td_css_to_add_end" t-value="''"/>
+										
+										
+										<t t-if="not ligne_config2.cours_id.boo_bloquer_oral"> 
+							
+											<t t-if="col_num == 1">
+									    	<t t-set="td_css_to_add" t-value="'border-left: 3px solid black;'"/>
+										    </t>
+										    <t t-if="col_num == nb_col_cours">
+										    	<t t-set="td_css_to_add_end" t-value="'border-right: 3px solid black;'"/>
+										    </t>
+											<t t-set="col_num" t-value="col_num + 1"/>   
+											
+											<td t-att-style="'border-bottom: 1px solid; border-right: 1px solid; padding : 2px 2px;text-align: right;'+ td_css_to_add + td_css_to_add_end">  
+											</td>
+											
+											<t t-set="td_css_to_add" t-value="''"/>
+								 			<t t-set="td_css_to_add_end" t-value="''"/> 
+									 		
+										</t>
+										
+										<t t-if="not ligne_config2.cours_id.boo_bloquer_ecrite">
+										
+											<t t-if="col_num == 1">
+									    	<t t-set="td_css_to_add" t-value="'border-left: 3px solid black;'"/>
+										    </t>
+										    <t t-if="col_num == nb_col_cours">
+										    	<t t-set="td_css_to_add_end" t-value="'border-right: 3px solid black;'"/>
+										    </t>
+											<t t-set="col_num" t-value="col_num + 1"/> 
+											
+											<td t-att-style="'border-bottom: 1px solid; border-right: 1px solid; padding : 2px 2px;text-align: right;'+ td_css_to_add + td_css_to_add_end">
+											</td> 
+											
+											<t t-set="td_css_to_add" t-value="''"/>
+								 			<t t-set="td_css_to_add_end" t-value="''"/> 
+									 	
+										</t>
+										
+										<t t-if="not ligne_config2.cours_id.boo_bloquer_pratique">
+										
+											<t t-if="col_num == 1">
+									    	<t t-set="td_css_to_add" t-value="'border-left: 3px solid black;'"/>
+										    </t>
+										    <t t-if="col_num == nb_col_cours">
+										    	<t t-set="td_css_to_add_end" t-value="'border-right: 3px solid black;'"/>
+										    </t>
+											<t t-set="col_num" t-value="col_num + 1"/> 
+											
+											<td t-att-style="'border-bottom: 1px solid; border-right: 1px solid; padding : 2px 2px;text-align: right;'+ td_css_to_add + td_css_to_add_end">
+											</td> 
+											
+											<t t-set="td_css_to_add" t-value="''"/>
+								 			<t t-set="td_css_to_add_end" t-value="''"/>  
+									 	
+										</t>
+										
+										<t t-if="not ligne_config2.cours_id.boo_bloquer_savoir_etre">
+											
+											<t t-if="col_num == 1">
+									    	<t t-set="td_css_to_add" t-value="'border-left: 3px solid black;'"/>
+										    </t>
+										    <t t-if="col_num == nb_col_cours">
+										    	<t t-set="td_css_to_add_end" t-value="'border-right: 3px solid black;'"/>
+										    </t>
+											<t t-set="col_num" t-value="col_num + 1"/> 
+											
+											<td t-att-style="'border-bottom: 1px solid; border-right: 1px solid; padding : 2px 2px;text-align: right;'+ td_css_to_add + td_css_to_add_end">
+											</td> 
+											
+											<t t-set="td_css_to_add" t-value="''"/>
+								 			<t t-set="td_css_to_add_end" t-value="''"/>  
+									 	
+										</t>
+							
+									
+								</t>
+							  
+							    </tr>
+							    <t t-set="numero_ligne" t-value="numero_ligne + 1"/>
+						   </t>
+					    </t>
+						
+						  
+						</table>
+					</div>
+			</center>
+		</template>
+		
+		
+		<template id="report_caedu_fiche_report_notes_doc">
+<!-- 			<t t-call="report.external_layout"> -->
+				<div class="page" style="font-size: 11pt;">
+<!-- 					<t t-foreach="docs" t-as="o"> -->
+						<t t-call="caedu_primaire_core_reports.report_caedu_fiche_report_notes_content" />
+<!-- 					</t> -->
+				</div>
+<!-- 			</t> -->
+		</template>
+		
+		<template id="report_caedu_fiche_report_notes_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_fiche_report_notes_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_fiche_report_notes_action"
+			string="Fiche de report de note"
+			model="caedu.etude.fiche.report.notes"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_fiche_report_notes_template"
+		/>
+    	
+        
+    </data>
+</openerp>

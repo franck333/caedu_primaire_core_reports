@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_scolarite_enseignants_doc">
+			<tr>
+			    <td valign="top" style="border:solid windowtext 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><t t-raw="numero_ligne"/></span></p></td>
+			    <td valign="middle" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="left" style="margin-bottom:.0001pt;text-align:left;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "> <span t-field="o.name"/> </span></p></td>
+			    <td valign="top" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="left" style="margin-bottom:.0001pt;text-align:left;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><span t-field="o.phone"/> <span t-if="o.phone and o.mobile"> / </span> <span t-field="o.mobile"/> </span></p></td>
+			    <td valign="top" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="left" style="margin-bottom:.0001pt;text-align:left;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">
+				    <t t-foreach="o.ligne_cours_enseignants_ids" t-as="lc">
+				    	<span t-field="lc.libelle_type_cours"/>(<span t-field="lc.libelle_classe"/>), 
+					</t>
+			    </span></p></td>
+			</tr>
+		</template>
+		
+		<template id="report_caedu_scolarite_enseignants_template">
+			<t t-call="report.html_container">
+				
+				<div class="page" style="font-size: 16px;">
+					
+					<t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/>
+					
+					<t t-set="numero_ligne" t-value="1"/>
+					
+					<center>
+					<div style="margin : 10px 10px; width:800px">
+
+						<h3 style="padding-top:15px; "> LISTE DES ENSEIGNANTS  </h3>
+						<p class="MsoNormal"><span style="line-height:115%; font-size:6.0pt; "><br /></span></p>
+						<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" width="800" style="width:800px;border-collapse:collapse;border:none;">
+						  <tr>
+						    <td width="5%" valign="top" style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">N°</span></strong></p></td>
+						    <td width="25%" valign="middle" style="border:solid windowtext 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Noms et prénoms </span></strong></p></td>
+						    <td width="20%" valign="top" style="border:solid windowtext 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt; width:180px"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Téléphone</span></strong></p></td>
+						    <td width="40%" valign="top" style="border:solid windowtext 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Cours dispensés</span></strong></p></td>
+						  </tr>
+						  
+						  <t t-foreach="doc_ids" t-as="doc_id">
+						  		<t t-set="numero_ligne" t-value="numero_ligne + 1"/>
+								<t t-raw="translate_doc(doc_id, doc_model,
+									'lang',
+									'caedu_primaire_core_reports.report_caedu_scolarite_enseignants_doc')" />
+						  </t>
+						  
+						  
+						</table>
+					</div>
+					</center>
+					
+				</div>
+				
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_scolarite_enseignants_action"
+			string="Liste des enseignants"
+			model="caedu.scolarite.enseignant"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_scolarite_enseignants_template"
+		/>
+    	
+        
+    </data>
+</openerp>

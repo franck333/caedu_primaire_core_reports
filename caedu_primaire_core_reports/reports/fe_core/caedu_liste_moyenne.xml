@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+		
+		<template id="report_caedu_liste_moyenne_doc">
+			<tr>
+			    <td valign="top" style="border-top:none;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;text-align:justify;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:13.0pt; "><span t-field="o.eleve_id.matricule"/> </span></p></td>
+				<td valign="top" style="border-top:none;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;text-align:justify;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:13.0pt; "><span t-field="o.eleve_id.name"/> </span></p></td>
+			    <td valign="top" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:13.0pt; "><span t-field="o.moyenne_eleve"/></span></p></td>
+			    <td valign="top" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:13.0pt; "><span t-field="o.rang_eleve"/></span></p></td>
+			</tr>
+		</template>
+		
+		<template id="report_caedu_entete_base">
+             	<t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/>
+		</template>
+		
+		<template id="report_caedu_liste_moyenne_template">
+			<t t-call="report.html_container">
+				<div class="page" style="font-size: 16px;">
+					
+					<t t-call="caedu_primaire_core_reports.report_caedu_mini_entete_bulletin_apc" />
+					
+					<center>
+						<p class="MsoNormal"><span style="line-height:115%; font-size:6.0pt; "><br /></span></p>
+						
+						<table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+						  <tr>
+						  	<td style="width:100%"><p class="MsoNormal" align="right" style="margin-bottom:.0001pt;text-align:right;line-height:normal;"><strong><span style="font-family:'Comic Sans MS'; font-size:13.0pt; ">MOYENNES CLASSE : _____________ </span></strong></p></td>
+						  </tr>
+						</table>
+						<p class="MsoNormal"><span style="line-height:115%; font-size:6.0pt; "><br /></span></p>
+						
+						<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" width="714" style="width:800px;border-collapse:collapse;border:none;">
+						  <tr>
+							<td width="120px" valign="top" style="border:solid windowtext 1.0pt;border-left:solid windowtext 1.0pt;padding:5px 5.4pt 5px 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">Matricule </span></strong></p></td>
+						    <td width="340px" valign="top" style="border:solid windowtext 1.0pt;border-left:solid windowtext 1.0pt;padding:5px 5.4pt 5px 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">Noms et Prénoms / Name and surname </span></strong></p></td>
+						    <td width="120px" valign="top" style="border:solid windowtext 1.0pt;border-left:none;padding:5px 5.4pt 5px 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">Moy / Avr</span></strong></p></td>
+						    <td width="120px" valign="top" style="border:solid windowtext 1.0pt;border-left:none;padding:5px 5.4pt 5px 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">Rang / Rank</span></strong></p></td>
+						  </tr>
+						  
+						  <t t-foreach="doc_ids" t-as="doc_id">
+<!-- 								<t t-call="caedu_primaire_core_reports.report_caedu_liste_moyenne_doc" /> -->
+								<t t-raw="translate_doc(doc_id, doc_model,
+									'lang',
+									'caedu_primaire_core_reports.report_caedu_liste_moyenne_doc')" />
+						  </t>
+						  						  
+						</table>
+					</center>
+					
+				</div>
+				
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_liste_moyenne_action"
+			string="Liste des moyennes"
+			model="caedu.etude.bulletin.sequentiel"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_liste_moyenne_template"
+		/>
+    	
+        
+    </data>
+</openerp>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_mini_entete_recu_2021">
+             
+             	 <div name="mini_entete_recu">
+					  	<div style="width: 100%; margin-top: 10px;  font-size: 14pt; line-height: 18pt">
+					       <div style="float: left; text-align: left">
+					            <span style="font-weight: bold"> GSB WAFO </span> <br/>
+					            <span > BP : 6081, Douala Bepanda </span> <br/>
+					            <span > Tél : 699 67 21 33 / 675 65 91 67 </span> <br/>
+					        </div>
+					       
+					        <div style="float: right; margin-right: 50px; text-align: center; font-size: 11pt; line-height: 13pt ">
+					            <i>
+					                <span > Douala, <span t-field="o.date" t-field-options="{&quot;format&quot;:&quot;dd/MM/yy&quot;}"/> <span style="display: inline-block; width: 20px" > </span>   <span t-field="o.date_mouvement" t-field-options="{&quot;format&quot;:&quot;HH:mm&quot;}"/> </span> <br/>
+					                <span style="font-size: 13pt; line-height: 18pt"> Année scolaire : <span t-field="o.inscription_id.annee_academique_id.name"/>  <br/> </span> <br/>
+					            </i>
+					        </div>
+				    	</div>
+				   </div>
+			       
+		</template>
+        
+    </data>
+</openerp>

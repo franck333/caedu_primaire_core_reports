@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_releve_fiche_note_eng_content">
+			
+			<center>
+				
+				<div style="">
+					
+					<div style="font-size:12pt; width:100%">
+						<t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/>
+					</div>
+					
+					<!-- tableau libelle bulletin -->
+					<table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+					  <tr>
+					    <td width="225" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p></td>
+					    <td width="430" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoHeader" align="center" style="text-align:center;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:14.0pt; ">MARKS SHEET</span></strong></p>
+					      <br />
+					      </td>
+					    <td width="225" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p></td>
+					  </tr>
+					</table>
+					
+					<!-- tableau des eleves et espaces notes ... -->
+					<div style="padding:10px; margin-top: 05px; border: 1px solid black; text-align:left;">
+						
+						Class : <span t-field="o.classe_id.name" style="display:inline-block; width:200px; font-size: 8pt;"/>
+						MK :   <span t-field="o.sequence_id.name" style="display:inline-block; width:200px; "/> <br/>
+						
+						Competence <span style="font-size: 10pt;" t-field="o.cours_id.groupe_enseignement_id.ordre"/> : <span style="font-size: 10pt;" t-field="o.cours_id.groupe_enseignement_id.name"/> <br/>
+						<strong><span style="font-size: 10pt;" t-field="o.cours_id.groupe_enseignement_id.ordre"/>.<span style="font-size: 10pt;" t-field="o.cours_id.ordre"/>. <span t-field="o.cours_id.type_enseignement_id.name"/> (<span style="font-size: 10pt;" t-field="o.note_max" /> Marks)</strong>
+						
+						<span style="display:inline-block; width:60px; text-align: left; "/>
+						Teacher :  <span t-field="o.cours_id.enseignant_id.name"/> 
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					<!-- tableau des eleves et espaces notes ... -->
+					<table width="98%" border="0" cellspacing="5" cellpadding="3" style="margin-top: 20px; margin-right: 2px; margin-left: 2px;">
+					  <tbody>
+					    <tr style="background-color:#BEBEBE;">
+						      <th scope="col" style="width: 3%;  border: 1px solid; padding : 2px 5px;">N</th>
+						      <th scope="col" style="width: 8%;  border: 1px solid; border-left: none; padding : 2px 5px;">Pupil's number</th>    
+						      <th scope="col" style="width: 35%;  border: 1px solid; border-left: none; padding : 2px 5px;">Names</th>
+						      
+							 <t t-if="not o.cours_id.boo_bloquer_oral"> 
+						      <th scope="col" style="width: 12%;  border: 1px solid; border-left: none; padding : 2px 5px; font-size: 12pt; text-align: center;"><span t-field="o.cours_id.oral_libelle_anglais"/> – <span t-field="o.cours_id.oral_note_max"/> marks</th>
+						     </t>
+						     <t t-if="not o.cours_id.boo_bloquer_ecrite"> 
+						      <th scope="col" style="width: 12%;  border: 1px solid; border-left: none; padding : 2px 5px; font-size: 12pt; text-align: center;"><span t-field="o.cours_id.ecrite_libelle_anglais"/> – <span t-field="o.cours_id.ecrite_note_max"/> marks</th>
+						     </t>
+						     <t t-if="not o.cours_id.boo_bloquer_savoir_etre">  
+						      <th scope="col" style="width: 12%;  border: 1px solid; border-left: none; padding : 2px 5px; font-size: 12pt; text-align: center;"><span t-field="o.cours_id.pratique_libelle_anglais"/> – <span t-field="o.cours_id.pratique_note_max"/> marks</th>
+						     </t>
+						     <t t-if="not o.cours_id.boo_bloquer_pratique">  
+						      <th scope="col" style="width: 12%;  border: 1px solid; border-left: none; padding : 2px 5px; font-size: 12pt; text-align: center;"><span t-field="o.cours_id.savoir_etre_libelle_anglais "/> – <span t-field="o.cours_id.savoir_etre_note_max"/> marks</th>
+						     </t>
+					    </tr>
+					    
+					    <t t-set="numero_ligne" t-value="1"/>
+					    
+					    <t t-foreach="o.ligne_note_ids" t-as="ligne_note"> 
+					    	
+						    	<tr>
+							      <td style="border: 1px solid; border-top: none; padding : 2px 5px; text-align:right"> <t t-raw="numero_ligne" /> </td>
+							      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;"> <span style= " font-size: 9pt; font-family: Exo SemiBold;" t-field="ligne_note.eleve_id.matricule"/>  </td>
+							      <td style="border-bottom: 1px solid; border-right: 1px solid; padding : 2px 5px;"> <span style= " font-size: 9pt; font-family: Exo SemiBold;" t-field="ligne_note.eleve_id.name"/>  </td>
+							      
+							      <t t-if="not ligne_note.boo_aff_col_oral"> 
+							      	<td style="border-bottom: 1px solid; border-right: 1px solid; text-align:right; padding : 2px 5px; ">  <span t-field="ligne_note.note_oral"/> </td>
+							      </t>
+							      <t t-if="not ligne_note.boo_aff_col_ecrite"> 
+							      	<td style="border-bottom: 1px solid; border-right: 1px solid; text-align:right; padding : 2px 5px; ">  <span t-field="ligne_note.note_ecrite"/> </td>
+							      </t>
+							      <t t-if="not ligne_note.boo_aff_col_savoir_etre"> 
+							      	<td style="border-bottom: 1px solid; border-right: 1px solid; text-align:right; padding : 2px 5px; ">  <span t-field="ligne_note.note_savoir_etre"/> </td>
+							      </t>
+							      <t t-if="not ligne_note.boo_aff_col_pratique">
+							      	<td style="border-bottom: 1px solid; border-right: 1px solid; text-align:right; padding : 2px 5px; ">  <span t-field="ligne_note.note_pratique"/> </td>
+							      </t>
+							      
+							    </tr>
+							    <t t-set="numero_ligne" t-value="numero_ligne + 1"/>
+					    	
+					    </t>
+					    
+					  </tbody>
+					</table>
+					
+					
+				</div>
+			</center>
+			
+		</template>
+		
+		
+		<template id="report_caedu_releve_fiche_note_eng_doc">
+<!-- 			<t t-call="report.external_layout"> -->
+				<div class="page" style="font-size: 16px;">
+<!-- 					<t t-foreach="docs" t-as="o"> -->
+						<t t-call="caedu_primaire_core_reports.report_caedu_releve_fiche_note_eng_content" />
+<!-- 					</t> -->
+				</div>
+<!-- 			</t> -->
+		</template>
+		
+		<template id="report_caedu_releve_fiche_note_eng_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_releve_fiche_note_eng_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_releve_fiche_note_eng_action"
+			string="marks sheet"
+			model="caedu.etude.fiche.notes"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_releve_fiche_note_eng_template"
+		/>
+    	
+        
+    </data>
+</openerp>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_etude_pv_annuel_content">
+		
+			
+				<!-- DIV PRINCIPAL, div des notes -->				
+	<center>
+		<div style="font-size:12pt; width:100%">
+			<t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/>
+		</div>
+					<!-- tableau des eleves et espaces notes ... -->
+		<div style="width: 100%;">
+	
+			<div style="width: 100%; margin-top: 20px; margin-bottom: 20px; font-size: 14pt; ">
+				<div style="width: 20%; float: left;">
+					<p style="margin-left: 5px; font-weight: bold">Classe : <span t-field="o.classe_id.name"/></p>
+				</div>
+				<div style="width: 25%; float: left;">
+					<p style="margin-left: 20px; font-weight: bold">Section : <span t-field="o.section"/></p>
+				</div>
+				<div style="width: 25%; float: left;">
+					<p style="margin-left: 10px; font-weight: bold">Année scolaire : <span t-field="o.annee_academique_courante_id.name"/></p>
+				</div>
+				<div style="width: 20%; float: left;">
+					<p style="margin-left: 20px; font-weight: bold"><i>Titulaire :</i> <span t-field="o.classe_id.professeur_titulaire_id.name"/></p>
+				</div>
+		
+			</div>
+
+			<table width="100%" border="1" cellpadding="3" style="border-collapse: collapse; margin-top: 20pt; font-family: Calibri; font-size: 12pt; ">
+			  <tbody>
+				 <tr>
+				  <td colspan="3" width="3%"><span></span></td>
+		
+				  <td colspan="6" width="5%" style="border: 1px solid black; text-align: center"><span>MENSUALITES</span></td>
+		
+				  <td colspan="3" width="5%"><span></span></td>
+		
+				</tr>
+				<t t-set="list_eleve" t-value="o.pv_ammuel()"/>
+				
+				<t t-set="nbr_elt_liste" t-value="1"/>
+				
+				<tr>
+					  <td width="3%" style="border: 1px solid black; padding: 3pt 7pt; font-weight: bold;"><span>N°</span></td>
+					  <td width="5%" style="border: 1px solid black; padding: 3pt 7pt; font-weight: bold;"><span>MATRICULES</span></td>
+					  <td width="30%" style="border: 1px solid black; padding:3pt 7pt; font-weight: bold;"><span>ELEVES</span></td>
+				
+					<t t-foreach="list_eleve" t-as="dict_eleve">
+						<t t-if="nbr_elt_liste == 1">
+							<t t-set="list_seq" t-value="dict_eleve['notes']"/>
+							<t t-foreach="list_seq" t-as="dic_seq">
+						  		<td width="5%" style="border: 1px solid black; text-align: right; padding: 3pt 7pt;"><span> <t t-esc = "dic_seq['abreviation']"/></span></td>
+					  		</t>
+						</t>
+						<t t-set="nbr_elt_liste" t-value="nbr_elt_liste +1"/>
+						
+					</t>
+					  
+					
+					  
+					  <td width="5%" style="border: 1px solid black; padding: 3pt 7pt; font-weight: bold;"><span>Total</span></td>
+					  <td width="5%" style="border: 1px solid black; padding: 3pt 7pt; font-weight: bold;"><span>Moy.A</span></td>
+					  <td width="5%" style="border: 1px solid black; padding: 3pt 7pt; font-weight: bold;"><span>Rang</span></td>
+				</tr>
+					
+				
+				<t t-set="numero_ligne" t-value="1"/>
+				 
+				<t t-foreach="list_eleve" t-as="dict_eleve">
+					
+				
+					<tr>
+					  <td style="border: 1px solid black; padding: 3pt 7pt;"><span><t t-raw="numero_ligne" /></span></td>
+					  <td style="border: 1px solid black; padding: 3pt 7pt;"><span> <t  t-esc = "dict_eleve['matricule']"/></span></td>
+					  <td style="border: 1px solid black; padding: 3pt 7pt;"><span> <t  t-esc = "dict_eleve['nom_eleve']"/></span></td>
+					  
+					  <t t-set="list_moyenne" t-value="dict_eleve['notes']"/>
+					  <t t-foreach="list_moyenne" t-as="dic_seq">
+					  		<td width="5%" style="border: 1px solid black; text-align: right; padding: 3pt 7pt;"><span> <t t-esc = "dic_seq['moyenne']"/></span></td>
+					  </t>
+					  
+					  <td style="border: 1px solid black; padding: 3pt 7pt; text-align: right;"><span><t t-esc = "dict_eleve['totale_notes_sequentiel']"/></span></td>
+					  <td style="border: 1px solid black; padding: 3pt 7pt; text-align: right;"><span><t t-esc = "dict_eleve['moyenne_annuelle_eleve']"/></span></td>
+					  <td style="border: 1px solid black; padding: 3pt 7pt; text-align: right;"><span><t t-esc = "dict_eleve['rang_annuel_eleve']"/></span></td>
+					</tr>
+					
+					<t t-set="numero_ligne" t-value="numero_ligne + 1"/>
+				
+				</t>
+			  </tbody>
+			</table>
+		</div>
+				<div style="width: 55%; margin-left: 150px; font-size: 13pt;">
+					<table width="100%" border="1" cellpadding="3" style="border-collapse: collapse; margin-top: 20pt; font-weight: bold;">
+						<tbody>
+						
+							<tr>
+								<td width="35%" style=""><span></span></td>
+								<td width="5%" style="border: 1px solid black; padding: 3pt 7pt;"><span><i>Filles</i></span></td>
+								<td width="5%" style="border: 1px solid black; padding: 3pt 7pt;"><span><i>Garçons</i></span></td>
+								<td width="5%" style="border: 1px solid black; padding: 3pt 7pt;"><span><i>Total</i></span></td>
+							</tr>
+							<tr>
+								<td style="border: 1px solid black;  padding: 3pt 7pt;"><span><i>Inscrits</i></span></td>
+							  	<td style="border: 1px solid black;  padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black;  padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black;  padding: 3pt 7pt;"><span></span></td>
+							</tr>
+							<tr>
+								<td style="border: 1px solid black;  padding: 3pt 7pt;"><span><i>Composants</i></span></td>
+							  	<td style="border: 1px solid black;  padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black;  padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black;  padding: 3pt 7pt;"><span></span></td>
+							</tr>
+							<tr>
+								<td style="border: 1px solid black; padding: 3pt 7pt;"><span><i>Admis</i></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							</tr>
+							<tr>
+								<td style="border: 1px solid black; padding: 3pt 7pt;"><span><i>Echoués</i></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							</tr>
+							<tr>
+								<td style="border: 1px solid black; padding: 3pt 7pt;"><span><i>% de réussite</i></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							</tr>
+							<tr>
+								<td style="border: 1px solid black; padding: 3pt 7pt;"><span><i>Démissionnaire</i></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							</tr>
+							<tr>
+								<td style="border: 1px solid black; padding: 3pt 7pt;"><span><i>Taux de fréquentation %</i></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							</tr>
+							<tr>
+								<td style="border: 1px solid black; padding: 3pt 7pt;"><span><i>Moyenne annuelle de la classe</i></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							  	<td style="border: 1px solid black; padding: 3pt 7pt;"><span></span></td>
+							</tr>
+						</tbody>
+						
+					</table>
+
+				</div>
+		
+		</center>
+		</template>
+		
+		
+		<template id="report_caedu_etude_pv_annuel_doc">
+			<!-- <t t-call="report.external_layout"> --> 
+				<div class="page" style="font-size: 11px;">
+					<!-- <t t-foreach="docs" t-as="o"> -->
+						<t t-call="caedu_primaire_core_reports.report_caedu_etude_pv_annuel_content"/>
+					<!-- </t> -->
+				</div>
+			<!-- </t>  -->
+		</template>
+		
+		<template id="report_caedu_etude_pv_annuel_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_etude_pv_annuel_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_etude_pv_annuel_action"
+			string="Imprimer les notes annuelles"
+			model="caedu.etude.pv.annuel" 
+			report_type="qweb-pdf" 
+			name="caedu_primaire_core_reports.report_caedu_etude_pv_annuel_template"
+		/>
+    	
+        
+    </data>
+</openerp>

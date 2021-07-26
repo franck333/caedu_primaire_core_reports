@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		
+		<template id="report_caedu_pension_encaissement_2021_une_page_content">
+			
+			<div style="height: 680px; width: 1030px; float: left; padding-left: 0px">
+				<t t-call="caedu_primaire_core_reports.report_caedu_pension_encaissement_page_principale_content" />
+			</div>
+			
+			<div style="width:100%; clear:both; height:10px"/>
+			
+		</template>
+		
+		
+		<template id="report_caedu_pension_encaissement_2021_une_page_doc">
+<!-- 			<t t-call="report.external_layout"> -->
+				<div class="page" style="font-size: 16px;">
+					<t t-foreach="docs" t-as="o">
+						<t t-call="caedu_primaire_core_reports.report_caedu_pension_encaissement_2021_une_page_content" />
+					</t>
+				</div>
+<!-- 			</t> -->
+		</template>
+		
+		<template id="report_caedu_pension_encaissement_2021_une_page_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_pension_encaissement_2021_une_page_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_pension_encaissement_2021_une_page_action"
+			string="Reçu français (une page)"
+			model="caedu.pension.encaissement"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_pension_encaissement_2021_une_page_template"
+		/>
+    	
+        
+    </data>
+</openerp>

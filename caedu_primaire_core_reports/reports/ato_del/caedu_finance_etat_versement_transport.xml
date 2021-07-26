@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_finance_etat_versement_transport_content">
+		
+			<center>
+				<t t-call="caedu_primaire_marseillaise.report_caedu_entete_base1"/>
+				<!-- DIV PRINCIPAL, div des notes -->				
+					
+					<div style="margin-bottom:10px;margin-top:20px;"> <h2>Situation Transport</h2></div>
+					
+					<div style="margin-bottom:10px;"> 
+						<div style="float:left;padding-left:30px;">
+							<span> Classe : <span style="font-weight: bold;"><span t-field="o.classe_id.name"/></span></span>
+						</div>
+						<div style="float:right;padding-right:30px;">
+							<span> Mois: <span style="font-weight: bold;"><span t-field="o.periode_paie_bus_id.name"/></span></span>
+						</div>
+					</div>
+					
+					<!-- tableau des eleves et espaces notes ... -->
+					<table border="0" cellspacing="5" cellpadding="3" style="width: 80%;margin-top: 20px; margin-right: 10px; margin-left: 10px;">
+					  <tbody>
+					  
+					  	 <tr>
+					  	 	<th   style="border: 1px solid;   padding : 2px 5px;">N°</th> <!-- width: 150px; -->
+					  	 	<th   style="border: 1px solid;   padding : 2px 5px;">Nom et prénom</th> <!-- width: 150px; -->
+					  	 	<th   style="border: 1px solid;  padding : 2px 5px;">Situation</th>  <!-- width: 100px; -->
+					    </tr>
+					    
+					    	  <t t-set="nbre_ligne" t-value="1"/>
+					       	  <t t-set="dic_donnees" t-value="o.etat_versement_transport()"/>
+					       	  <t t-foreach="dic_donnees" t-as="dic_eleve">
+							    <tr> 
+							    	<td  style="border: 1px solid; padding : 2px 5px;"> <t  t-esc = "nbre_ligne"/> </td> 	 
+							 		<td  style="border: 1px solid; padding : 2px 5px;"> <t  t-esc = "dic_donnees[dic_eleve]['nom_eleve']"/></td>
+							 		<td  style="border: 1px solid; padding : 2px 5px; text-align: center;"> <t t-if="dic_donnees[dic_eleve]['montant_restant'] == 0">  </t>   <t t-if="dic_donnees[dic_eleve]['montant_restant'] &gt; 0"> R <t  t-esc = "dic_donnees[dic_eleve]['montant_restant']"/></t> </td>
+							 		
+						 		</tr> 
+						 		<t t-set="nbre_ligne" t-value="nbre_ligne + 1"/>
+							</t> 
+					    
+					    
+					  </tbody>
+					</table>
+					
+					</center>
+					
+					
+			
+		</template>
+		
+		
+		<template id="report_caedu_finance_etat_versement_transport_doc">
+			<!-- <t t-call="report.external_layout"> --> 
+				<div class="page" style="font-size: 13px;">
+<!-- 					<t t-foreach="docs" t-as="o"> -->
+						<t t-call="caedu_primaire_marseillaise.report_caedu_finance_etat_versement_transport_content"/>
+<!-- 					</t> -->
+				</div>
+			<!-- </t>  -->
+		</template>
+		
+		<template id="report_caedu_finance_etat_versement_transport_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_marseillaise.report_caedu_finance_etat_versement_transport_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_finance_etat_versement_transport_action"
+			string="Etat versement"
+			model="caedu.finance.etat.versement.transport" 
+			report_type="qweb-pdf" 
+			name="caedu_primaire_marseillaise.report_caedu_finance_etat_versement_transport_template"
+		/>
+    	
+        
+    </data>
+</openerp>

@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<template id="report_caedu_etude_bulletin_trimestriel_apc_une_page_content">
+
+			
+			
+			<!-- <center> -->
+			<div style="width:100%;">
+				
+				<div style="float:left;width:33%;">
+					<t t-call="caedu_primaire_core_reports.report_caedu_mini_entete_bulletin_apc"/>
+				</div>
+				
+				
+				<div style="float:right;width:67%;">
+				
+						<p class="MsoNormal" style="margin-bottom:.0001pt;"><span style="font-size:12.0pt; "> <br /></span></p>
+						<table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;text-align:center;">
+						  <tr>
+						    <td width="225" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p></td>                                 <!-- font-size:20.0pt; -->
+						    <td width="430" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoHeader" align="center" style="text-align:center;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:13.0pt; ">BULLETIN DE NOTES</span></strong></p>
+						      <!-- <p class="MsoHeader" align="center" style="text-align:center;line-height:115%;"><strong><span style="line-height:115%; font-family:'Verdana','sans-serif'; font-size:16.0pt; "><span t-field="o.sequence_id.name"/></span></strong></p> -->
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:13.0pt; "><span t-field="o.trimestre_id.name"/>, AS <span t-field="o.libelle_annee_academique"/></span></strong></p></td>
+						    <td width="225" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p></td>
+						  </tr>
+						</table>
+						
+						<!-- tableau informations sur l eleve: nom, prenom ... -->
+						<p class="MsoNormal" style="margin-bottom:.0001pt;"> <br/></p>
+						<div  style="width: 98%;">  <!-- margin: 0px 0px auto;height:80px; -->
+																								<!-- top:-30px; --> 																
+							<div style="width: 10%; float:left; height: 120px; position:relative; border: 1px #D7D2D2; border-radius: 10px;">
+								<center>
+				                	<img t-if="o.eleve_id.image" t-att-src="'data:image/png;base64,%s' % o.eleve_id.image" style="height: 100px; margin-top:0px"/>
+				                </center>
+							</div>
+							
+							<div style="width: 73%; float:right;">
+								<table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+								  <tr>
+								    <td width="80%;" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Nom et Prénom : <strong><span t-field="o.eleve_id.name"/></strong></span></p>
+								      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Date de naissance : <strong><span t-field="o.eleve_id.dob" t-field-options="{&quot;format&quot;:&quot;d MMMM y&quot;}"/> <t t-if="o.eleve_id.lieu_naissance"> à <span t-field="o.eleve_id.lieu_naissance"/> </t> </strong></span></p>
+								      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Classe : <strong><span t-field="o.classe_id.name"/></strong></span></p>
+								      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Ens. Titulaire : <strong><span t-field="o.classe_id.professeur_titulaire_id.name"/></strong></span></p></td>
+								    <td width="20%;" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;">
+								    <div align="right">
+									    <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Matricule : <strong><span t-field="o.eleve_id.matricule"/></strong></span></p>
+									      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Redoublant : <span t-if="o.boo_redoublant">Oui</span> <span t-if="not o.boo_redoublant">Non</span></span></p>
+									      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Effectif : <span t-field="o.effectif"/></span></p>
+								      </div>
+								      </td>
+								  </tr>
+								</table>
+							</div>
+							
+						</div>
+					
+					
+				</div>
+			</div>
+					<!-- tableau notes ** --> <!-- partie changeante selon les types de bulletin -->
+					<p class="MsoNormal" style="margin-bottom:.0001pt;"> <br/></p>
+					
+			<div style="width:100%;">
+			
+					<t t-set="compte_groupe" t-value="0"/>
+					<t t-set="compte_cours" t-value="1"/>
+					
+					
+					<t t-foreach="o.ligne_groupe_notes_ids" t-as="groupe">
+					
+							<t t-set="compte_groupe" t-value="compte_groupe + 1"/>	
+							
+							
+						<t t-foreach="groupe.ligne_note_bulletin_trimestriel_ids" t-as="ln"> 
+									
+									<t t-set="col_ligne" t-value="0"/>
+									<t t-if="not ln.boo_bloquer_oral">  <t t-set="col_ligne" t-value="col_ligne + 1"/> </t>
+									<t t-if="not ln.boo_bloquer_ecrite"><t t-set="col_ligne" t-value="col_ligne + 1"/>  </t>
+									<t t-if="not ln.boo_bloquer_pratique"><t t-set="col_ligne" t-value="col_ligne + 1"/>  </t>
+									<t t-if="not ln.boo_bloquer_savoir_etre"><t t-set="col_ligne" t-value="col_ligne + 1"/>  </t>
+								
+									<div style="float:left;width:48%;margin-right:10px;margin-bottom:10px;height:150px;">
+												
+										<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0"  style="border-collapse:collapse;font-size: 11px; width:100%;">
+												
+												<!-- <t t-if="compte_groupe == compte_cours"> 
+													<tr style="background-color:#BEBEBE;">
+														<td t-att-colspan="8" align="top" style="border-bottom:solid windowtext 1.0pt;border-left: solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;border-top: solid windowtext 1.0pt; text-align:center;">
+															 <center><b>Compétence <t t-raw="compte_groupe"/>: <span t-field="groupe.libelle"/> </b>
+															</center>
+														</td>
+														<t t-set="compte_cours" t-value="compte_cours + 1"/>
+													</tr>
+													
+												</t> -->
+												
+												
+												<tr style="background-color:#BEBEBE;">
+													<td t-att-colspan="8" align="top" style="border-bottom:solid windowtext 1.0pt;border-left: solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;border-top: solid windowtext 1.0pt; text-align:center;">
+														 <center><b>Compétence <t t-raw="compte_groupe"/>: <span t-field="groupe.libelle"/> </b>
+														</center>
+													</td>
+													<!-- <t t-set="compte_cours" t-value="compte_cours + 1"/> -->
+												</tr>
+													
+												
+												
+												<tr>
+													<td style="border:solid windowtext 1.0pt; text-align:center;">
+														<strong>Competences</strong> 
+													</td>
+													<td style="border:solid windowtext 1.0pt; text-align:center;">
+														<strong> Unité apprentissage</strong> 
+													</td>
+													<t t-foreach="o.ligne_libelle_colonne_ids" t-as="lib_col">
+														<td t-att-colspan="2" style="border:solid windowtext 1.0pt; text-align:center;">
+														<strong> <span t-field="lib_col.libelle"/></strong> 
+														</td>
+													</t>
+								
+												</tr>
+									
+												
+												<tr>
+													<td t-att-rowspan="col_ligne + 1" t-att-style="'border:solid windowtext 1.0pt; text-align:center;width:150px;vertical-align: middle;'"> 
+														<strong> <span t-field="ln.libelle_discipline"/> ( <span t-field="ln.note_max"/> points)</strong> 
+													</td>
+													<td style="border:solid windowtext 1.0pt; text-align:center;">
+														Évaluation
+													</td>
+													<td style="border:solid windowtext 1.0pt; text-align:center;">
+														Notes
+													</td>
+													<td style="border:solid windowtext 1.0pt; text-align:center;">
+														Cote
+													</td>
+													<td style="border:solid windowtext 1.0pt; text-align:center;">
+														Notes
+													</td>
+													<td style="border:solid windowtext 1.0pt; text-align:center;">
+														Cote
+													</td>
+													<td style="border:solid windowtext 1.0pt; text-align:center;">
+														Notes
+													</td>
+													<td style="border:solid windowtext 1.0pt; text-align:center;">
+														Cote
+													</td>
+												</tr>
+												
+												<t t-set="compteur" t-value="1"/>
+												
+												<t t-if="not ln.boo_bloquer_oral">
+													
+												<tr>
+													<td style="border:solid windowtext 1.0pt;padding-left: 5px;">
+														<t t-raw="compteur"/>. <span t-field="ln.libelle_oral_fr"/> – <span t-field="ln.note_max_orale"/>pts  
+													</td>
+													
+													<t t-foreach="ln.ligne_note_bulletin_sequentiel_ids" t-as="ln_seq">
+														<td style="border:solid windowtext 1.0pt; text-align:center;">
+															<span t-field="ln_seq.note_oral"/>
+														</td>
+														
+														<td style="border:solid windowtext 1.0pt; border-bottom: none; text-align:center;">
+															<!-- <span t-field="ln_seq.mention_oral"/> -->
+														</td>
+							   							
+							   						</t>
+							   						
+												</tr>
+												
+												<t t-set="compteur" t-value=" compteur + 1"/>
+												</t>
+												
+												<t t-if="not ln.boo_bloquer_ecrite">
+												<tr>
+													<td style="border:solid windowtext 1.0pt;padding-left: 5px;">
+														<t t-raw="compteur"/>. <span t-field="ln.libelle_ecrite_fr"/> – <span t-field="ln.note_max_ecrit"/>pts 
+													</td>
+													
+													<t t-foreach="ln.ligne_note_bulletin_sequentiel_ids" t-as="ln_seq">
+														<td style="border:solid windowtext 1.0pt; text-align:center;">
+															<span t-field="ln_seq.note_ecrite"/>
+														</td>
+														
+														<td style="border:solid windowtext 1.0pt; border-top: none; border-bottom: none; text-align:center;">
+															<!-- <span t-field="ln_seq.mention_ecrite"/> -->
+														</td>
+							   							
+							   						</t>
+							   						
+												</tr>
+												<t t-set="compteur" t-value=" compteur + 1"/>
+												</t>
+												
+												<t t-if="not ln.boo_bloquer_pratique">
+												<tr>
+													<td style="border:solid windowtext 1.0pt;padding-left: 5px;">
+														<t t-raw="compteur"/>. <span t-field="ln.libelle_pratique_fr"/> – <span t-field="ln.note_max_pratique"/>pts 
+													</td>
+													
+													<t t-foreach="ln.ligne_note_bulletin_sequentiel_ids" t-as="ln_seq">
+														<td style="border:solid windowtext 1.0pt; text-align:center;">
+															<span t-field="ln_seq.note_pratique"/>
+														</td>
+														
+														<td style="border:solid windowtext 1.0pt; border-top: none; border-bottom: none; text-align:center;">
+															<!-- <span t-field="ln_seq.mention_pratique"/> -->
+														</td>
+							   							
+							   						</t>
+							   						
+												</tr>
+												<t t-set="compteur" t-value=" compteur + 1"/>
+												</t>
+												
+												<t t-if="not ln.boo_bloquer_savoir_etre">
+												<tr>
+													<td style="border:solid windowtext 1.0pt;padding-left: 5px;">
+														<t t-raw="compteur"/>. <span t-field="ln.libelle_savoir_etre_fr"/> – <span t-field="ln.note_max_savoir_etre"/>pts 
+													</td>
+													
+													<t t-foreach="ln.ligne_note_bulletin_sequentiel_ids" t-as="ln_seq">
+														<td style="border:solid windowtext 1.0pt; text-align:center;">
+															<span t-field="ln_seq.note_savoir_etre"/>
+														</td>
+														
+														<td style="border:solid windowtext 1.0pt; border-top: none; border-bottom: none; text-align:center;">
+															<!-- <span t-field="ln_seq.mention_savoir_etre"/> -->
+														</td>
+							   							
+							   						</t>
+												</tr>
+												<t t-set="compteur" t-value=" compteur + 1"/>
+												</t>
+												
+												<tr style="font-weight: bold;">
+													<td colspan="2"  style="border:solid windowtext 1.0pt; text-align:center;">
+														Total
+													</td>
+													
+													<t t-foreach="ln.ligne_note_bulletin_sequentiel_ids" t-as="ln_seq">
+														<td style="border:solid windowtext 1.0pt; text-align:center;">
+															<span t-field="ln_seq.note"/>
+														</td>
+														
+														<td style="border:solid windowtext 1.0pt; text-align:center;">
+															<span t-field="ln_seq.mention"/>
+														</td>
+							   							
+							   						</t>
+							   						
+												</tr>
+													
+												<tr style="font-weight: bold; text-align: center">
+													<td colspan="2" style="border:solid windowtext 1.0pt; text-align:center;">
+														COTE
+													</td>
+													<td colspan="6" style="border:solid windowtext 1.0pt; text-align:center;">
+														<span t-field="ln.mention"/>
+													</td>
+												</tr>
+														
+													
+											</table>
+										
+									</div>
+									
+										
+							</t>
+											
+							
+			</t>
+		</div>
+		
+		<div style="clear:both;height:5px;"></div>
+		<div style="width:100%;">
+				<div style="float:left;width:220px;padding-top:0px;">
+					<table class="MsoTableGrid" width="200px" border="0" cellspacing="0" style="font-size:10px;">
+								  <tbody>
+									    <tr>
+									      <td style="border:1px solid black; padding: 2px 7px; text-align: left;vertical-align: middle;">NA</td>
+									      <td style="border:1px solid black; border-left: none; padding: 2px 7px; text-align: left;">Non acquis</td>
+									      
+									    </tr>
+									    <tr>
+									      <td style="border:1px solid black; border-top:none; padding: 2px 7px;">ECA</td>
+									      <td style="border:1px solid black; border-left: none; border-top:none; padding: 2px 7px; text-align: left;"> En cours d'aquisition</td>
+									    </tr>
+									    
+									    <tr>
+									      <td style="border:1px solid black; border-top:none; padding: 2px 7px;">A</td>
+									      <td style="border:1px solid black; border-left: none; border-top:none; padding: 2px 7px; text-align: left;"> Acquis</td>
+									    </tr>
+									    
+									    <tr>
+									      <td style="border:1px solid black; border-top:none; padding: 2px 7px;">A+</td>
+									      <td style="border:1px solid black; border-left: none; border-top:none; padding: 2px 7px; text-align: left;"> Expert</td>
+									    </tr>
+								    
+								  </tbody>
+							</table>
+				</div>
+				
+				<div style="float:right;width:550px;margin-right:10px;">
+					<table width="530px" class="MsoTableGrid" border="1"
+						cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;font-size:12.0pt;">
+						<tr>
+							<td valign="top"
+								style="border:solid windowtext 1.0pt;border-top:none;border-left:none;padding:0cm 5.4pt 0cm 5.4pt;">
+								<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">
+									<strong>
+										<span style="font-family:'Verdana','sans-serif'; font-size:12.0pt;"></span>
+									</strong>
+								</p>
+							</td>
+							
+							
+							
+								<t t-foreach="o.ligne_moyenne_rang_sequentiel_ids" t-as="ln_moy_rang_seq">
+								
+									<td valign="top"
+										style="border:solid windowtext 1.0pt;border-top:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;background-color: #D7D7D7;">
+										<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">
+											<span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">
+												<span t-field="ln_moy_rang_seq.libelle" />
+											</span>
+										</p>
+									</td>
+									
+								</t>
+								
+							<td valign="top"
+								style="border:solid windowtext 1.0pt;border-top:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;background-color: #D7D7D7;">
+								<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">
+									<span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">
+										<span t-field="o.trimestre_id.name" />
+									</span>
+								</p>
+							</td>
+							
+						</tr>
+						
+						<tr>
+						
+								<td 
+									style="border:solid windowtext 1.0pt;border-top:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">
+									<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;text-align:center">
+										<strong>
+											<span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">Cote</span>
+										</strong>
+									</p>
+								</td>
+								
+								
+								<t t-foreach="o.ligne_moyenne_rang_sequentiel_ids" t-as="ln_moy_rang_seq">
+									<td valign="top"
+										style="border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">
+										<p class="MsoNormal" align="right"
+											style="margin-bottom:.0001pt;text-align:right;line-height:normal;">
+											<span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">
+												<span t-field="ln_moy_rang_seq.mention" />
+											</span>
+										</p>
+									</td>
+								</t>
+								
+							<td valign="top"
+								style="border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">
+								<p class="MsoNormal" align="right"
+									style="margin-bottom:.0001pt;text-align:right;line-height:normal;">
+									<span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">
+										<span t-field="o.mention" />
+									</span>
+								</p>
+							</td>
+						</tr>
+						
+						<tr>
+							<td valign="top"
+								style="border-top:solid windowtext 1.0pt;border-left:solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">
+								<p class="MsoNormal" align="right"
+									style="margin-bottom:.0001pt;text-align:right;line-height:normal;">
+									<strong>
+										<span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">RANG</span>
+									</strong>
+								</p>
+							</td>
+						
+	
+	
+							<t t-foreach="o.ligne_moyenne_rang_sequentiel_ids" t-as="ln_moy_rang_seq">
+								
+									<td valign="top"
+										style="border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">
+										<p class="MsoNormal" align="right"
+											style="margin-bottom:.0001pt;text-align:right;line-height:normal;">
+											<span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">
+												<span t-field="ln_moy_rang_seq.valeur_rang" />
+											</span>
+										</p>
+									</td>
+								
+							</t>
+							
+							<td valign="top"
+								style="border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">
+								<p class="MsoNormal" align="right"
+									style="margin-bottom:.0001pt;text-align:right;line-height:normal;">
+									<span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">
+										<span t-field="o.rang_trimestre_eleve" />
+									</span>
+								</p>
+							</td>
+							
+						</tr>
+						
+	
+					</table>
+				</div>
+
+			</div>
+			
+			<div style="clear:both;height:5px;"></div>
+			<div style="margin-top:10px;">
+				<table style="width: 100%;">  
+					<tr>
+	
+						<td t-att-colspan="3" width="30%" style="border:none; text-align:center;">
+							<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">
+								<span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">VISA ET APPRECIATION DU TITULAIRE</span>
+							</p>
+							<p class="MsoNormal" style="margin-bottom:.0001pt;">
+								<br />
+							</p>
+						</td>
+						<td t-att-colspan="3" width="25%" style="border:none; text-align:center;">
+							<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">
+								<span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "> VISA DU PARENT</span>
+							</p>
+							<p class="MsoNormal" style="margin-bottom:.0001pt;">
+								<br />
+							</p>
+						</td>
+						<td t-att-colspan="3" width="60%" style="border:none; text-align:center;">
+							<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">
+								<span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "> DIRECTOR</span>
+							</p>
+							<p class="MsoNormal" style="margin-bottom:.0001pt;">
+								<br />
+							</p>
+						</td>
+	
+					</tr>
+				</table>		
+			</div>			
+				
+						
+		</template>
+
+
+		<template id="report_caedu_etude_bulletin_trimestriel_apc_une_page_doc">
+			<div class="page" style="">
+				<t
+					t-call="caedu_primaire_core_reports.report_caedu_etude_bulletin_trimestriel_apc_une_page_content" />
+			</div>
+		</template>
+
+		<template id="report_caedu_etude_bulletin_trimestriel_apc_une_page_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t
+						t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_etude_bulletin_trimestriel_apc_une_page_doc')" />
+				</t>
+			</t>
+		</template>
+
+		<!-- action ihm -->
+
+		<report id="report_caedu_etude_bulletin_trimestriel_apc_une_page_action"
+			string="Bulletin trimestriel APC 1" 
+			model="caedu.etude.bulletin.trimestriel" 
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_etude_bulletin_trimestriel_apc_une_page_template" />
+
+
+	</data>  
+</openerp>
+

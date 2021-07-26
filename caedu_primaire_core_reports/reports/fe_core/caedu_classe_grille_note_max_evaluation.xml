@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_classe_grille_note_max_evaluation_content">
+			
+			<center>
+				<div style="font-size:10pt; width:100%">
+					<t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/>
+				</div>
+				<div style="">
+					
+					<!-- tableau libelle bulletin -->
+					<table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+					  <tr>
+					    <td width="225" valign="top" style="padding:4px 5.4pt 3px 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p></td>
+					    <td width="430" valign="top" style="padding:4px 5.4pt 3px 5.4pt;"><p class="MsoHeader" align="center" style="text-align:center;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:16.0pt; ">GRILLE NOTES MAX EVALUATION</span></strong></p>
+					      <br />
+					      </td>
+					    <td width="225" valign="top" style="padding:4px 5.4pt 3px 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p></td>
+					  </tr>
+					</table>
+					
+					<!-- tableau information fiche de note ... -->
+					<table width="900" border="0" cellspacing="0" cellpadding="0">
+					  <tbody>
+					    <tr>
+					      <td style="width: 49%;"> 
+					      <table width="94%" border="0" cellspacing="0" cellpadding="3">
+								  <tbody>
+									<tr>
+									  <td style="width: 130px; vertical-align: bottom; line-height: 24px">Année scolaire :</td>
+									  <td style="border-bottom: 1px solid; width: 300px; line-height: 24px"> <strong> <span t-field="o.annee_academique_courante"/> </strong>  </td>
+									<!-- ne marche pas je sais pas pourquoi AR <span t-field="o.annee_academique_courante"/> -->
+									</tr>
+								  </tbody>
+								</table>
+					 	  </td>
+					      <td style="width: 49%">
+					      	<table width="94%" border="0" cellspacing="0" cellpadding="3">
+								  <tbody>
+									<tr>
+									  <td style="width: 130px; vertical-align: bottom; line-height: 24px"> Classe :</td>
+									  <td style="width: 130px; vertical-align: bottom; line-height: 24px; font-size:14pt;"> <strong><span t-field="o.name"/></strong>   </td>
+									</tr>
+								  </tbody>
+								</table>
+					      </td>
+					    </tr>
+					  </tbody>
+					</table>
+					<br/>
+					
+					<!-- tableau des cours et notes max ... -->
+					<t t-set="numero_ligne" t-value="1"/>
+					<table width="1000" border="1" cellpadding="3" style="border-collapse: collapse; border: 1px solid black; font-size: 13pt;">
+					
+					  <tbody>
+					    <tr>
+					      <td style="width: 3%;font-size: 13pt;font-weight: bold; border: 1px solid black; padding:4px 5.4pt 3px 5.4pt;"><span>N</span></td>
+					      <td style="width: 60%;font-size: 13pt; font-weight: bold; border: 1px solid black; padding:4px 5.4pt 3px 5.4pt;"><span>COMPETENCES</span></td>
+					      <td style="text-align: center; font-size: 13pt; width: 8%; font-weight: bold; border: 1px solid black; padding:4px 5.4pt 3px 5.4pt;"><span>Oral</span></td>
+					      <td style="text-align: center; font-size: 13pt; width: 8%; font-weight: bold; border: 1px solid black; padding:4px 5.4pt 3px 5.4pt;"><span>Ecrit</span></td>
+					      <td style="text-align: center; font-size: 13pt; width: 8%; font-weight: bold; border: 1px solid black; padding:4px 5.4pt 3px 5.4pt;"><span>Pratique</span></td>
+					      <td style="text-align: center; font-size: 13pt; width: 8%; font-weight: bold; border: 1px solid black; padding:4px 5.4pt 3px 5.4pt;"><span>Savoir etre</span></td>
+					      <td style="text-align: center; font-size: 13pt; width: 8%; font-weight: bold; border: 1px solid black; padding:4px 5.4pt 3px 5.4pt;"><span>Total</span></td>
+					    </tr>
+					    
+					    
+					     <t t-set="grille_cours" t-value="1"/>
+					     <t t-foreach="o.liste_cours_apc_ids" t-as="cours">
+						    <tr>
+						      <td style="padding:4px 5.4pt 3px 5.4pt; border: 1px solid black;"><t t-raw="numero_ligne" /></td>
+						      <td style="padding:4px 5.4pt 3px 5.4pt; border: 1px solid black; text-align: left;"><span t-field="cours.type_enseignement_id.name"/></td>
+						      <td style="padding:4px 5.4pt 3px 5.4pt; border: 1px solid black; text-align: center;"><t t-if="not cours.boo_bloquer_oral"> <span t-field="cours.oral_note_max"/> </t>  </td>
+						      <td style="padding:4px 5.4pt 3px 5.4pt; border: 1px solid black; text-align: center;"><t t-if="not cours.boo_bloquer_ecrite"> <span t-field="cours.ecrite_note_max"/> </t> </td>
+						      <td style="padding:4px 5.4pt 3px 5.4pt; border: 1px solid black; text-align: center;"><t t-if="not cours.boo_bloquer_pratique"> <span t-field="cours.pratique_note_max"/> </t> </td>
+						      <td style="padding:4px 5.4pt 3px 5.4pt; border: 1px solid black;  text-align: center;"><t t-if="not cours.boo_bloquer_savoir_etre"> <span t-field="cours.savoir_etre_note_max"/> </t> </td>
+						      <td style="padding:4px 5.4pt 3px 5.4pt; border: 1px solid black; text-align: right;"> <span t-field="cours.note_max"/> </td>
+						    </tr>
+						     <t t-set="numero_ligne" t-value="numero_ligne + 1"/>
+						  </t>
+						  
+					  </tbody>
+					 
+					</table>
+					
+										
+				</div>
+			</center>
+			
+		</template>
+		
+		
+		<template id="report_caedu_classe_grille_note_max_evaluation_doc">
+<!-- 			<t t-call="report.external_layout"> -->
+				<div class="page" style="font-size: 16px;">
+<!-- 					<t t-foreach="docs" t-as="o"> -->
+						<t t-call="caedu_primaire_core_reports.report_caedu_classe_grille_note_max_evaluation_content" />
+<!-- 					</t> -->
+				</div>
+<!-- 			</t> -->
+		</template>
+		
+		<template id="report_caedu_classe_grille_note_max_evaluation_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_classe_grille_note_max_evaluation_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_classe_grille_note_max_evaluation_action"
+			string="Grille note max évaluation"
+			model="caedu.etude.classe"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_classe_grille_note_max_evaluation_template"
+		/>
+    	
+        
+    </data>
+</openerp>

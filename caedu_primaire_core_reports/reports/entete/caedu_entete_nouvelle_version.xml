@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_mini_entete_bulletin_apc">
+						
+			<div style="width:100%;" name="div_mini_entete_bulletin_apc">
+				<div style="float:left;">
+					<span style="font-weight: bold; font-size:12.0pt; ">THE VISION </span> <br/>
+					<span style="font-weight: bold; font-size:12.0pt;">INTERNATIONAL </span><br/>
+					<span style="font-weight: bold; font-size:12.0pt;">SCHOOL </span> 
+				    <span> <br/><br/>BP: 1015 Douala </span><br />
+				    <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Tel (237) 699 57 27 58 </span>
+				</div>
+				<div style="float:right;">
+					<img src="/caedu_primaire_core_reports/static/images/logoPhenix4.png" width="150px" style="position:relative; top:-5px;" />
+				</div>
+			</div>
+			       
+		</template>
+        
+    </data>
+</openerp>

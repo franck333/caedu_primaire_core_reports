@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_etude_eleve_liste_eleves_selectionnes_doc">
+			<tr>
+			    <td valign="top" style="border:solid windowtext 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">3</span></p></td>
+			    <td width="106" valign="top" style="width:79.5pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "> <span t-field="o.eleve_id.matricule"/> </span></p></td>
+			    <td width="283" valign="top" style="width:212.6pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;text-align:justify;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><span t-field="o.name"/> </span></p></td>
+			    <td valign="top" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><span t-field="o.sexe"/></span></p></td>
+			    <td width="119" valign="top" style="width:89.45pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><span t-field="o.dob"/></span></p></td>
+			    <td valign="top" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><span t-if="o.boo_redoublant">Oui</span> <span t-if="not o.boo_redoublant">Non</span></span></p></td>
+			  </tr>
+		</template>
+		
+		<template id="report_caedu_etude_eleve_liste_eleves_selectionnes_template">
+			<t t-call="report.html_container">
+				
+				<div class="page" style="font-size: 16px;">
+					
+					<t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/>
+					
+					<t t-set="numero_ligne" t-value="1"/>
+					
+					<center>
+					<div style="margin : 10px 10px; width:800px">
+
+						<h3 style="padding-top:15px; "> LISTE DES ENSEIGNANTS  </h3>
+						<p class="MsoNormal"><span style="line-height:115%; font-size:6.0pt; "><br /></span></p>
+						<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" width="800" style="width:800px;border-collapse:collapse;border:none;">
+						   <tr>
+						    <td valign="top" style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt;">N°</span></strong></p></td>
+						    <td width="106" valign="top" style="width:79.5pt;border:solid windowtext 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt;">Matricule</span></strong></p></td>
+						    <td width="283" valign="top" style="width:212.6pt;border:solid windowtext 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt;">Noms et Prénoms </span></strong></p></td>
+						    <td valign="top" style="border:solid windowtext 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt;">Sexe</span></strong></p></td>
+						    <td width="119" valign="top" style="width:89.45pt;border:solid windowtext 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt;">Date Nais</span></strong></p></td>
+						    <td valign="top" style="border:solid windowtext 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt;">Redoublant</span></strong></p></td>
+						  </tr>
+						  
+						  <t t-foreach="doc_ids" t-as="doc_id">
+						  		<t t-set="numero_ligne" t-value="numero_ligne + 1"/>
+								<t t-raw="translate_doc(doc_id, doc_model,
+									'lang',
+									'caedu_primaire_core_reports.report_caedu_etude_eleve_liste_eleves_selectionnes_doc')" />
+						  </t>
+						  
+						  
+						</table>
+					</div>
+					</center>
+					
+				</div>
+				
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_etude_eleve_liste_eleves_selectionnes_action"
+			string="Liste élèves sélectionnés"
+			model="caedu.scolarite.eleve"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_etude_eleve_liste_eleves_selectionnes_template"
+			/>
+    </data>
+</openerp>

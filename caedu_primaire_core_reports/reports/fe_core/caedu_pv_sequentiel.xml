@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_pv_sequentiel_content">
+		
+			
+				<!-- DIV PRINCIPAL, div des notes -->				
+				<center>
+					<div style="margin-bottom:10px;margin-top:20px;"> <h3>Résultats <span t-field="o.sequence_id.name"/>  de <span t-field="o.classe_id.name"/></h3></div>
+					<!-- tableau des eleves et espaces notes ... -->
+					<div style="width: 100%;">
+					<table border="1"  cellspacing="0" cellpadding="0">
+					  <tbody>
+					  
+					  	 <tr  t-att-style="'height:120px; font-family: bookman old style; font-weight: bold;'">
+					  	 	<th   t-att-style="'border: 1px solid;padding : 2px 5px;width: 350px;font-size: 12px;vertical-align: middle;text-align: center;'">Etudiant</th>
+					       	  <t t-set="dic_titre" t-value="o.entete_fiche_note()"/>
+					       	  <t t-foreach="dic_titre" t-as="fiche_note_id">
+							       	 
+						 		<th  t-att-style="'border: 1px solid;-webkit-transform:rotate(-90deg);vertical-align: middle;'"><t  t-esc = "dic_titre[fiche_note_id]"/></th>
+						 		
+							</t> 
+							<th  t-att-style="'border: 1px solid; padding : 2px 5px;vertical-align: middle;text-align: center;'"> Total</th>
+							<th  t-att-style="'border: 1px solid; padding : 2px 5px;vertical-align: middle;text-align: center;'"> Sur</th>
+							<th  t-att-style="'border: 1px solid; padding : 2px 5px;vertical-align: middle;text-align: center;'"> Moy</th>
+							<th  t-att-style="'border: 1px solid; padding : 2px 5px;vertical-align: middle;text-align: center;'"> Rang</th>
+					    </tr>
+					    
+					    
+					       	  <t t-set="lis_donnee" t-value="o.ligne_fiche_note()"/>
+					       	  <t t-foreach="lis_donnee" t-as="dic_eleve">
+							    <tr>  	 
+							 		<td  style="border: 1px solid; padding-left : 2px;font-family: Times New Roman; "> <t  t-esc = "dic_eleve['#eleve']"/></td>
+							 		
+							 		<t t-set="dic_note" t-value="dic_eleve['#note']"/>
+							 		 <t t-foreach="dic_note" t-as="note_id">
+							 		 	<td  style="border: 1px solid; padding : 2px 5px;text-align:center;"> <t  t-esc = "dic_note[note_id]"/></td>
+							 		 </t>
+							 		 <td  style="border: 1px solid; padding : 2px 5px;text-align:center;"> <t  t-esc = "dic_eleve['#total']"/></td>
+							 		 <td  style="border: 1px solid; padding : 2px 5px;text-align:center;"> <t  t-esc = "dic_eleve['#sur']"/></td>
+							 		 <td  style="border: 1px solid; padding : 2px 5px;text-align:center;"> <t  t-esc = "dic_eleve['#moy']"/></td>
+							 		 <td  style="border: 1px solid; padding : 2px 5px;text-align:center;"> <t  t-esc = "dic_eleve['#rang']"/></td>
+						 		</tr> 
+							</t> 
+					    
+					    
+					  </tbody>
+					</table>
+					</div>
+					
+					
+		</center>
+		</template>
+		
+		
+		<template id="report_caedu_pv_sequentiel_doc">
+			<t t-call="report.external_layout"> 
+				<div class="page" style="font-size: 11px;">
+<!-- 					<t t-foreach="docs" t-as="o"> -->
+						<t t-call="caedu_primaire_core_reports.report_caedu_pv_sequentiel_content"/>
+<!-- 					</t> -->
+				</div>
+			</t> 
+		</template>
+		
+		<template id="report_caedu_pv_sequentiel_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_pv_sequentiel_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_pv_sequentiel_action"
+			string="Imprimer Les notes"
+			model="caedu.pv.sequentiel" 
+			report_type="qweb-pdf" 
+			name="caedu_primaire_core_reports.report_caedu_pv_sequentiel_template"
+		/>
+    	
+        
+    </data>
+</openerp>

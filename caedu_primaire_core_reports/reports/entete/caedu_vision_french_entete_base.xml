@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_entete_base1">
+             
+             <div style="width:100%;" name="div_entete_generale">
+             
+             	<!-- tableau entete ministere et etablissement -->
+					<table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+						  <tr>
+						    <td width="380" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;">
+						    	<p class="MsoHeader" align="center" style="text-align:center;">
+						    	<span style="font-family:'Verdana','sans-serif'; ">REPUBLIQUE    DU CAMEROUN</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; ">Paix    – Travail – Patrie</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; ">MINISTERE DES ENSEIGNEMENTS DE BASE<br/> </span>
+						      <span style="font-weight: bold; ">THE VISION INTERNATIONAL SCHOOL </span>
+						      <span> <br/><br/>BP: 1015 Douala </span><br />
+						     <span style="font-family:'Verdana','sans-serif'; ">Tel (237) 699 57 27 58 </span></p></td>
+						    <td width="150" valign="bottom" style="padding:0cm 5.4pt 0cm 5.4pt;">
+						    	
+						    	<br/>
+						    	<center>
+						    		<img src="/caedu_primaire_core_reports/static/images/logoPhenix4.png" width="160px" style="position:relative; top:-15px;" />
+						    	</center>
+						    	
+						    </td>
+						    <td width="380" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;">
+						    	<p class="MsoHeader" align="center" style="text-align:center;">
+						    	<span style="font-family:'Verdana','sans-serif'; ">REPUBLIC OF CAMEROON</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; ">Peace – Work – Fatherland</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; ">MINISTRY OF BASIC EDUCATION<br/> </span>
+						      <span style="font-weight: bold;">THE VISION INTERNATIONAL SCHOOL</span>
+						      <span> <br/><br/>P.O. Box: 15073 Douala </span><br/>
+						     <span style="font-family:'Verdana','sans-serif';">Tel (237) 699 57 27 58</span></p>
+						     </td>
+						  </tr>
+						</table>
+						
+				</div>
+			       
+		</template>
+        
+    </data>
+</openerp>

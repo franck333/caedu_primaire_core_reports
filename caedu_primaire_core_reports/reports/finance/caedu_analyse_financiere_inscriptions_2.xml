@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_analyse_financiere_inscriptions_content">
+			
+			<!-- div entete du PV nom ecole, informations sur la classe, ...-->
+				
+				<!-- DIV PRINCIPAL, div des notes -->				
+				<div style=" clear:both"></div>
+				
+				<table width="100%" border="0" cellpadding="3" style="border-collapse: collapse; margin-top: 40px;" >
+				  <tbody>
+				    <tr>
+				      <td colspan="9" style="text-align: center; font-family: Verdana; font-weight: bold; border-bottom: none; background-color: black">
+				      <span style="font-size: 14pt; line-height: 35pt;"><font color="#fff">ANALYSE FINANCIERE DES INSCRIPTIONS</font></span>
+				      <br/>
+				      <span style="margin-left: 0px; font-weight: bold; font-family: Verdana; font-size: 14px; margin-bottom: 40px; color:#fff"><span>Annee academique 2019/2020</span></span>
+				      </td>
+					</tr>
+				  </tbody>
+				</table>
+				
+				
+				<!-- recuperer le dictionnaire principal des donnéees, puis ses sous dic -->
+				<t t-set="dic_prin" t-value="o.donnees_analyse_fin_inscription()"/>
+				<t t-set="dic_all_filieres" t-value="dic_prin['#filieres']"/>
+				<t t-set="dic_totaux_recapitulatif" t-value="dic_prin['#totaux_recapitulatif']"/>
+				<t t-set="lis_repartition_versement" t-value="dic_prin['#repartition_versement']"/>
+				
+				<!-- traiter les filieres/sections -->
+				<t t-foreach="dic_all_filieres" t-as="cle_filiere">
+					<t t-set="dic_filiere" t-value="dic_all_filieres[cle_filiere]"/>
+					
+					<p style="margin-left: 50px; margin-top: 15px; font-weight: bold; font-family: Verdana;"><span>- <t  t-esc = "dic_filiere['#libelle_filiere']"/></span></p>
+					<table width="100%" border="1" cellpadding="3" style="border-collapse: collapse; margin-top: 2pt;">
+					  <tbody>
+					    <tr style="font-family: Calibri; font-weight: bold;background-color: #D0D0D0; text-align: center; padding: 5px 10px; width: 15%;">
+					      <td><span>Classe</span></td>
+					      <td><span>Effectifs</span></td>
+					      <td><span>Montant attendu</span></td>
+					      <td><span>Montant perçu</span></td>
+					      <td><span>Bourse</span></td>
+					      <td><span>Réduction pension</span></td>
+					      <td><span>Reste à payer</span></td>
+					      <td><span>% reliquat</span></td>
+					    </tr>
+					    
+					    <!-- pour chaque classe creer une ligne dans le table de la filiere -->
+					    <t t-set="dic_all_classes" t-value="dic_filiere['#classes']"/>
+					    <t t-foreach="dic_all_classes" t-as="cle_classe">
+					    
+					    	<t t-set="dic_classe" t-value="dic_all_classes[cle_classe]"/>
+						    <tr style="font-family: Calibri;  padding: 3pt 7pt; text-align: right ">
+						    
+						      <td style="text-align: center; padding: 3pt 7pt;"><t  t-esc = "dic_classe['#libelle_classe']"/></td>
+						      <td style="text-align: center; padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_classe['#effectif']).replace(',', ' ')"/></td>
+						      <td style="padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_classe['#montant_attendu']).replace(',', ' ')"/></td>
+						      <td><t  t-esc="'{0:,.0f}'.format(dic_classe['#montant_percu']).replace(',', ' ')"/></td>
+						      <td style="padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_classe['#bourse']).replace(',', ' ')"/> </td>
+						      <td style="padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_classe['#reduction_pension']).replace(',', ' ')"/></td>
+						      <td style="padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_classe['#reste_a_payer']).replace(',', ' ')"/></td>
+						      <td style="padding: 3pt 7pt;"><t  t-esc="'{0:,.2f}'.format(dic_classe['#taux_reliquat']).replace(',', ' ')"/>%</td>
+						      
+						    </tr>
+						</t>
+					    
+					  </tbody>
+					</table>
+				
+				</t>
+				
+				
+				<p style="margin-left: 50px; font-weight: bold; font-family: Verdana; padding-top: 35px;"><span>- Récapitulatif</span></p>
+				<table width="100%" border="1" cellpadding="3" style="border-collapse: collapse; margin-top: 2pt">
+				  <tbody>
+				    <tr style="font-family: Calibri;  font-weight: bold;background-color: #D0D0D0; text-align: center; padding: 5px 10px; width: 10%;">
+				      <td width="10%"><span>Section</span></td>
+				      <td width="10%"><span>Effectifs</span></td>
+				      <td width="10%"><span>Montant attendu</span></td>
+				      <td><span>Montant perçu</span></td>
+				      <td><span>Bourse</span></td>
+				      <td><span>Réduction pension</span></td>
+				      <td><span>Reste à payer</span></td>
+				      
+				    </tr>
+				   
+				   <t t-foreach="dic_all_filieres" t-as="cle_filiere">
+						<t t-set="dic_filiere" t-value="dic_all_filieres[cle_filiere]"/>  
+					
+					   <tr width="10%" style="font-family: Calibri;  padding: 3pt 7pt; text-align: right ">
+					      <td style="text-align: left; padding: 3pt 7pt;"><t  t-esc = "dic_filiere['#libelle_filiere']"/></td>
+					      <td style="text-align: center; padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_filiere['#effectif']).replace(',', ' ')"/></td>
+					      <td style="padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_filiere['#montant_attendu']).replace(',', ' ')"/></td>
+					      <td style="padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_filiere['#montant_percu']).replace(',', ' ')"/></td>
+					      <td style="padding: 3pt 7pt;"> <t  t-esc="'{0:,.0f}'.format(dic_filiere['#bourse']).replace(',', ' ')"/></td>
+					      <td style="padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_filiere['#reduction_pension']).replace(',', ' ')"/></td>
+					      <td style="padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_filiere['#reste_a_payer']).replace(',', ' ')"/></td>
+					    </tr>
+				    </t>
+				    
+				    
+				    
+				    
+				    <!-- ligne total 1 -->  
+				     <tr width="10%" style="font-family: Calibri;  padding: 3pt 7pt; text-align: right; font-weight: bold">
+				     
+				      <td width="10%" style="text-align: center; padding: 3pt 7pt;">TOTAL</td>
+				      <td width="10%" style="text-align: center; padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_totaux_recapitulatif['#effectif']).replace(',', ' ')"/></td>
+				      <td style="padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_totaux_recapitulatif['#montant_attendu']).replace(',', ' ')"/> </td>
+				      <td style="padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_totaux_recapitulatif['#montant_percu']).replace(',', ' ')"/></td>
+				      <td style="padding: 3pt 7pt;"> <t  t-esc="'{0:,.0f}'.format(dic_totaux_recapitulatif['#bourse']).replace(',', ' ')"/></td>
+				      <td style="padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_totaux_recapitulatif['#reduction_pension']).replace(',', ' ')"/></td>
+				      <td style="padding: 3pt 7pt;"><t  t-esc="'{0:,.0f}'.format(dic_totaux_recapitulatif['#reste_a_payer']).replace(',', ' ')"/></td>
+				    </tr>
+				     <tr style="font-family: Calibri;  padding: 3pt 7pt; text-align: right; font-weight: bold">
+				     
+				      <td colspan="3" width="20%" style="text-align: center; padding: 3pt 7pt;">TOTAL</td>
+				      <td width="10%" style="text-align: center; padding: 3pt 7pt; background-color: #61963D"><t  t-esc="'{0:,.2f}'.format(dic_totaux_recapitulatif['#taux_montant_percu']).replace(',', ' ')"/>%</td>
+				      <td width="10%" style="padding: 3pt 7pt; background-color: #B6F1EE"><t  t-esc="'{0:,.2f}'.format(dic_totaux_recapitulatif['#taux_bourse']).replace(',', ' ')"/>%</td>
+				      <td width="10%" style="background-color: #FAF269; padding: 3pt 7pt;"><t  t-esc="'{0:,.2f}'.format(dic_totaux_recapitulatif['#taux_reduction_pension']).replace(',', ' ')"/>%</td>
+				      <td width="10%" style="padding: 3pt 7pt; background-color: #F94233"><t  t-esc="'{0:,.2f}'.format(dic_totaux_recapitulatif['#taux_reste_a_payer']).replace(',', ' ')"/>%</td>
+				
+				    </tr>
+				  </tbody>
+				</table>
+				
+				<p style="margin-left: 50px; font-weight: bold; font-family: Verdana; padding-top: 35px;"><span>- Répartition des versements par mode de paiement </span></p>
+				<table width="100%" border="1" cellpadding="3" style="border-collapse: collapse; margin-top: 2pt">
+				  <tbody>
+				    <tr style="font-family: Calibri;  font-weight: bold;background-color: #D0D0D0; text-align: center; padding: 5px 10px; width: 10%;">
+				      
+				      <td></td>
+				      <t t-foreach="lis_repartition_versement" t-as="dic_type_versement">
+				      	<td width="10%"><span><t  t-esc = "dic_type_versement['libelle']"/></span></td>
+				      </t>
+				      <td><span>Total</span></td>
+				      
+				    </tr>
+				    <tr style="font-family: Calibri; text-align: right;">
+				      
+				      <t t-foreach="lis_repartition_versement" t-as="dic_type_versement">
+				      	<td width="10%" style=" padding: 3pt 7pt; "><span><t  t-esc="'{0:,.0f}'.format(dic_type_versement['montant']).replace(',', ' ')"/></span></td>
+				      </t>
+				      
+				      <td></td>
+				      <td width="10%" style="padding: 3pt 7pt"><t  t-esc="'{0:,.0f}'.format(dic_totaux_recapitulatif['#total_encaissements']).replace(',', ' ')"/> </td>
+				
+				    </tr>
+				    
+				    <tr style="font-family: Calibri; text-align: right; font-weight: bold">
+				       <t t-foreach="lis_repartition_versement" t-as="dic_type_versement">
+				      	<td width="10%" style=" padding: 3pt 7pt; "><span><t  t-esc="'{0:,.2f}'.format(dic_type_versement['taux']).replace(',', ' ')"/>%</span></td>
+				      </t>
+				      <td></td>
+				    <td width="10%" style="padding: 3pt 7pt; border: 0px"> </td>
+				
+				    </tr>
+				    
+				    
+				  </tbody>
+				</table>
+				
+				<p><br/><br/></p>
+				 <p>
+					<span style="font-family: calibri;">
+						Imprimé par <t  t-raw = "dic_totaux_recapitulatif['#nom_user']"/> <br/>
+						<t  t-raw = "dic_totaux_recapitulatif['#date']"/>
+					</span>
+				</p> 
+			
+		</template>
+		
+		<template id="report_caedu_analyse_financiere_inscriptions_doc">
+			<!-- <t t-call="report.external_layout"> -->
+				<div class="page" style="font-size: 13px;">
+					<!-- <t t-foreach="docs" t-as="o"> -->
+						<t t-call="caedu_primaire_core_reports.report_caedu_analyse_financiere_inscriptions_content" />
+					<!-- </t> -->
+				</div>
+			<!-- </t> -->
+		</template>
+		
+		<template id="report_caedu_analyse_financiere_inscriptions_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_analyse_financiere_inscriptions_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_analyse_financiere_inscriptions_action"
+			string="Fiche analyse des inscriptions"
+			model="caedu.pension.inscription"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_analyse_financiere_inscriptions_template"
+		/>
+    	
+        
+    </data>
+</openerp>

@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<template id="report_caedu_etude_bulletin_trimestriel_test_content">
+
+			
+			<t t-call="caedu_primaire_marseillaise.report_caedu_entete_base1" />
+			
+			<center>
+			<div style="width:1200px;">
+			 <t t-foreach="o.ligne_groupe_notes_ids" t-as="groupe">
+				<t t-foreach="groupe.ligne_note_bulletin_sequentiel_ids" t-as="ln"> 
+				
+							<t t-set="col_ligne" t-value="0"/>
+										
+							<t t-if="not ln.boo_bloquer_oral">  <t t-set="col_ligne" t-value="col_ligne + 1"/> </t>
+							<t t-if="not ln.boo_bloquer_ecrite"><t t-set="col_ligne" t-value="col_ligne + 1"/>  </t>
+							<t t-if="not ln.boo_bloquer_pratique"><t t-set="col_ligne" t-value="col_ligne + 1"/>  </t>
+							<t t-if="not ln.boo_bloquer_savoir_etre"><t t-set="col_ligne" t-value="col_ligne + 1"/>  </t>
+										
+							<div style="float: left; height:170px;">
+								<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0"  style="border-collapse:collapse;font-size: 12px; margin-right:20px;margin-bottom:20px;">
+										<tr>
+											<td t-att-colspan="8" align="top" style="border-bottom:solid windowtext 1.0pt;border-left: solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;border-top: solid windowtext 1.0pt; text-align:center;">
+												 <center><b><span t-field="ln.libelle_discipline"/></b>
+												</center>
+											</td>
+										</tr>
+										<tr>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												<strong>Competence</strong> 
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												<strong> Unité d’apprentissage</strong> 
+											</td>
+											<td t-att-colspan="2" style="border:solid windowtext 1.0pt; text-align:center;">
+												<strong> UA1</strong> 
+											</td>
+											<td t-att-colspan="2" style="border:solid windowtext 1.0pt; text-align:center;">
+												<strong> UA2</strong> 
+											</td>
+											<td t-att-colspan="2" style="border:solid windowtext 1.0pt; text-align:center;">
+												<strong> UA3</strong> 
+											</td>
+										</tr>
+										<tr>
+											<td t-att-rowspan="col_ligne + 1" style="border:solid windowtext 1.0pt; text-align:center;">
+												<strong> 1A. Communiquer en
+												français (30 points)</strong> 
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												Évaluation
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												Notes
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												Cote
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												Notes
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												Cote
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												Notes
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												Cote
+											</td>
+										</tr>
+										
+										<t t-set="compteur" t-value="1"/>
+										
+										<t t-if="not ln.boo_bloquer_oral">
+											
+										<tr>
+											<td style="border:solid windowtext 1.0pt;padding-left: 5px;">
+												<t t-raw="compteur"/>. <span t-field="ln.libelle_oral_fr"/> – <span t-field="ln.note_max_orale"/>pts  
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												<span t-field="ln.note_oral"/>
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												<span t-field="ln.mention_oral"/>
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												18
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												A+
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												8
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												NA
+											</td>
+										</tr>
+										
+										<t t-set="compteur" t-value=" compteur + 1"/>
+										</t>
+										
+										<t t-if="not ln.boo_bloquer_ecrite">
+										<tr>
+											<td style="border:solid windowtext 1.0pt;padding-left: 5px;">
+												<t t-raw="compteur"/>. <span t-field="ln.libelle_ecrite_fr"/> – <span t-field="ln.note_max_ecrit"/>pts 
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												<span t-field="ln.note_ecrite"/>
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												<span t-field="ln.mention_ecrite"/>
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												18
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												A+
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												8
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												NA
+											</td>
+										</tr>
+										<t t-set="compteur" t-value=" compteur + 1"/>
+										</t>
+										
+										<t t-if="not ln.boo_bloquer_pratique">
+										<tr>
+											<td style="border:solid windowtext 1.0pt;padding-left: 5px;">
+												<t t-raw="compteur"/>. <span t-field="ln.libelle_pratique_fr"/> – <span t-field="ln.note_max_pratique"/>pts 
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												<span t-field="ln.note_pratique"/>
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												<span t-field="ln.mention_pratique"/>
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												18
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												A+
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												8
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												NA
+											</td>
+										</tr>
+										<t t-set="compteur" t-value=" compteur + 1"/>
+										</t>
+										
+										<t t-if="not ln.boo_bloquer_savoir_etre">
+										<tr>
+											<td style="border:solid windowtext 1.0pt;padding-left: 5px;">
+												<t t-raw="compteur"/>. <span t-field="ln.libelle_savoir_etre_fr"/> – <span t-field="ln.note_max_savoir_etre"/>pts 
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												<span t-field="ln.note_savoir_etre"/>
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												<span t-field="ln.mention_savoir_etre"/>
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												18
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												A+
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												8
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												NA
+											</td>
+										</tr>
+										<t t-set="compteur" t-value=" compteur + 1"/>
+										</t>
+										
+										<tr style="font-weight: bold;">
+											<td colspan="2"  style="border:solid windowtext 1.0pt; text-align:center;">
+												Total
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;"><span t-field="ln.note"/></td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;"><span t-field="ln.mention"/></td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">30</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">A+</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">30</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">NA</td>
+										</tr>
+											
+										<tr style="font-weight: bold; text-align: center">
+											<td colspan="2" style="border:solid windowtext 1.0pt; text-align:center;">
+												COTE
+											</td>
+											<td colspan="6" style="border:solid windowtext 1.0pt; text-align:center;">
+												A
+											</td>
+										</tr>
+												
+							</table>
+									
+						</div>
+
+						
+				</t>
+			</t>
+			</div>
+			
+			</center>	
+			
+		<!-- 	<div style="float: left;">
+								<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0"  style="border-collapse:collapse;font-size: 12px; margin-right:20px;margin-bottom:20px;">
+										<tr>
+											<td colspan="8" align="top" style="border-bottom:solid windowtext 1.0pt;border-left: solid windowtext 1.0pt;border-right: solid windowtext 1.0pt;border-top: solid windowtext 1.0pt; text-align:center;">
+												 <center><b>Compétence 1 : Communiquer en français et anglais et pratiquer au moins une langue
+																		national </b></center>
+											</td>
+										</tr>
+										<tr>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												<strong>Competence</strong> 
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												<strong> Unité d’apprentissage</strong> 
+											</td>
+											<td colspan="2" style="border:solid windowtext 1.0pt; text-align:center;">
+												<strong> UA1</strong> 
+											</td>
+											<td colspan="2" style="border:solid windowtext 1.0pt; text-align:center;">
+												<strong> UA2</strong> 
+											</td>
+											<td colspan="2" style="border:solid windowtext 1.0pt; text-align:center;">
+												<strong> UA3</strong> 
+											</td>
+										</tr>
+										<tr>
+											<td rowspan="5" style="border:solid windowtext 1.0pt; text-align:center;">
+												<strong> 1A. Communiquer en
+												français (30 points)</strong> 
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												Évaluation
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												Notes
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												Cote
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												Notes
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												Cote
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												Notes
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												Cote
+											</td>
+										</tr>
+										<tr>
+											<td style="border:solid windowtext 1.0pt;padding-left: 5px;">
+												1. Oral – 12pts
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												12
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												A
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												18
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												A+
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												8
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												NA
+											</td>
+										</tr>
+											
+										<tr>
+											<td style="border:solid windowtext 1.0pt;padding-left: 5px;">
+												2. Écrite – 15pts
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												12
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												A
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												18
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												A+
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												8
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												NA
+											</td>
+										</tr>
+											
+										<tr>
+											<td style="border:solid windowtext 1.0pt;padding-left: 5px;">
+												3. Pratique -5pts
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												12
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												A
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												18
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												A+
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												8
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												NA
+											</td>
+										</tr>
+											
+										<tr>
+											<td style="border:solid windowtext 1.0pt;padding-left: 5px;">
+												4. Savoir être – 3pts
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												12
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												A
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												18
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												A+
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												8
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">
+												NA
+											</td>
+										</tr>
+										
+										<tr style="font-weight: bold;">
+											<td colspan="2"  style="border:solid windowtext 1.0pt; text-align:center;">
+												Total
+											</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">20</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">A</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">30</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">A+</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">30</td>
+											<td style="border:solid windowtext 1.0pt; text-align:center;">NA</td>
+										</tr>
+											
+										<tr style="font-weight: bold; text-align: center">
+											<td colspan="2" style="border:solid windowtext 1.0pt; text-align:center;">
+												COTE
+											</td>
+											<td colspan="6" style="border:solid windowtext 1.0pt; text-align:center;">
+												A
+											</td>
+										</tr>
+												
+							</table>
+									
+						</div> -->
+						
+						
+		</template>
+
+
+		<template id="report_caedu_etude_bulletin_trimestriel_test_doc">
+			<div class="page" style="">
+				<t
+					t-call="caedu_primaire_marseillaise.report_caedu_etude_bulletin_trimestriel_test_content" />
+			</div>
+		</template>
+
+		<template id="report_caedu_etude_bulletin_trimestriel_test_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t
+						t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_marseillaise.report_caedu_etude_bulletin_trimestriel_test_doc')" />
+				</t>
+			</t>
+		</template>
+
+		<!-- action ihm -->
+
+		<report id="report_caedu_etude_bulletin_trimestriel_test_action"
+			string="Bulletin trimestriel test" 
+			model="caedu.etude.bulletin.trimestriel" 
+			report_type="qweb-pdf"
+			name="caedu_primaire_marseillaise.report_caedu_etude_bulletin_trimestriel_test_template" />
+
+
+	</data>  
+</openerp>
+

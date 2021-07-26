@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_entete_base2">
+             
+             	<!-- tableau entete ministere et etablissement -->
+					<table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+						  <tr>
+						    <td width="380" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;">
+						    	<p class="MsoHeader" align="center" style="text-align:center;">
+						    	<span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">REPUBLIQUE    DU CAMEROUN</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Paix    – Travail – Patrie</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">MINISTERE DES ENSEIGNEMENTS DE BASE<br/> </span>
+						      <span style="font-weight: bold; font-size:10.0pt; ">THE VISION INTERNATIONAL SCHOOL </span>
+						      <span> <br/><br/>BP: 1015 Douala </span><br />
+						      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Tel (237) 699 57 27 58 </span></p></td>
+						    	<td width="150" valign="bottom" style="padding:0cm 5.4pt 0cm 5.4pt;">
+						    	
+						    	<br/>
+						    	<center >
+						    		<img src="/caedu_primaire_marseillaise/static/images/logoPhenix4.png" width="200px" style="position:relative; top:-15px;" />
+						    	</center>
+						    	
+						    </td>
+						    <td width="380" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;">
+						    	<p class="MsoHeader" align="center" style="text-align:center;">
+						    	<span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">REPUBLIC OF CAMEROON</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Peace – Work – Fatherland</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">MINISTRY OF BASIC EDUCATION<br/> </span>
+						     <span style="font-weight: bold; font-size:10.0pt; ">THE VISION INTERNATIONAL SCHOOL </span>
+						      <span> <br/><br/>P.O. Box: 15073 Douala </span><br />
+						     <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Tel (237) 699 57 27 58</span></p>
+						     </td>
+						  </tr>
+						</table>
+			       
+		</template>
+        
+    </data>
+</openerp>

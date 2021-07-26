@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_fiche_report_notes_content">
+		
+				
+					<t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/>
+				<center>
+					<h1> TEST DE LA VERTICALITE </h1>
+				<div style="width: 100%; background-color: yellow">		
+				  
+				  
+				  <table border="1" cellspacing="0" cellpadding="0">
+					
+					<tr style="height: 180pt;font-size: 12px; font-family: bookman old style; font-weight: bold;">  <!-- height: 170px; --> 
+							<th  valign="" style="border:solid windowtext 1.0pt; border-right: none;"></th>
+	    				<th valign="" style="border:solid windowtext 1.0pt;border-left: none;"></th>
+	    					
+	    					<t t-set="liste_type_enseignement" t-value="o.etat_fiche_report_note()"/>
+							<t t-foreach="liste_type_enseignement" t-as="dic_type">
+								
+								<th t-att-colspan="dic_type['#nbre_col']" style="border:solid windowtext 1.0pt;width: 150pt;-webkit-transform:rotate(-90deg); vertical-align: middle;"><p style=""><t t-raw="dic_type['#libelle_type_enseignement']"/></p></th>
+							
+							</t>
+					</tr>
+					
+					 
+					  <tr style="font-family: verdana; font-size:8pt; font-weight: bold;clear: both;padding-top:50px;">
+					  
+				
+						<td style="border:solid windowtext 1.0pt;">N° </td>
+						<td style="border:solid windowtext 1.0pt;">NOMS ET PRENOMS</td>
+						
+						<t t-set="liste_type_enseignement" t-value="o.etat_fiche_report_note()"/>
+						<t t-foreach="liste_type_enseignement" t-as="dic_type">
+							
+							<t t-if="dic_type['#boo_affiche_orale']">  
+								<td style="width: 50pt; -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style=""><t t-raw="dic_type['#libelle_oral']"/></span></td> 
+							</t>
+							
+							<t t-if="dic_type['#boo_affiche_ecrit']">
+								<td style="width: 50pt; -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style=""><t t-raw="dic_type['#libelle_ecrit']"/></span></td>  
+							</t>
+							<t t-if="dic_type['#boo_affiche_pratique']">
+								<td style="width: 50pt; -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style=""><t t-raw="dic_type['#libelle_pratique']"/></span></td>  
+							</t>
+							<t t-if="dic_type['#boo_affiche_savoir_etre']">
+								<td style="width: 50pt; -webkit-transform:rotate(-90deg); vertical-align: middle; border:solid windowtext 1.0pt;"><span style=""><t t-raw="dic_type['#libelle_savoir_etre']"/></span></td> 
+							</t>
+							
+							
+						
+						</t>
+					</tr>
+						
+					  <!-- <tr style="font-family: verdana; font-size:7pt; text-align: center;">
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">01</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">ANTONIO RODRIGUES JOSE PINTO</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">5</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">7</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">8</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">9</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">10</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">11</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">12</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">13</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">14</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">15</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">16</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">13</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">14</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">18</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">22</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">19</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">20</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">21</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">22</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">23</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">24</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">25</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">26</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">27</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">28</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">29</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">30</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">31</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">32</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">33</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">34</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">35</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">36</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">37</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">38</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">39</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">40</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">41</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">42</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">43</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">44</td>
+						
+						</tr>
+					  	<tr style="font-family: verdana; font-size:7pt; text-align: center;">
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">02</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">ABOU OU KOULI FLORENCE DAVINA GABRIELLA</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">45</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">46</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">47</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">48</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">49</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">50</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">51</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">52</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">53</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">54</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">55</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">56</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">57</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">58</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">59</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">60</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">61</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">62</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">63</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">64</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">65</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">66</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">67</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">68</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">69</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">70</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">71</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">72</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">73</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">74</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">75</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">76</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">77</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">78</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">79</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">80</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">81</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">82</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">83</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">84</td>
+						<td style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">10</td>
+						
+						</tr> -->
+			
+					 
+						  
+						</table>
+					</div>
+			</center>
+		</template>
+		
+		
+		<template id="report_caedu_fiche_report_notes_doc">
+<!-- 			<t t-call="report.external_layout"> -->
+				<div class="page" style="font-size: 11px;">
+<!-- 					<t t-foreach="docs" t-as="o"> -->
+						<t t-call="caedu_primaire_core_reports.report_caedu_fiche_report_notes_content" />
+<!-- 					</t> -->
+				</div>
+<!-- 			</t> -->
+		</template>
+		
+		<template id="report_caedu_fiche_report_notes_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_fiche_report_notes_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_fiche_report_notes_action"
+			string="Fiche de report de note"
+			model="caedu.etude.fiche.report.notes"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_fiche_report_notes_template"
+		/>
+    	
+        
+    </data>
+</openerp>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="caedu_etude_effectif_classe_content">
+		
+			<center>
+			<t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/>
+					
+					<t t-set="dict_groupe" t-value="o.calcul_effectif_par_classe()"/>
+					<t t-set="nbr_ligne" t-value="0"/>
+					<t t-set="nbr_cycle" t-value="0"/>
+					
+					<t t-foreach="dict_groupe" t-as="groupe_id">
+						<t t-set="nbr_cycle" t-value="nbr_cycle + 1"/>
+					</t>
+					
+					<div style="width: 100%; height: 30px">
+							<p style="font-size: 20px; font-weight: bold;text-align:center;">Effectif des classes pour l'annee scolaire <span t-field="o.annee_academique_courante_id.name"/></p>
+					</div>
+						<div style="width: 100%;">
+							<table width="98%" border="1px" cellspacing="5" cellpadding="3" style="margin-top: 20px; margin-right: 10px; margin-left: 10px;">
+								<tr>
+									<th  style="width: 20%;"></th>
+									<th  style="width: 10%;"></th>
+									<th colspan="3" style="border: 1px solid black; width: 35%; text-align:center;">E F F E C T I F S</th>
+									<th colspan="3" style="border: 1px solid black; width: 35%; text-align:center;">Dont  REDOUBLANTS</th>
+								</tr>
+								<tr>
+									<th style="border: 1px solid black;border-bottom: 0px;border-right: 0px;bottom: 3px;text-align:center;">Classes</th>
+									<th style="border: 1px solid black;border-bottom: 0px;border-right: 0px;bottom: 3px;text-align:center;">Divisions</th>
+									<th style="border: 1px solid black;border-top: 0px;border-right: 0px;bottom: 3px;text-align:center;">Filles</th>
+									<th style="border: 1px solid black;border-top: 0px;border-right: 0px;bottom: 3px;text-align:center;">Garçons</th>
+									<th style="border: 1px solid black;border-top: 0px;bottom: 3px;text-align:center;">Total</th>
+									<th style="border: 1px solid black;border-top: 0px;border-right: 0px;bottom: 3px;text-align:center;">Filles</th>
+									<th style="border: 1px solid black;border-top: 0px;border-right: 0px;bottom: 3px;text-align:center;">Garçons</th>
+									<th style="border: 1px solid black;border-top: 0px;bottom: 3px;text-align:center;">Total</th>
+								</tr>
+								
+								<t t-foreach="dict_groupe" t-as="groupe_id">
+								
+									<tr>
+										<td colspan="8" style="font-size: 16px;border: 1px solid black;border-top: 0px; border-bottom: 0px;text-align:center;padding-top:10px;padding-bottom:5px;"><span><b><u> CYCLE D'ENSEIGNEMENT :</u></b> <t  t-esc = "dict_groupe[groupe_id]['#libelleCycle']"/> </span></td>
+									</tr>
+									
+									<t t-set="dic_classe" t-value="dict_groupe[groupe_id]['#classe']"/>   
+									<t t-foreach="dic_classe" t-as="classe_id">
+									
+										<tr>
+											<td style="border: 1px solid black;bottom: 10px;text-align:center;"><t  t-esc = "dic_classe[classe_id]['#libelleClasse']"/></td>
+											<td style="border: 1px solid black;bottom: 10px;border-right: 0px;text-align:center;"><t  t-esc = "dic_classe[classe_id]['#divisionClasse']"/></td>
+											<td style="border: 1px solid black;bottom: 10px;border-right: 0px;text-align:center;"><t  t-esc = "dic_classe[classe_id]['#totalFilleClasse']"/></td>
+											<td style="border: 1px solid black;bottom: 10px;border-right: 0px;text-align:center;"><t  t-esc = "dic_classe[classe_id]['#totalGarconClasse']"/></td>
+											<td style="border: 1px solid black;bottom: 10px;text-align:center;"><t  t-esc = "dic_classe[classe_id]['#totalEleveClasse']"/></td>
+											<td style="border: 1px solid black;bottom: 10px;border-right: 0px;text-align:center;"><t  t-esc = "dic_classe[classe_id]['#totalFilleRedoubleClasse']"/></td>
+											<td style="border: 1px solid black;bottom: 10px;border-right: 0px;text-align:center;"><t  t-esc = "dic_classe[classe_id]['#totalGarconRedoubleClasse']"/></td>
+											<td style="border: 1px solid black;bottom: 10px;text-align:center;"><t  t-esc = "dic_classe[classe_id]['#totalEleveRedoubleClasse']"/></td>
+										</tr>
+									</t>
+									
+									
+									
+									<tr>
+										<td style="border: 1px solid black;background-color: #AAAEB4;bottom: 12px;border-right: 0px;border-top: 0px;text-align:center;"></td>
+										<td style="border: 1px solid black;background-color: #AAAEB4;bottom: 12px;border-right: 0px;border-top: 0px;text-align:center;"></td>
+										<td style="border: 1px solid black;background-color: #AAAEB4;bottom: 12px;border-right: 0px;border-top: 0px;text-align:center;"><t  t-esc = "dict_groupe[groupe_id]['#totalFilleCycle']"/></td>
+										<td style="border: 1px solid black;background-color: #AAAEB4;bottom: 12px;border-right: 0px;border-top: 0px;text-align:center;"><t  t-esc = "dict_groupe[groupe_id]['#totalGarconCycle']"/></td>
+										<td style="border: 1px solid black;background-color: #AAAEB4;bottom: 12px;border-top: 0px;text-align:center;"><t  t-esc = "dict_groupe[groupe_id]['#totalEleveCycle']"/></td>
+										<td style="border: 1px solid black;background-color: #AAAEB4;bottom: 12px;border-right: 0px;border-top: 0px;text-align:center;"><t  t-esc = "dict_groupe[groupe_id]['#totalFilleRedoubleCycle']"/></td>
+										<td style="border: 1px solid black;background-color: #AAAEB4;bottom: 12px;border-right: 0px;border-top: 0px;text-align:center;"><t  t-esc = "dict_groupe[groupe_id]['#totalGarconRedoubleCycle']"/></td>
+										<td style="border: 1px solid black;background-color: #AAAEB4;bottom: 12px;border-top: 0px;text-align:center;"><t  t-esc = "dict_groupe[groupe_id]['#totalEleveRedoubleCycle']"/></td>
+									</tr>
+									
+									<!-- <t t-set="nbr_ligne" t-value="nbr_ligne + 1"/> -->
+									
+									
+								</t>
+								
+								<t t-foreach="dict_groupe" t-as="groupe_id">
+								
+									<t t-set="nbr_ligne" t-value="nbr_ligne + 1"/>
+									<t t-if="nbr_ligne == nbr_cycle">
+										<tr>
+												<td style="border: 1px solid black;bottom: 14px;font-size: 14px;text-align: center;border-right: 0px;border-top: 0px;"><b>TOTAL</b></td>
+												<td style="border: 1px solid black;bottom: 14px;border-right: 0px;border-top: 0px;text-align:center;"></td>
+												<td style="border: 1px solid black;bottom: 14px;border-right: 0px;border-top: 0px;text-align:center;"><t  t-esc = "dict_groupe[groupe_id]['#totalFille']"/></td>
+												<td style="border: 1px solid black;bottom: 14px;border-right: 0px;border-top: 0px;text-align:center;"><t  t-esc = "dict_groupe[groupe_id]['#totalGarcon']"/></td>
+												<td style="border: 1px solid black;bottom: 14px;border-top: 0px;text-align:center;"><t  t-esc = "dict_groupe[groupe_id]['#totalEleve']"/></td>
+												<td style="border: 1px solid black;bottom: 14px;border-right: 0px;border-top: 0px;text-align:center;"><t  t-esc = "dict_groupe[groupe_id]['#totalFilleRedouble']"/></td>
+												<td style="border: 1px solid black;bottom: 14px;border-right: 0px;border-top: 0px;text-align:center;"><t  t-esc = "dict_groupe[groupe_id]['#totalGarconRedouble']"/></td>
+												<td style="border: 1px solid black;bottom: 14px;border-top: 0px;text-align:center;"><t  t-esc = "dict_groupe[groupe_id]['#totalEleveRedouble']"/></td>
+										</tr>
+									</t>
+							</t>
+									
+							</table>
+						</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					</center>
+					
+					
+					<!-- <div style="margin-bottom:10px;margin-top:20px;"> <h2>Résultats <span t-field="o.sequence_id.name"/>  de <span t-field="o.classe_id.name"/></h2></div>
+					tableau des eleves et espaces notes ...
+					<table border="0" cellspacing="5" cellpadding="3" style="margin-top: 20px; margin-right: 10px; margin-left: 10px;">
+					  <tbody>
+					  
+					  	 <tr>
+					  	 	<th   style="border: 1px solid; width: 100px;  padding : 2px 5px;">Etudiant</th>
+					       	  <t t-set="dic_titre" t-value="o.entete_fiche_note()"/>
+					       	  <t t-foreach="dic_titre" t-as="fiche_note_id">
+							       	 
+						 		<th  style="border: 1px solid; padding : 2px 5px;"> <t  t-esc = "dic_titre[fiche_note_id]"/></th>
+						 		
+							</t> 
+					    </tr>
+					    
+					    
+					       	  <t t-set="lis_donnee" t-value="o.ligne_fiche_note()"/>
+					       	  <t t-foreach="lis_donnee" t-as="dic_eleve">
+							    <tr>  	 
+							 		<td  style="border: 1px solid; padding : 2px 5px;"> <t  t-esc = "dic_eleve['#eleve']"/></td>
+							 		
+							 		<t t-set="dic_note" t-value="dic_eleve['#note']"/>
+							 		 <t t-foreach="dic_note" t-as="note_id">
+							 		 	<td  style="border: 1px solid; padding : 2px 5px;"> <t  t-esc = "dic_note[note_id]"/></td>
+							 		 </t>
+						 		</tr> 
+							</t> 
+					    
+					    
+					  </tbody>
+					</table>
+					
+					<table border="0" cellspacing="5" cellpadding="3" style="margin-top: 20px; margin-right: 10px; margin-left: 10px;">
+					  <tbody>
+					  
+					    
+					    	<t t-set="dic_legende" t-value="o.legende()"/>
+						       	  
+							       	  <t t-foreach="dic_legende" t-as="legende">
+									      <tr>
+									 		<td  style=" padding : 2px 5px;"> <t  t-esc = "dic_legende[legende]['#code']"/></td>
+									 		<td  style=" padding : 2px 5px;"> <t  t-esc = "dic_legende[legende]['#valeur']"/></td>
+								 		 </tr>
+									</t> 
+					    
+					    
+					  </tbody>
+					</table> -->
+					
+					
+					
+			
+		</template>
+		
+		
+		<template id="caedu_etude_effectif_classe_doc">
+			<!-- <t t-call="report.external_layout"> --> 
+				<div class="page" style="font-size: 13px;">
+<!-- 					<t t-foreach="docs" t-as="o"> -->
+						<t t-call="caedu_primaire_core_reports.caedu_etude_effectif_classe_content"/>
+<!-- 					</t> -->
+				</div>
+			<!-- </t> --> 
+		</template>
+		
+		<template id="caedu_etude_effectif_classe_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.caedu_etude_effectif_classe_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="caedu_etude_effectif_classe_action"
+			string="Effectifs par classe"
+			model="caedu.etude.effectif.classe" 
+			report_type="qweb-pdf" 
+			name="caedu_primaire_core_reports.caedu_etude_effectif_classe_template"
+		/>
+    	
+        
+    </data>
+</openerp>

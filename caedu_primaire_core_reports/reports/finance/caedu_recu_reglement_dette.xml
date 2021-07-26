@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_finance_reglement_dette_content">
+			
+			<div>&#032;<br /><br /></div>
+			
+			<center>
+
+				<div style="width:710pt; height:550px; margin-top:5px">
+					
+					<!-- set background image -->
+			        <div>
+			        
+<!-- 			        	<center> -->
+<!-- 		                	<img src="/camed_fe_core/static/images/logoEcoleFiligraneRecu.png"  -->
+<!-- 		                		style="position: fixed; left:270; top:100; min-width:45%; min-height:45%; z-index:-10" /> -->
+<!-- 		                </center> -->
+			        </div>
+					
+					 <div>
+						<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" width="709" style="width:700pt;margin-left:0pt;border-collapse:collapse;border:none; margin-top: 15px">
+						  <tr>
+						    <td width="709" colspan="2" valign="top" style="width:700pt;border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">
+						    	<center >
+							    	
+							    	<!-- <table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+									  <tr>
+									    <td width="380" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;">
+									    	<p class="MsoHeader" align="center" style="text-align:center;">
+									    	<span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">REPUBLIQUE    DU CAMEROUN</span><br />
+									      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Paix    – Travail – Patrie</span><br />
+									      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">MINISTERE    DES ENSEIGNEMENTS DE BASE<br/> </span>
+									      <span style="font-family:'Matura MT Script Capitals'; font-size:16.0pt; ">The Vision International School</span>
+									      <span> <br/><br/>BP: 8928 Douala </span><br />
+									     <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Tel (237) 699 57 27 58 / 671 45 88 42</span></p></td>
+									    <td width="150" valign="bottom" style="padding:0cm 5.4pt 0cm 5.4pt;">
+									    	
+									    	<br/>
+									    	<center >
+									    		<img src="/caedu_primaire_core_reports/static/images/logoPhenix4.png" width="200px" style="position:relative; top:-15px;" />
+									    	</center>
+									    	
+									    </td>
+									    <td width="380" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;">
+									    	<p class="MsoHeader" align="center" style="text-align:center;">
+									    	<span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">REPUBLIC OF CAMEROON</span><br />
+									      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Peace – Work – Fatherland</span><br />
+									      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">MINISTRY OF BASIC EDUCATION<br/> </span>
+									      <span style="font-family:'Matura MT Script Capitals'; font-size:16.0pt; ">The Vision International School</span>
+									      <span> <br/><br/>P.O. Box: 8928 Douala </span><br />
+									     <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Tel (237) 699 57 27 58 / 671 45 88 42</span></p>
+									     </td>
+									  </tr>
+									</table> -->
+									
+									<t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/>
+									
+							    </center>
+						    </td>
+						  </tr>
+						  <tr>
+						    <td width="709" colspan="2" valign="top" style="width:700pt;border:solid black 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;">
+						    
+						    	<div style="width:320px; float:left; margin-left:50px; margin-top:8px">
+							    	<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" align="right" style="border-collapse:collapse;border:none;margin-left:4.8pt;margin-right:4.8pt;">
+								        <tr style="height:20px;">
+								          <td valign="top" style="width:290px;border:solid black 1.0pt;background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt;height:21.1pt;" bgcolor="#D9D9D9"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;">
+								          <strong><span style="font-family:'Comic Sans MS'; font-size:15.0pt; ">REÇU N° <span t-field="o.numero_recu"/></span></strong></p></td>
+								        </tr>
+								     </table>
+							     </div>
+						      
+						      	<div style="width:300px;  float:right; margin-top:8px">
+						      		<span class="MsoNormal" style="margin-top:14.0pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:0cm;line-height:normal;">
+						      		Date impression : 
+						    			<em><span style="font-family:'Times New Roman','serif'; font-size:13.0pt; "> <span t-field="o.date_actuelle" t-field-options="{&quot;format&quot;:&quot;d MMMM y&quot;}"/></span></em></span>
+						    			&#032;&#032;&#032;
+						    		<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">&#032;<br /></p>
+						      	</div>
+						      
+						    </td>
+						  </tr>
+						  <tr>
+						  	
+						    <td width="709" colspan="2" style="width:700pt;border:solid black 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt; font-size:15.0pt;">
+						    
+						      <!-- informations sur l eleve -->
+						      <div style="float:left; width:45%">
+						      	  <br />
+						      	  <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">
+							      <strong><span style="font-family:'Times New Roman','serif'; ">Matricule    de l'élève</span></strong><span style="font-family:'Times New Roman','serif'; ">&#032;:  <span t-field="o.inscription_id.eleve_id.matricule"/></span></p>
+							      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Times New Roman','serif'; ">Elève </span></strong><span style="font-family:'Times New Roman','serif'; ">&#032;:    <span t-field="o.inscription_id.eleve_id.name"/></span></p>
+							      <!-- <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Times New Roman','serif'; ">Date et lieu de naissance </span></strong><span style="font-family:'Times New Roman','serif'; ">&#032;:  <span t-field="o.inscription_id.eleve_id.dob"/> <t t-if="o.eleve_id.lieu_naissance"> à <span t-field="o.eleve_id.lieu_naissance"/> </t>  </span></p> -->
+							      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Times New Roman','serif'; ">Classe</span></strong><span style="font-family:'Times New Roman','serif'; ">&#032;: <span t-field="o.inscription_id.classe_id.name"/></span></p>
+							      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Times New Roman','serif'; ">Année académique</span></strong><span style="font-family:'Times New Roman','serif'; ">&#032;: <span t-field="o.inscription_id.annee_academique_id.name"/></span></p>
+							      <br />
+						      </div>
+						      
+						      <!-- informations sur le versement -->
+						      <div style="float:right; width:45%">
+						      		<br />
+							    	<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">
+							    		<strong><span style="font-family:'Times New Roman','serif'; ">Objet </span></strong><span style="font-family:'Times New Roman','serif'; ">&#032;: Règlement dette <span t-field="o.dette_id.name"/></span>
+							    	</p>
+							    	<br />
+							    	<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">
+							    		<span style="font-family:'Times New Roman','serif'; font-size:13.0pt;">
+							    		<t t-foreach="o.ligne_ids" t-as="ligne">
+							    			<span style="color:white;"> ______ </span>
+							    			Encais <span t-field="ligne.date_mouvement"/> 
+							    			<span style="color:white;"> ______ </span>
+							    			<span t-field="ligne.montant"/> <br />
+							    		</t>
+							    		</span>
+							    	</p>
+						      </div>
+						    </td>
+						    
+						      
+						  </tr>
+						  <tr>
+						    <td width="387" valign="top" style="width:290.6pt;border:solid black 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;">
+						    <br />
+						    <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">&#032;<br /></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:13.0pt; ">Montant    reçu&#032;:  <span t-field="o.montant_recette"/></span></strong></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:13.0pt; ">                         </span></strong><strong><em><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; "><span t-field="o.amount_to_text"/></span></em></strong></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">&#032;<br /></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong>&#032;<br /></strong></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong>Caissier</strong>&#032;<strong>:</strong> <span t-field="o.create_uid.partner_id.name"/></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">&#032;<br /></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">&#032;<br /></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><em><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">                            </span></em><em><span style="font-family:'Comic Sans MS'; font-size:12.0pt; ">               </span></em><strong><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">Reste    à Payer</span></strong><span style="font-family:'Comic Sans MS'; font-size:12.0pt; ">&#032;: <strong><span t-field="o.montant_restant"/></strong></span></p></td>
+						    <td width="321" valign="top" style="width:241.0pt;border-top:none;border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; ">SIGNATURE ET    CACHET</span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p></td>
+						  </tr>
+						</table>
+					</div>
+				</div>
+				
+				<p>&#032;<br /><br /></p>
+				<!-- second tableau ici -->
+				<!-- second tableau ici -->
+				
+				<div style="width:710pt; height:550px; margin-top:70px">
+					
+					<!-- set background image -->
+			        <div>
+			        
+<!-- 			        	<center> -->
+<!-- 		                	<img src="/camed_fe_core/static/images/logoEcoleFiligraneRecu.png"  -->
+<!-- 		                		style="position: fixed; left:270; top:100; min-width:45%; min-height:45%; z-index:-10" /> -->
+<!-- 		                </center> -->
+			        </div>
+					
+					 <div>
+						<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" width="709" style="width:700pt;margin-left:0pt;border-collapse:collapse;border:none; margin-top: 15px">
+						  <tr>
+						    <td width="709" colspan="2" valign="top" style="width:700pt;border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;">
+						    	<center >
+							    	
+							    	<!-- <table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+									  <tr>
+									    <td width="380" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;">
+									    	<p class="MsoHeader" align="center" style="text-align:center;">
+									    	<span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">REPUBLIQUE    DU CAMEROUN</span><br />
+									      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Paix    – Travail – Patrie</span><br />
+									      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">MINISTERE    DES ENSEIGNEMENTS DE BASE<br/> </span>
+									      <span style="font-family:'Matura MT Script Capitals'; font-size:16.0pt; ">The Vision International School</span>
+									      <span> <br/><br/>BP: 8928 Douala </span><br />
+									     <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Tel (237) 699 57 27 58 / 671 45 88 42</span></p></td>
+									    <td width="150" valign="bottom" style="padding:0cm 5.4pt 0cm 5.4pt;">
+									    	
+									    	<br/>
+									    	<center >
+									    		<img src="/caedu_primaire_core_reports/static/images/logoPhenix4.png" width="200px" style="position:relative; top:-15px;" />
+									    	</center>
+									    	
+									    </td>
+									    <td width="380" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;">
+									    	<p class="MsoHeader" align="center" style="text-align:center;">
+									    	<span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">REPUBLIC OF CAMEROON</span><br />
+									      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Peace – Work – Fatherland</span><br />
+									      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">MINISTRY OF BASIC EDUCATION<br/> </span>
+									      <span style="font-family:'Matura MT Script Capitals'; font-size:16.0pt; ">The Vision International School</span>
+									      <span> <br/><br/>P.O. Box: 8928 Douala </span><br />
+									     <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Tel (237) 699 57 27 58 / 671 45 88 42</span></p>
+									     </td>
+									  </tr>
+									</table> -->
+									
+									<t t-call="caedu_primaire_core_reports.report_caedu_entete_base1"/>
+									
+							    </center>
+						    </td>
+						  </tr>
+						  <tr>
+						    <td width="709" colspan="2" valign="top" style="width:700pt;border:solid black 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;">
+						    
+						    	<div style="width:320px; float:left; margin-left:50px; margin-top:8px">
+							    	<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" align="right" style="border-collapse:collapse;border:none;margin-left:4.8pt;margin-right:4.8pt;">
+								        <tr style="height:20px;">
+								          <td valign="top" style="width:290px;border:solid black 1.0pt;background:#D9D9D9;padding:0cm 5.4pt 0cm 5.4pt;height:21.1pt;" bgcolor="#D9D9D9"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;">
+								          <strong><span style="font-family:'Comic Sans MS'; font-size:15.0pt; ">REÇU N° <span t-field="o.numero_recu"/></span></strong></p></td>
+								        </tr>
+								     </table>
+							     </div>
+						      
+						      	<div style="width:300px;  float:right; margin-top:8px">
+						      		<span class="MsoNormal" style="margin-top:14.0pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:0cm;line-height:normal;">
+						      		Date impression : 
+						    			<em><span style="font-family:'Times New Roman','serif'; font-size:13.0pt; "> <span t-field="o.date_actuelle" t-field-options="{&quot;format&quot;:&quot;d MMMM y&quot;}"/></span></em></span>
+						    			&#032;&#032;&#032;
+						    		<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">&#032;<br /></p>
+						      	</div>
+						      
+						    </td>
+						  </tr>
+						  <tr>
+						  	
+						    <td width="709" colspan="2" style="width:700pt;border:solid black 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt; font-size:15.0pt;">
+						    
+						      <!-- informations sur l eleve -->
+						      <div style="float:left; width:45%">
+						      	  <br />
+						      	  <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">
+							      <strong><span style="font-family:'Times New Roman','serif'; ">Matricule    de l'élève</span></strong><span style="font-family:'Times New Roman','serif'; ">&#032;:  <span t-field="o.inscription_id.eleve_id.matricule"/></span></p>
+							      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Times New Roman','serif'; ">Elève </span></strong><span style="font-family:'Times New Roman','serif'; ">&#032;:    <span t-field="o.inscription_id.eleve_id.name"/></span></p>
+							      <!-- <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Times New Roman','serif'; ">Date et lieu de naissance </span></strong><span style="font-family:'Times New Roman','serif'; ">&#032;:  <span t-field="o.inscription_id.eleve_id.dob"/> <t t-if="o.eleve_id.lieu_naissance"> à <span t-field="o.eleve_id.lieu_naissance"/> </t>  </span></p> -->
+							      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Times New Roman','serif'; ">Classe</span></strong><span style="font-family:'Times New Roman','serif'; ">&#032;: <span t-field="o.inscription_id.classe_id.name"/></span></p>
+							      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Times New Roman','serif'; ">Année académique</span></strong><span style="font-family:'Times New Roman','serif'; ">&#032;: <span t-field="o.inscription_id.annee_academique_id.name"/></span></p>
+							      <br />
+						      </div>
+						      
+						      <!-- informations sur le versement -->
+						      <div style="float:right; width:45%">
+						      		<br />
+							    	<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">
+							    		<strong><span style="font-family:'Times New Roman','serif'; ">Objet </span></strong><span style="font-family:'Times New Roman','serif'; ">&#032;: Règlement dette <span t-field="o.dette_id.name"/></span>
+							    	</p>
+							    	<br />
+							    	<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">
+							    		<span style="font-family:'Times New Roman','serif'; font-size:13.0pt;">
+							    		<t t-foreach="o.ligne_ids" t-as="ligne">
+							    			<span style="color:white;"> ______ </span>
+							    			Encais <span t-field="ligne.date_mouvement"/> 
+							    			<span style="color:white;"> ______ </span>
+							    			<span t-field="ligne.montant"/> <br />
+							    		</t>
+							    		</span>
+							    	</p>
+						      </div>
+						    </td>
+						    
+						      
+						  </tr>
+						  <tr>
+						    <td width="387" valign="top" style="width:290.6pt;border:solid black 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;">
+						    <br />
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:13.0pt; ">Montant    reçu&#032;:  <span t-field="o.montant_recette"/></span></strong></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:13.0pt; ">                         </span></strong><strong><em><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; "><span t-field="o.amount_to_text"/></span></em></strong></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">&#032;<br /></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong>&#032;<br /></strong></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong>Caissier</strong>&#032;<strong>:</strong> <span t-field="o.create_uid.partner_id.name"/></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">&#032;<br /></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">&#032;<br /></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><em><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">                            </span></em><em><span style="font-family:'Comic Sans MS'; font-size:12.0pt; ">               </span></em><strong><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">Reste    à Payer</span></strong><span style="font-family:'Comic Sans MS'; font-size:12.0pt; ">&#032;: <strong><span t-field="o.montant_restant"/></strong></span></p><br />
+						      </td>
+						    <td width="321" valign="top" style="width:241.0pt;border-top:none;border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; ">SIGNATURE ET    CACHET</span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p></td>
+						  </tr>
+						</table>
+					</div>
+				</div>
+				
+			</center>
+			
+		</template>
+		
+		
+		<template id="report_caedu_finance_reglement_dette_doc">
+<!-- 			<t t-call="report.external_layout"> -->
+				<div class="page" style="font-size: 16px;">
+					<t t-foreach="docs" t-as="o">
+						<t t-call="caedu_primaire_core_reports.report_caedu_finance_reglement_dette_content" />
+					</t>
+				</div>
+<!-- 			</t> -->
+		</template>
+		
+		<template id="report_caedu_finance_reglement_dette_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_core_reports.report_caedu_finance_reglement_dette_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_finance_reglement_dette_action"
+			string="Reçu RD"
+			model="caedu.finance.reglement.dette"
+			report_type="qweb-pdf"
+			name="caedu_primaire_core_reports.report_caedu_finance_reglement_dette_template"
+		/>
+    	
+        
+    </data>
+</openerp>

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<template id="report_caedu_etude_bulletin_annuel_anglais_content">
+			
+			<center>
+				
+				<div style="background-image: url(/caedu_primaire_marseillaise/static/images/logoPhoenixFiligrane3.png); background-repeat: no-repeat; background-position: 50% 53%;">
+				
+					<!-- tableau entete ministere et etablissement -->
+					<table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+						  <tr>
+						    <td width="380" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;">
+						    	<p class="MsoHeader" align="center" style="text-align:center;">
+						    	<span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">REPUBLIQUE    DU CAMEROUN</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Paix    – Travail – Patrie</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">MINISTERE    DES ENSEIGNEMENTS DE BASE<br/> </span>
+						      <span style="font-family:'Matura MT Script Capitals'; font-size:15.0pt; ">College  Bilingue Le Phénix </span>
+						      <span> <br/><br/>BP: 8928 Douala </span><br />
+						     <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Tel (237) 699 57 27 58 / 671 45 88 42</span></p></td>
+						    <td width="150" valign="bottom" style="padding:0cm 5.4pt 0cm 5.4pt;">
+						    	
+						    	<br/>
+						    	<center >
+						    		<img src="/caedu_primaire_marseillaise/static/images/logoPhenix4.png" width="200px" style="position:relative; top:-15px;" />
+						    	</center>
+						    	
+						    </td>
+						    <td width="380" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;">
+						    	<p class="MsoHeader" align="center" style="text-align:center;">
+						    	<span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">REPUBLIC OF CAMEROON</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Peace – Work – Fatherland</span><br />
+						      <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">MINISTRY OF BASIC EDUCATION<br/> </span>
+						      <span style="font-family:'Matura MT Script Capitals'; font-size:15.0pt; ">Le Phénix  Bilingual College</span>
+						      <span> <br/><br/>P.O. Box: 8928 Douala </span><br />
+						     <span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Tel (237) 699 57 27 58 / 671 45 88 42</span></p>
+						     </td>
+						  </tr>
+						</table>
+					
+					<!-- tableau libelle bulletin -->
+					<table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+					  <tr>
+					    <td width="225" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p></td>
+					    <td width="430" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoHeader" align="center" style="text-align:center;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:16.0pt; ">ANNUAL REPORT CARD</span></strong></p>
+					      <!-- <p class="MsoHeader" align="center" style="text-align:center;line-height:115%;"><strong><span style="line-height:115%; font-family:'Verdana','sans-serif'; font-size:14.0pt; ">ANNUEL</span></strong></p> -->
+					      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:14.0pt; ">School year <span t-field="o.libelle_annee_academique"/></span></strong></p></td>
+					    <td width="225" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p></td>
+					  </tr>
+					</table>
+					
+					<!-- tableau informations sur l eleve: nom, prenom ... -->
+					<p class="MsoNormal" style="margin-bottom:.0001pt;"> <br/></p>
+					<div style="width: 100%; margin: 0px 10px auto">
+
+						<div style="width: 18%; float:left; height: 100px; position:relative; top:-30px; border: 1px #D7D2D2; border-radius: 10px">
+							<center>
+			                	<img t-if="o.eleve_id.image" t-att-src="'data:image/png;base64,%s' % o.eleve_id.image" style="height: 120px; margin-top:0px"/>
+			                </center>
+						</div>
+						
+						<div style="width: 80%; float:left">
+							<table class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+							  <tr>
+							    <td width="420" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Name : <strong><span t-field="o.eleve_id.name"/></strong></span></p>
+							      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Date of birth : <strong><span t-field="o.eleve_id.dob" t-field-options="{&quot;format&quot;:&quot;d MMMM y&quot;}"/> <t t-if="o.eleve_id.lieu_naissance"> à <span t-field="o.eleve_id.lieu_naissance"/> </t> </strong></span></p>
+							      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Class : <strong><span t-field="o.classe_id.name"/></strong></span></p>
+							      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Class Master : <strong><span t-field="o.nom_professeur_titulaire"/></strong></span></p></td>
+							    <td width="280" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;">
+							    <div align="right">
+								    <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Student number : <strong><span t-field="o.eleve_id.matricule"/></strong></span></p>
+								      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Repeater : <span t-if="o.boo_redoublant">Yes</span> <span t-if="not o.boo_redoublant">No</span></span></p>
+								      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Num of student : <span t-field="o.effectif"/></span></p>
+							      </div>
+							      </td>
+							  </tr>
+							</table>
+						</div>
+						
+					</div>
+					
+					<!-- tableau notes ** --> <!-- partie changeante selon les types de bulletin -->
+					<p class="MsoNormal" style="margin-bottom:.0001pt;"> <br/></p>
+					<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" align="left"  style="width:900px;border-collapse:collapse;border:none;margin:0cm 4.8pt 0cm 4.8pt auto;">
+					  <tr>
+					    <td width="18%" valign="top" style="border:solid windowtext 1.0pt;padding:0cm 5px 0cm 5px;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">DISCIPLINE</span></strong></p></td>
+					    
+					    <!-- Attention BOUCLE : pour titre colonne notes -->
+					    <t t-foreach="o.ligne_libelle_colonne_ids" t-as="lib_col">
+					    	<td width="6%" valign="top" style="border:solid windowtext 1.0pt;border-left:none;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><span t-field="lib_col.libelle"/></span></strong></p></td>
+					    </t>
+					    
+					    <td width="8%" valign="top" style="border:solid windowtext 1.0pt;border-left:none;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">AVR/20</span></strong></p></td>
+					    <td width="5%" valign="top" style="border:solid windowtext 1.0pt;border-left:none;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">COEF</span></strong></p></td>
+					    <td width="9%" valign="top" style="border:solid windowtext 1.0pt;border-left:none;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">TOTAL</span></strong></p></td>
+					    <td width="24%" valign="top" style="border:solid windowtext 1.0pt;border-left:none;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Teacher(s)</span></strong></p></td>
+					    <td width="12%" valign="top" style="border:solid windowtext 1.0pt;border-left:none;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; ">Appreciation</span></strong></p></td>
+					  </tr>
+					  
+					  <t t-foreach="o.ligne_groupe_notes_ids" t-as="groupe">
+					  	
+					  	<tr>
+						   <td  t-att-colspan="o.nombre_colonne_total" valign="top" style="border-top:none;border-left:solid windowtext 1.0pt;border-bottom:solid black 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" align="center" style="margin-top:14.0pt;margin-right:0cm;margin-bottom:.0001pt;margin-left:0cm;text-align:center;line-height:115%;"><strong><span style="line-height:115%; font-family:'Verdana','sans-serif'; font-size:10.0pt; "><span t-field="groupe.libelle"/></span></strong></p></td>
+						</tr>
+						
+						<!-- Attention BOUCLE : notes annuelles -->
+					  	<t t-foreach="groupe.ligne_note_bulletin_annuel_ids" t-as="ln">
+					  		
+					  		<tr>
+							    <td valign="top" style="border-top:none;border-left:solid windowtext 1.0pt;border-bottom:none;border-right:solid windowtext 1.0pt;padding:0cm 5px 0cm 5px;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="ln.libelle_discipline"/></span></p></td>
+							    
+							    <!-- Attention BOUCLE : notes trimestrielles rattachées -->
+							    <t t-foreach="ln.ligne_note_bulletin_trimestriel_ids" t-as="ln_seq">
+					   				<td valign="top" style="border:none;border-right:solid windowtext 1.0pt;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="ln_seq.note"/></span></p></td>
+					   			</t>
+							    <td valign="top" style="border:none;border-right:solid windowtext 1.0pt;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="ln.note"/></span></p></td>
+							    
+							    <td valign="top" style="border:none;border-right:solid windowtext 1.0pt;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="ln.coefficient"/></span></p></td>
+							    <td valign="top" style="border:none;border-right:solid windowtext 1.0pt;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="ln.total"/></span></p></td>
+							    <td valign="top" style="border:none;border-right:solid windowtext 1.0pt;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><em><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><span t-field="ln.nom_enseignant"/></span></em></p></td>
+							    <td valign="top" style="border:none;border-right:solid windowtext 1.0pt;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:10.0pt; "><span t-field="ln.mention_anglais"/></span></p></td>
+							  </tr>
+					  	</t>
+					  	
+					  	 <tr>
+						    <td t-att-colspan="o.nombre_colonne_a_grouper_pour_sous_total" valign="top" style="border:solid windowtext 1.0pt;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">TOTAL</span></p></td>
+						    <td  valign="top" style="border:solid windowtext 1.0pt; padding:0cm 3px 0cm 3px;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="groupe.total_coefs"/></span></p></td>
+						    <td valign="top" style="border:solid windowtext 1.0pt;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="groupe.total_coefs_notes"/></span></p></td>
+						    <td colspan="2" valign="top" style="border:solid windowtext 1.0pt;padding:0cm 3px 0cm 3px;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">AVR : <span t-field="groupe.moyenne_groupe"/></span></p></td>
+						  </tr>
+					  	
+					  </t>
+					  
+					  <tr style="height:18.95pt;">
+					    <td colspan="2" valign="top" style="border:none;border-right:solid windowtext 1.0pt;padding:0cm 3px 0cm 3px;height:18.95pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:7.5pt; ">                                                                                                  </span></strong></p></td>
+					    <td colspan="2" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 3px 0cm 3px;height:18.95pt;"><p class="MsoNormal" align="right" style="margin-bottom:.0001pt;text-align:right;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">TOTAL</span></p></td>
+					    <td  style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 3px 0cm 3px;height:18.95pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:115%;"><span style="line-height:115%; font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="o.total_somme_coefs"/></span></p></td>
+					    <td style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 3px 0cm 3px;height:18.95pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:115%;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="o.total_somme_coefs_fois_notes"/></span></p></td>
+					    <td valign="top" style="border:none;padding:0cm 3px 0cm 3px;height:18.95pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><em><span style="font-family:'Verdana','sans-serif'; font-size:7.0pt; "> </span></em></strong></p></td>
+					    <td valign="top" style="border:none;padding:0cm 3px 0cm 3px;height:18.95pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:7.0pt; "> </span></strong></p></td>
+					  </tr>
+					</table>
+					
+	<!-- 				<p class="MsoNormal"> <br/></p> -->
+					
+					<!-- tableau statistiques ... -->
+					<p class="MsoNormal" style="margin-bottom:.0001pt;"> <br/></p>
+					<table width="810" class="MsoTableGrid" border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+					  <tr>
+						
+						<!--  sous tableau N1 discipline-->
+					    <td width="280" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p>
+					      <div align="left">
+					        <table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+					          <tr>
+					            <td valign="top" style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><em><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Student's conduct</span></em></strong></p></td>
+					            <td width="46" valign="top" style="width:34.65pt;border:solid windowtext 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">AN</span></strong></p></td>
+					          </tr>
+					          
+					          <t t-foreach="o.ligne_decompte_ids" t-as="decompte">
+					          	<tr>
+						            <td valign="top" style="border:solid windowtext 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><em><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="decompte.libelle"/></span></em></p></td>
+						            <td width="46" valign="top" style="width:34.65pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "> <span t-field="decompte.valeur"/></span></p></td>
+						          </tr>
+					          </t>
+					         
+					        </table>
+					      </div></td>
+						
+						<!--  sous tableau N2 moyenne genenrale-->
+					    <td width="300" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-size:11.0pt; "> <br /></span></p>
+					      <div align="center">
+					        <table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+					          <tr>
+					            <td valign="top" style="border:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">General class average </span></strong></p></td>
+					            <td valign="top" style="border:solid windowtext 1.0pt;border-left:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="o.moyenne_gen_classe"/></span></strong></p></td>
+					          </tr>
+					          <tr>
+					            <td valign="top" style="border:solid windowtext 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Average of the first </span></strong></p></td>
+					            <td valign="top" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="o.moyenne_premier_classe"/></span></strong></p></td>
+					          </tr>
+					          <tr>
+					            <td valign="top" style="border:solid windowtext 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Average of the last</span></strong><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "> </span></strong></p></td>
+					            <td valign="top" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="o.moyenne_dernier_classe"/></span></strong><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "> </span></strong></p></td>
+					          </tr>
+					        </table>
+					      </div></td>
+						
+						<!--  sous tableau N3 stats sequences et moyenne du trimestre-->
+					    <td width="270" valign="top" style="padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-size:8.0pt; "> <br /></span></p>
+					      <div align="right">
+					        <table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+					          
+					          <!-- titre du tableau -->
+					          <tr>
+					            <td valign="top" style="border:solid windowtext 1.0pt;border-top:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "> PERIOD </span></strong></p></td>
+					            <td valign="top" style="border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;text-align:right;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "> AVR </span></strong></p></td>
+					            <td valign="top" style="border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="right" style="margin-bottom:.0001pt;text-align:right;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "> RANK </span></strong></p></td>
+					          </tr>
+					          
+					          <!-- Attention BOUCLE : moyennes et rangs trimestriels -->
+					   		   <t t-foreach="o.ligne_moyenne_rang_trimestre_ids" t-as="ln_AVR_rang_seq">
+					   		   		<tr>
+					   					<td valign="top" style="border:solid windowtext 1.0pt;border-top:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="ln_AVR_rang_seq.libelle"/></span> </p></td>
+					            		<td valign="top" style="border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="right" style="margin-bottom:.0001pt;text-align:right;line-height:normal;"> <span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="ln_AVR_rang_seq.valeur_moyenne"/></span> </p></td>
+					            		<td valign="top" style="border-top:solid windowtext 1.0pt;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="right" style="margin-bottom:.0001pt;text-align:right;line-height:normal;"> <span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="ln_AVR_rang_seq.valeur_rang"/></span> </p></td>
+					            	</tr>
+					   		   </t>
+					          
+					          <tr>
+					            <td valign="top" style="border:solid windowtext 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "> <br /></span></strong></p></td>
+					            <td valign="top" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="right" style="margin-bottom:.0001pt;text-align:right;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "> <br /></span></strong></p></td>
+					            <td valign="top" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="right" style="margin-bottom:.0001pt;text-align:right;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "> <br /></span></strong></p></td>
+					          </tr>
+					          <tr>
+					            <td valign="top" style="border:solid windowtext 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Year</span></strong></p></td>
+					            <td valign="top" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="right" style="margin-bottom:.0001pt;text-align:right;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:16.0pt; "><span t-field="o.moyenne_annuelle_eleve"/></span></strong></p></td>
+					            <td valign="top" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="right" style="margin-bottom:.0001pt;text-align:right;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "><span t-field="o.rang_annuel_eleve"/></span></strong></p></td>
+					          </tr>
+					          <tr>
+					            <td valign="top" style="border:solid windowtext 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Roll of honor</span></strong></p></td>
+					            <td valign="top" colspan="2" style="border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; "> <br /></span></strong></p></td>
+					          </tr>
+					        </table>
+					      </div>
+						      
+						      <!-- fin tableau 1 -->
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-size:8.0pt; "> <br /></span></p>
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span style="font-size:8.0pt; "> <br /></span></p>
+						      
+					      </td>
+					  </tr>
+					</table>
+					
+					<!-- debut tableau 2 -->
+					<!-- sous tableaux appreciation et visa du proviseur -->
+					<p class="MsoNormal" style="margin-bottom:.0001pt;"> <br/></p>
+					<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border:none;">
+					  <tr>
+					    <td width="262" valign="top" style="width:196.8pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Verdana','sans-serif'; font-size:11.0pt; ">Appraisal of work and observations</span></u></strong></p>
+					      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p>
+					      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;" align="center"><span style="font-size:11.0pt;" t-field="o.appreciation_travail"/></p></td>
+					    <td width="445" valign="top" style="width:333.5pt;border:none;padding:0cm 5.4pt 0cm 5.4pt;">
+					      <table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="margin-left:22.7pt;border-collapse:collapse;border:none;">
+					        <tr>
+					          <td width="397" style="width:297.5pt;none;padding:0cm 5.4pt 0cm 5.4pt;">
+					          <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;">
+					          	<strong><span style="font-family:'Verdana','sans-serif'; ">VISA OF THE HEAD OF ESTABLISHMENT</span></strong>
+					          	</p>
+	<!-- 				            <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <br/></p> -->
+					            </td>
+					        </tr>
+					        <tr>
+					          <td width="397" style="width:297.5pt;border:none;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; "> <br /></span></strong></p>
+					            <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; "> <br /></span></strong></p>
+					            <p class="MsoNormal" align="right" style="margin-bottom:.0001pt;text-align:right;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; "> <br /></span></strong></p>
+					            <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; "> <br /></span></strong></p>
+					            <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; "> <br /></span></strong></p>
+					            <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; "> <br /></span></strong></p>
+					            <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; "> <br /></span></strong></p>
+					            <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; "> <br /></span></strong></p></td>
+					        </tr>
+					      </table></td>
+					  </tr>
+					</table>
+				</div>
+			</center>
+			
+		</template>
+		
+		
+		<template id="report_caedu_etude_bulletin_annuel_anglais_doc">
+<!-- 			<t t-call="report.external_layout"> -->
+				<div class="page" style="font-size: 16px;">
+<!-- 					<t t-foreach="docs" t-as="o"> -->
+						<t t-call="caedu_primaire_marseillaise.report_caedu_etude_bulletin_annuel_anglais_content" />
+<!-- 					</t> -->
+				</div>
+<!-- 			</t> -->
+		</template>
+		
+		<template id="report_caedu_etude_bulletin_annuel_anglais_template">
+			<t t-call="report.html_container">
+				<t t-foreach="doc_ids" t-as="doc_id">
+					<t t-raw="translate_doc(doc_id, doc_model,
+						'lang',
+						'caedu_primaire_marseillaise.report_caedu_etude_bulletin_annuel_anglais_doc')" />
+				</t>
+			</t>
+		</template>
+		
+		<!-- action ihm -->
+    	
+    	<report id="report_caedu_etude_bulletin_annuel_anglais_action"
+			string="Annual Report Card"
+			model="caedu.etude.bulletin.annuel"
+			report_type="qweb-pdf"
+			name="caedu_primaire_marseillaise.report_caedu_etude_bulletin_annuel_anglais_template"
+		/>
+    	
+        
+    </data>
+</openerp>
