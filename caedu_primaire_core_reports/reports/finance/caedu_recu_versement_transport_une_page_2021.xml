@@ -85,7 +85,7 @@
 							    			 <span t-field="ligne.montant_verser" style="width:60px; display: inline-block; text-align:right"/> 
 							    			 <t t-if="ligne.reste_a_verser_affiche > 0">
 							    			 	<span  style="width:140px; display: inline-block; text-align:right"> 
-							    			 		Reste <span t-field="ligne.reste_a_verser_affiche"/>
+							    			 		Reste <span t-field="ligne.reste_a_verser"/>
 							    				</span> 
 							    			 </t>
 							    			 <br />
