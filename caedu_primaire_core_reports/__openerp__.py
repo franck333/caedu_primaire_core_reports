@@ -107,10 +107,12 @@
         'reports/finance/caedu_finance_etat_mouvement.xml',   
         'reports/finance/caedu_finance_etat_mouvement_2.xml',
         'reports/finance/caedu_finance_etat_versement_transport.xml',
-        'reports/finance/caedu_recu_versement_transport_une_page.xml',
-        'reports/finance/caedu_recu_versement_transport_une_page_eng.xml',  
+        
+        'reports/finance/caedu_recu_versement_transport_une_page_2021.xml',
+        'reports/finance/caedu_recu_versement_transport_une_page_eng_2021.xml',  
         'reports/finance/caedu_recu_versement_transport_deux_pages.xml',
-        'reports/finance/caedu_recu_versement_transport_deux_pages_eng.xml',  
+        'reports/finance/caedu_recu_versement_transport_deux_pages_eng.xml',
+          
         'reports/finance/caedu_analyse_financiere_inscriptions.xml',
         
         # ----- pension -----

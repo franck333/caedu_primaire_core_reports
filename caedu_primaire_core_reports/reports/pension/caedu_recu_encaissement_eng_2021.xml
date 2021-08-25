@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 				  <td style="font-family: Arial Unicode MS; font-size: 15pt; padding-top: 10px; padding-bottom: 8px; line-height: 17pt">
-				  	<div style="float: left; width: 48%; padding-left: 15px">
+				  	<div style="float: left; width: 42%; padding-left: 15px">
 				  		
 		  		    	<div>
 		  		    		<div style="width: 100%; padding-left: 14px; padding-bottom: 6px; margin-top: 8px"><strong>Motive</strong></div>
@@ -58,7 +58,7 @@
 		  		    		</div>
 		  		    	</div>
 				  	</div>
-				  	<div style="float: left; width: 48%; text-align: left; ">
+				  	<div style="float: left; width: 54%; text-align: left; ">
 		  		    	
 		  		    	<div style="border: 2px solid black; padding: 0px 10px 10px 10px; margin-top: 0px">
 		  		    		<div style="background-color: white; width: 160px; text-align: center; position: relative; top: -10px; font-weight: bold">
@@ -67,16 +67,17 @@
 		  		    		<div style="width: 100%; font-family: Arial; font-size: 14pt">
 		  		    			<t t-foreach="o.inscription_id.tranches_inscription_ids" t-as="tranche">
 		  		    				<t t-if="tranche.reste_a_payer > 0">
-		  		    					<div style="width:100%; padding-bottom:8px;"><span t-field="tranche.libelle" style="width: 160px; display: inline-block; text-align: left;"/>  <span style="width: 90px; display: inline-block; text-align: right; padding-right:10px">(<strong><span t-field="tranche.reste_a_payer"/></strong>)</span> before the <span t-field="tranche.date_limite"/> <br/></div>
+		  		    					<div style="width:100%; padding-bottom:8px;"><span t-field="tranche.libelle" style="width: 230px; display: inline-block; text-align: left;"/>  <span style="width: 90px; display: inline-block; text-align: right; padding-right:10px">(<strong><span t-field="tranche.reste_a_payer"/></strong>)</span> before the <span t-field="tranche.date_limite"/> <br/></div>
 		  		    				</t>
 		  		    			</t>
 		  		    		</div>
 		  		    		
 		  		    		<t t-if="not(o.inscription_id.reste_a_verser > 10)">
 		  		    			<div style="width: 100%; font-family: Arial; font-size: 14pt; margin-left:10px">
-		  		    				No remainder, <span style="font-size:18pt; font-weight:bold">Tuition fees paid</span>. 
+		  		    				No remainder, <span style="font-size:18pt; font-weight:bold"> Tuition fees paid</span>. 
 		  		    			</div>
 		  		    		</t>
+		  		    		
 		  		    	</div>
 		  		    </div>
 				  </td>
@@ -99,7 +100,7 @@
 				  			 <span style="font-size: 13pt; line-height: 18pt">  Cash payment <br/> </span>
 				  		</t>
 				  		
-				  		<br/><br/>
+				  		<br/>
 				  		Amount in number : <span style="font-weight: bold; font-size: 15pt;"><span t-field="o.montant"/> Fcfa</span>  <br/>
 						Amount in letters : <span style="font-weight: bold; font-size: 15pt; "><span t-field="o.amount_to_text"/></span>
 					</div>
@@ -121,7 +122,7 @@
 				</tr>
 				<tr>
 				  <td>
-				  	<br/>
+				  	
 				  	
 				  </td>
 				</tr>
@@ -129,11 +130,11 @@
 				  <td style="border: none; vertical-align: bottom" >	 
 				  	<div name="td_bas_page" style="width: 100%;">	
 					  	<div style="width: 64%; font-family: Arial; font-size: 13pt; padding-top: 70px; text-align: center; float: left"> COSBA, BP: 8081 Douala, Tel 6 76 53 92 71, 6 77 28 28 44, 6 81 62 76 76 <br/>
-					  	  <br/>
+					  	  
 					  	</div>
 					  	
 					  	<div style="width: 34%; font-family: Arial; font-size: 13pt; padding-top: 70px; text-align: center; float: left"> Validation date : <span t-field="o.date" t-field-options="{&quot;format&quot;:&quot;d MMMM y&quot;}"/> <br/>
-					  	  <br/>
+					  	  
 					  	</div>
 				  	</div> 
 				  </td>
@@ -150,11 +151,11 @@
 				<t t-call="caedu_primaire_core_reports.report_caedu_pension_encaissement_eng_page_principale_content" />
 			</div>
 			
-			<div style="width:100%; clear:both; height:10px"/>
+			<!-- <div style="width:100%; clear:both; height:10px"/> -->
 			
-			<div style="height: 640px; width: 1030px; float: left; border-top: 1px dashed black; padding-top: 50px">
-				<t t-call="caedu_primaire_core_reports.report_caedu_pension_encaissement_eng_page_principale_content" />
-			</div>
+			<!-- <div style="height: 640px; width: 1030px; float: left; border-top: 1px dashed black; padding-top: 50px"> -->
+				<!-- <t t-call="caedu_primaire_core_reports.report_caedu_pension_encaissement_eng_page_principale_content" /> -->
+			<!-- </div> -->
 			
 		</template>
 		
