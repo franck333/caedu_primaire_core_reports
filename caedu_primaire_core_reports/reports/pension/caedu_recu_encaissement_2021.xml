@@ -107,6 +107,8 @@
 					</div>
 					
 					<div style="width: 30%; float: left">
+					
+						<t t-if="o.montant_total_reduction > 0"> <span style="padding-left: 10px">Reduction : <span style="padding-left:10px; font-weight: bold"><span t-field="o.montant_total_reduction"/></span> Fcfa</span> </t>
 						<div style="width: 100%; font-family: Arial; font-size: 12pt; padding-top: 18pt;"> <span style="font-style: italic; display: inline-block; width: 70px"> validé par </span> <span style="font-weight: normal; font-size: 14pt;"> <span t-field="o.create_uid.partner_id.name"/> </span><br/>
 				  	  <br/>
 				  	</div>
