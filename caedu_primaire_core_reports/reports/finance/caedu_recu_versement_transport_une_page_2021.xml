@@ -101,6 +101,9 @@
 									    </t>
 									    <span style="font-family:'Verdana','sans-serif'; font-size:11.0pt;"> <t t-if="montant != 0"> Réduction de <t  t-esc="'{0:,.0f}'.format(montant).replace(',', ' ')"/> &#032; <i>Fcfa </i> </t></span>
 									 </p>
+									 
+									 <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal; margin-top:40px; font-size:14pt"><strong><span style="font-family:'Times New Roman','serif'; color:#C00000; ">SIGNATURE ET    CACHET</span></strong></p>
+						      		<p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:15pt;  margin-top:8px; font-size:12pt"><strong>Caissier</strong>&#032;<strong>:</strong> <span t-field="o.create_uid.partner_id.name"/></p>
 									 								    	
 						      </div>
 						    </td>
@@ -112,25 +115,25 @@
 						    <br />
 						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:13.0pt;">Montant    reçu&#032;:  <span t-field="o.montant_recette"/></span></strong></p>
 						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong><span style="font-family:'Verdana','sans-serif'; font-size:13.0pt; ">                         </span></strong><strong><em><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; "><span t-field="o.amount_to_text"/></span></em></strong></p>
-						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">&#032;<br /></p>
-						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><strong>&#032;<br /></strong></p>
-						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"> <strong>Signature du parent </strong>                 </p>
-						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">&#032;<br /></p>
-						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">&#032;<br /></p>
-						      <t t-foreach="o.ligne_versement_transport_ids" t-as="ligne">
+						      <p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">&#032;<br />
+						      	
+						      	<strong>Signature du parent</strong>
+						      </p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						      <!-- <t t-foreach="o.ligne_versement_transport_ids" t-as="ligne">
 							    			 <t t-if="ligne.reste_a_verser_affiche > 0">
 							    			 	
-							    			 		<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><em><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">                                            </span></em><em><span style="font-family:'Comic Sans MS'; font-size:12.0pt; "> </span></em><strong><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">Reste à Payer</span></strong><span style="font-family:'Comic Sans MS'; font-size:12.0pt; ">&#032;: <strong><span t-field="ligne.reste_a_verser_affiche"/></strong></span></p>
+							    			 		<p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><em><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">                                            </span></em>
+							    			 		<em><span style="font-family:'Comic Sans MS'; font-size:12.0pt; "> </span></em><strong><span style="font-family:'Verdana','sans-serif'; font-size:12.0pt; ">Reste à Payer</span></strong><span style="font-family:'Comic Sans MS'; font-size:12.0pt; ">&#032;: <strong><span t-field="ligne.reste_a_verser_affiche"/></strong></span></p>
 							    				
 							    			 </t>
 							    			 <br />
 							    			
-							    		</t>
+							    		</t> -->
 						      </td>
-						    <td  valign="top" style="border-top:none;border-left:none;border-bottom:none;border-right:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><span style="font-family:'Times New Roman','serif'; color:#C00000; ">SIGNATURE ET    CACHET</span></strong></p>
-						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:15pt;"><strong>Caissier</strong>&#032;<strong>:</strong> <span t-field="o.create_uid.partner_id.name"/></p>
-						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u> </strong></p>
-						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
+						    <td  valign="top" style="border-top:none;border-left:none;border-bottom:none;border-right:none;padding:0cm 5.4pt 0cm 5.4pt;">
 						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
 						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
 						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
@@ -139,6 +142,28 @@
 						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p>
 						      <p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;"><strong><u><span style="font-family:'Times New Roman','serif'; color:#C00000; "><span style="text-decoration:none; ">&#032;<br /></span></span></u></strong></p></td>
 						  </tr>
+						  
+						   <tr>
+						    <td  valign="top" style="border:none;border-top:none;padding:0cm 5.4pt 0cm 5.4pt; font-size:13.5pt; font-weight:bold; text-align:center" colspan="2">
+						        <t t-if="o.inscription_transport_id.montant_reste_total">
+							        Reste versements  <span style="display:inline-block; width:20px"/>
+							        <t t-foreach="o.inscription_transport_id.ligne_etat_paie_periode_ids" t-as="ligne">
+							        	<t t-if="ligne.montant_restant">
+								        	<span t-field="ligne.periode_id.abreviation"/> : <span t-field="ligne.montant_restant"/> 
+								        	<span style="display:inline-block; width:20px"/>
+							        	</t>
+							        </t>
+							        
+							        <span style="display:inline-block; width:80px"/>
+							        Total restant <span style="display:inline-block; width:13px"/>
+							        <span t-field="o.inscription_transport_id.montant_reste_total"/> 
+						        </t>
+						        
+						        <t t-if="not o.inscription_transport_id.montant_reste_total">
+						        	TRANSPORT ANNUEL SOLDE
+						        </t>
+						    </td>
+						    </tr>
 						</table>
 					</div>
 				</div>

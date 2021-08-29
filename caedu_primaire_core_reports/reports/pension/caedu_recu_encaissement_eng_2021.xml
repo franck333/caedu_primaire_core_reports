@@ -60,6 +60,7 @@
 				  	</div>
 				  	<div style="float: left; width: 54%; text-align: left; ">
 		  		    	
+		  		    	<t t-if="o.inscription_id.reste_a_verser != 0">
 		  		    	<div style="border: 2px solid black; padding: 0px 10px 10px 10px; margin-top: 0px">
 		  		    		<div style="background-color: white; width: 160px; text-align: center; position: relative; top: -10px; font-weight: bold">
 		  		    			Balance to pay
@@ -72,13 +73,16 @@
 		  		    			</t>
 		  		    		</div>
 		  		    		
-		  		    		<t t-if="not(o.inscription_id.reste_a_verser > 10)">
-		  		    			<div style="width: 100%; font-family: Arial; font-size: 14pt; margin-left:10px">
-		  		    				No remainder, <span style="font-size:18pt; font-weight:bold"> Tuition fees paid</span>. 
-		  		    			</div>
-		  		    		</t>
-		  		    		
 		  		    	</div>
+		  		    	</t>
+		  		    	
+		  		    	<!-- div a afficher en cas de pension solde -->
+	  		    	  <t t-if="o.inscription_id.reste_a_verser == 0">
+				  			 <div style="margin-left:100px; padding: 15px 10px; border: 2.5px solid black; text-align: center; width: 340px">
+								<span style="font-size: 18pt; line-height: 18pt;font-weight: bold"> Tuition fees paid <br/> </span>
+							</div>
+					   </t>
+					   
 		  		    </div>
 				  </td>
 				</tr>

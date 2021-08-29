@@ -55,7 +55,7 @@
 						<div style="margin-bottom:10px;">
 							
 							<div style="padding-left:30px;">
-								<span style="font-size: 15pt"> Liste des élèves de <span style="font-weight: bold; font-size:15pt"><t  t-esc = "dic_donnees[chauffeur_id]['nom_chauffeur']"/></span> de la zone de <span style="font-weight: bold; font-size:15pt"><t  t-esc = "dic_donnees[chauffeur_id]['libelle_zone']"/></span> et de la periode de  <span style="font-weight: bold; font-size:15pt"><t  t-esc = "dic_donnees[chauffeur_id]['libelle_periode']"/></span></span>
+								<span style="font-size: 15pt"> Liste des élèves de <span style="font-weight: bold; font-size:15pt"><t  t-esc = "dic_donnees[chauffeur_id]['nom_chauffeur']"/></span> pour la periode  <span style="font-weight: bold; font-size:15pt"><t  t-esc = "dic_donnees[chauffeur_id]['libelle_periode']"/></span></span>
 							</div>
 												
 						</div>	
@@ -72,14 +72,14 @@
 					
 					
 					<!-- tableau des eleves et espaces notes ... -->
-					<table border="0" cellspacing="5" cellpadding="3" style="width: 80%;margin-top: 20px; margin-right: 10px; margin-left: 10px;">
+					<table border="0" cellspacing="5" cellpadding="3" style="width: 96%;margin-top: 20px; margin-right: 10px; margin-left: 10px;">
 					  <tbody>
 					  
 					  	 <tr>
 					  	 	<th   style="border: 1px solid;   padding : 2px 5px;">N°</th> <!-- width: 150px; -->
 					  	 	<th   style="border: 1px solid;   padding : 2px 5px;">Nom et prénom</th> <!-- width: 150px; -->
 					  	 	<th   style="border: 1px solid;  padding : 2px 5px;">Classe</th>  <!-- width: 100px; -->
-					  	 	<th   style="border: 1px solid;  padding : 2px 5px;">Zone de bus</th>  <!-- width: 100px; -->
+					  	 	<th   style="border: 1px solid;  padding : 2px 5px;">Point de ramassage</th>  <!-- width: 100px; -->
 					  	 	<th   style="border: 1px solid;  padding : 2px 5px;">Situation</th>  <!-- width: 100px; -->
 					    </tr>
 					     
@@ -163,7 +163,7 @@
 		
 		<template id="report_caedu_finance_etat_versement_transport_doc">
 			<!-- <t t-call="report.external_layout"> --> 
-				<div class="page" style="font-size: 13px;">
+				<div class="page" style="font-size: 14px;">
 <!-- 					<t t-foreach="docs" t-as="o"> -->
 						<t t-call="caedu_primaire_core_reports.report_caedu_finance_etat_versement_transport_content"/>
 <!-- 					</t> -->
