@@ -24,7 +24,7 @@
 					<t t-set="numero_ligne" t-value="1"/>
 					
 					<center>
-						<h3 style="padding-top:15px; "> Liste des élèves sélectionnés </h3>
+						<h3 style="padding-top:15px; "> Liste des élèves sélectiés </h3>
 						<p class="MsoNormal"><span style="line-height:115%; font-size:6.0pt; "><br /></span></p>
 						<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" width="714" style="width:535.55pt;border-collapse:collapse;border:none;">
 						  <tr>

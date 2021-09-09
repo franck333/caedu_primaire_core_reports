@@ -37,6 +37,8 @@
 						<td width="85" valign="top" style="width:63.55pt;border:solid windowtext 1.0pt;border-left:none;padding: 3pt 7pt;height:21.25pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;font-size:12pt;">Average</p></td>
 						<td width="74" valign="top" style="width:55.55pt;border:solid windowtext 1.0pt;border-left:none;padding: 3pt 7pt;height:21.25pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;font-size:12pt;">%</p></td>
 						<td width="112" valign="top" style="width:84.25pt;border:solid windowtext 1.0pt;border-left:none;padding: 3pt 7pt;height:21.25pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;font-size:12pt;">Abandoned</p></td>
+						<td width="112" valign="top" style="width:84.25pt;border:solid windowtext 1.0pt;border-left:none;padding: 3pt 7pt;height:21.25pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;font-size:12pt;">Number of old student</p></td>
+						<td width="112" valign="top" style="width:84.25pt;border:solid windowtext 1.0pt;border-left:none;padding: 3pt 7pt;height:21.25pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;font-size:12pt;">Number of new student</p></td>
 					  </tr>
 					  <tr>
 						<td width="29" rowspan="2" valign="top" style="width:21.75pt;border:solid windowtext 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"></p></td>
@@ -55,6 +57,7 @@
 						<td width="38" valign="top" style="width:28.3pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"></p></td>
 						<td width="85" valign="top" style="width:63.55pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"></p></td>
 						<td width="186" colspan="2" valign="top" style="width:139.8pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;font-size:12pt;">frequentation</p></td>
+						
 					  </tr>
 					  <tr>
 						<td width="38" valign="top" style="width:28.3pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">G</p></td>
@@ -72,6 +75,8 @@
 						<td width="85" valign="top" style="width:63.55pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"></p></td>
 						<td width="74" valign="top" style="width:55.55pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"></p></td>
 						<td width="112" valign="top" style="width:84.25pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"></p></td>
+						<td width="38" valign="top" style="width:28.3pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"></p></td>
+						<td width="38" valign="top" style="width:28.3pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"></p></td>
 					  </tr>
 					  
 					  </t>
@@ -87,6 +92,8 @@
 							<td width="85" valign="top" style="width:63.55pt;border:solid windowtext 1.0pt;border-left:none;padding: 3pt 7pt;height:21.25pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;font-size:12pt;">Moy.A</p></td>
 							<td width="74" valign="top" style="width:55.55pt;border:solid windowtext 1.0pt;border-left:none;padding: 3pt 7pt;height:21.25pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;font-size:12pt;">%</p></td>
 							<td width="112" valign="top" style="width:84.25pt;border:solid windowtext 1.0pt;border-left:none;padding: 3pt 7pt;height:21.25pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;font-size:12pt;">Démissionnaires</p></td>
+							<td width="112" valign="top" style="width:84.25pt;border:solid windowtext 1.0pt;border-left:none;padding: 3pt 7pt;height:21.25pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;font-size:12pt;">Nouveaux élèves</p></td>
+							<td width="112" valign="top" style="width:84.25pt;border:solid windowtext 1.0pt;border-left:none;padding: 3pt 7pt;height:21.25pt;"><p class="MsoNormal" align="center" style="margin-bottom:.0001pt;text-align:center;line-height:normal;font-size:12pt;">Anciens élèves</p></td>
 						  </tr>
 						  <tr>
 							<td width="29" rowspan="2" valign="top" style="width:21.75pt;border:solid windowtext 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"></p></td>
@@ -121,6 +128,8 @@
 							<td width="47" valign="top" style="width:35.35pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;">T</p></td>
 							<td width="85" valign="top" style="width:63.55pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"></p></td>
 							<td width="74" valign="top" style="width:55.55pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"></p></td>
+							<td width="112" valign="top" style="width:84.25pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"></p></td>
+							<td width="112" valign="top" style="width:84.25pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"></p></td>
 							<td width="112" valign="top" style="width:84.25pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 5.4pt 0cm 5.4pt;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"></p></td>
 						  </tr>
 						 </t>
@@ -167,6 +176,8 @@
 							
 						<t t-set="dic_demissione" t-value="dic_classe['demissionaires']"/>
 							<td width="112" valign="top" style="width:84.25pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding: 3pt 7pt; text-align:center;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span> <t t-raw = "dic_demissione['nbre_demissione']"/></span></p></td>
+						
+						
 					  </tr>
 					  
 				  	
@@ -185,6 +196,8 @@
 							<t t-set="dic_inscript" t-value="dic_section[id_filiere]['#inscript']"/>
 								<td width="29" valign="top" style="width:27.1pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding: 3pt 7pt; text-align: right;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span> <t t-raw = "dic_inscript['nbr_f']"/></span></p></td>
 								<td width="29" valign="top" style="width:22.0pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding: 3pt 7pt; text-align: right;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span> <t t-raw = "dic_inscript['nbr_g']"/></span></p></td>
+								<td width="29" valign="top" style="width:22.0pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding: 3pt 7pt; text-align: right;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span> <t t-raw = "dic_inscript['nbr_nvo']"/></span></p></td>
+								<td width="29" valign="top" style="width:22.0pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding: 3pt 7pt; text-align: right;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span> <t t-raw = "dic_inscript['nbr_anc']"/></span></p></td>
 								<td width="29" valign="top" style="width:22.0pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding: 3pt 7pt; text-align: right;"><p class="MsoNormal" style="margin-bottom:.0001pt;line-height:normal;"><span> <t t-raw = "dic_inscript['totale']"/></span></p></td>
 							
 							<t t-set="dic_composant" t-value="dic_section[id_filiere]['#composant']"/>
